@@ -31,7 +31,7 @@
   :focus-visible{outline:2px solid var(--cobre);outline-offset:3px;}
 
   /* Header */
-  header{background:var(--musgo);position:sticky;top:0;z-index:20;}
+  header{background:var(--musgo);position:fixed;top:0;left:0;right:0;z-index:20;}
   .header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto;}
   .reveal-item{opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity 0.35s ease, transform 0.35s ease;}
   .reveal-item.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
@@ -78,7 +78,7 @@
   }
 
   /* Rest of the page: revealed on scroll-past or node click */
-  #rest{opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity 0.5s ease, transform 0.5s ease;}
+  #rest{opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity 0.5s ease, transform 0.5s ease;padding-top:78px;}
   #rest.revealed{opacity:1;pointer-events:auto;transform:translateY(0);}
 
   .hero-text{padding:56px 0 48px;text-align:center;max-width:640px;margin:0 auto;}
