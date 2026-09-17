@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WSLHTJ44Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0WSLHTJ44Z');
+</script>
 <style>
   :root{
     --musgo:#1E2F25;
@@ -273,6 +282,11 @@
   var reveals = document.querySelectorAll('.reveal-item');
   var splash = document.querySelector('.splash');
   var rest = document.getElementById('rest');
+  var scrollTracked = false;
+
+  function track(name, params){
+    if(typeof gtag === 'function'){ gtag('event', name, params || {}); }
+  }
 
   function showHeader(){ reveals.forEach(function(el){ el.classList.add('visible'); }); }
   function hideHeader(){ reveals.forEach(function(el){ el.classList.remove('visible'); }); }
@@ -282,7 +296,11 @@
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){ hideHeader(); }
-        else { showHeader(); reveal(); }
+        else {
+          showHeader();
+          reveal();
+          if(!scrollTracked){ scrollTracked = true; track('scroll_past_splash'); }
+        }
       });
     }, {threshold:0});
     obs.observe(splash);
@@ -291,10 +309,24 @@
     reveal();
   }
 
+  var nodeLabels = {'node-1':'empresas','node-2':'inversionistas','node-3':'profesionales','node-central':'ver_servicios'};
   document.querySelectorAll('.node').forEach(function(node){
     node.addEventListener('click', function(){
       reveal();
       showHeader();
+      var label = 'otro';
+      Object.keys(nodeLabels).forEach(function(cls){ if(node.classList.contains(cls)){ label = nodeLabels[cls]; } });
+      track('node_click', {node: label});
+    });
+  });
+
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(link){
+    link.addEventListener('click', function(){
+      var location = 'otro';
+      if(link.closest('header')) location = 'header';
+      else if(link.closest('.hero-text')) location = 'hero';
+      else if(link.closest('.cta-section')) location = 'contacto';
+      track('click_whatsapp', {location: location});
     });
   });
 })();
