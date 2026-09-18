@@ -51,6 +51,8 @@
   .btn-primary:hover{opacity:0.88;}
   .btn-ghost{border:1px solid var(--line);color:var(--carbon);font-size:0.9rem;padding:9px 18px;}
   .btn-ghost:hover{border-color:var(--cobre);}
+  .btn-icon{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;border-radius:50%;}
+  .btn-icon svg{width:20px;height:20px;}
 
   /* Splash: solid green, only the diagram lives here */
   .splash{background:var(--musgo);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 24px;}
@@ -59,13 +61,15 @@
   .node-diagram{position:relative;width:min(560px,86vw);aspect-ratio:1/1;overflow:visible;}
   .node-diagram-bg{position:absolute;inset:0;width:100%;height:100%;}
   .shape-1,.shape-2,.shape-3,.shape-central{transform-box:fill-box;transform-origin:center;transition:transform 0.2s ease;}
+  .shape-central{opacity:0.6;filter:saturate(0.5);}
+  .node.locked{cursor:not-allowed;}
 
   /* invisible hit-boxes: handle click, tooltip, and (via :has) trigger the real shape's hover scale */
   .node{position:absolute;left:var(--x);top:var(--y);width:var(--d);aspect-ratio:1/1;transform:translate(-50%,-50%);display:block;text-decoration:none;cursor:pointer;}
   .node-diagram:has(.node-1:hover) .shape-1,.node-diagram:has(.node-1:focus-visible) .shape-1{transform:scale(1.28);}
   .node-diagram:has(.node-2:hover) .shape-2,.node-diagram:has(.node-2:focus-visible) .shape-2{transform:scale(1.28);}
   .node-diagram:has(.node-3:hover) .shape-3,.node-diagram:has(.node-3:focus-visible) .shape-3{transform:scale(1.28);}
-  .node-diagram:has(.node-central:hover) .shape-central,.node-diagram:has(.node-central:focus-visible) .shape-central{transform:scale(1.28);}
+  .node-diagram:has(.node-central:hover) .shape-central,.node-diagram:has(.node-central:focus-visible) .shape-central{opacity:0.85;}
 
   .node-tip{
     position:absolute;top:100%;left:50%;margin-top:14px;transform:translate(-50%,4px);
@@ -158,7 +162,9 @@
       </svg>
       Nodos
     </a>
-    <a class="btn btn-primary reveal-item" href="https://wa.me/595XXXXXXXXX" target="_blank" rel="noopener">Diagnóstico gratis</a>
+    <a class="btn btn-primary btn-icon reveal-item" href="https://wa.me/595XXXXXXXXX" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+      <svg viewBox="0 0 24 24" fill="#F2EEE6" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.1 2.9 5.5L4 21l4.4-1.6c1.1.4 2.3.6 3.6.6 5.5 0 10-3.6 10-8s-4.5-9-10-9z"/></svg>
+    </a>
   </div>
 </header>
 
@@ -168,32 +174,34 @@
     <div class="node-diagram" id="mainDiagram">
       <svg class="node-diagram-bg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g stroke="#B8734A" fill="none" stroke-linejoin="round">
-          <polyline points="120,128 76,128 64,116 64,74" pathLength="100" stroke-width="5"></polyline>
-          <polyline points="120,128 74,128 60,142" pathLength="100" stroke-width="4"></polyline>
-          <polyline points="120,128 120,84 132,72 167,72" pathLength="100" stroke-width="6"></polyline>
+          <polyline points="96,128 76,128 64,116 64,75.55" pathLength="100" stroke-width="5"></polyline>
+          <polyline points="96,128 74,128 60.6,140.8" pathLength="100" stroke-width="4"></polyline>
+          <polyline points="120,104 120,84 132,72 165.2,72" pathLength="100" stroke-width="6"></polyline>
         </g>
-        <g class="entrance-1"><circle class="shape-1" cx="64" cy="64" r="10" fill="none" stroke="#F2EEE6" stroke-width="3.5"></circle></g>
-        <g class="entrance-2"><circle class="shape-2" cx="56" cy="150" r="9" fill="none" stroke="#F2EEE6" stroke-width="3"></circle></g>
-        <g class="entrance-3"><circle class="shape-3" cx="178" cy="72" r="11" fill="none" stroke="#F2EEE6" stroke-width="4"></circle></g>
-        <g class="entrance-central">
-          <g class="shape-central">
-            <circle cx="120" cy="128" r="24" fill="#B8734A"></circle>
-            <circle cx="120" cy="128" r="14" fill="none" stroke="#1E2F25" stroke-width="2"></circle>
+        <g transform="translate(64,64)"><g class="entrance-1"><circle class="shape-1" cx="0" cy="0" r="10" fill="none" stroke="#F2EEE6" stroke-width="3.5"></circle></g></g>
+        <g transform="translate(56,150)"><g class="entrance-2"><circle class="shape-2" cx="0" cy="0" r="9" fill="none" stroke="#F2EEE6" stroke-width="3"></circle></g></g>
+        <g transform="translate(178,72)"><g class="entrance-3"><circle class="shape-3" cx="0" cy="0" r="11" fill="none" stroke="#F2EEE6" stroke-width="4"></circle></g></g>
+        <g transform="translate(120,128)">
+          <g class="entrance-central">
+            <g class="shape-central">
+              <circle cx="0" cy="0" r="24" fill="#B8734A"></circle>
+              <circle cx="0" cy="0" r="14" fill="none" stroke="#1E2F25" stroke-width="2"></circle>
+            </g>
           </g>
         </g>
       </svg>
-      <a href="#pilar-empresas" class="node node-1" style="--x:29.09%;--y:29.09%;--d:9.09%;">
-        <span class="node-tip">Empresas y exchanges</span>
+      <a href="#pilar-zona-gris" class="node node-1" style="--x:29.09%;--y:29.09%;--d:9.09%;">
+        <span class="node-tip">Zona Gris</span>
       </a>
-      <a href="#pilar-inversionistas" class="node node-2" style="--x:25.45%;--y:68.18%;--d:8.18%;">
-        <span class="node-tip">Inversionistas</span>
+      <a href="#pilar-decodificado" class="node node-2" style="--x:25.45%;--y:68.18%;--d:8.18%;">
+        <span class="node-tip">Decodificado</span>
       </a>
-      <a href="#pilar-profesionales" class="node node-3" style="--x:80.91%;--y:32.73%;--d:10%;">
-        <span class="node-tip">Profesionales y equipos</span>
+      <a href="#pilar-bajo-lupa" class="node node-3" style="--x:80.91%;--y:32.73%;--d:10%;">
+        <span class="node-tip">Bajo Lupa</span>
       </a>
-      <a href="#pilares" class="node node-central" style="--x:54.55%;--y:58.18%;--d:21.82%;">
-        <span class="node-tip">Ver todos los servicios</span>
-      </a>
+      <span class="node node-central locked" tabindex="0" role="button" aria-disabled="true" aria-label="Bloqueado, próximamente disponible" style="--x:54.55%;--y:58.18%;--d:21.82%;">
+        <span class="node-tip">Bloqueado — próximamente</span>
+      </span>
     </div>
   </div>
 
@@ -202,7 +210,7 @@
       <h1>La verdad legal que valida tu operación cripto</h1>
       <p>Compliance en AML/CFT para cripto-activos en Paraguay: empresas, inversionistas y profesionales que necesitan operar dentro de la ley, sin promesas de rendimiento y sin quedar expuestos ante la SEPRELAD.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="https://wa.me/595XXXXXXXXX" target="_blank" rel="noopener">Solicitar diagnóstico legal</a>
+        <a class="btn btn-primary" href="https://wa.me/595XXXXXXXXX" target="_blank" rel="noopener">Sumate al Canal de WhatsApp</a>
         <a class="btn btn-ghost" href="#pilares">Ver cómo trabajamos</a>
       </div>
     </div>
@@ -210,24 +218,24 @@
     <section id="pilares">
       <div class="wrap">
         <div class="section-head">
-          <h2>Tres formas de operar sin quedar expuesto</h2>
-          <p>Cada perfil necesita algo distinto del mundo cripto. El criterio legal detrás es el mismo.</p>
+          <h2>Tres pilares, una sola validación</h2>
+          <p>Cada formato aborda el mismo compromiso desde un ángulo distinto — todo nace de la misma grabación mensual y confluye en el mismo criterio.</p>
         </div>
         <div class="pillars">
-          <div class="pillar" id="pilar-empresas">
+          <div class="pillar" id="pilar-zona-gris">
             <span class="num">01</span>
-            <h3>Empresas y exchanges</h3>
-            <p>Programas de cumplimiento AML/CFT, manuales internos y oficial de cumplimiento para operar dentro del marco de SEPRELAD, sin quedar expuesto ante una inspección.</p>
+            <h3>Zona Gris</h3>
+            <p>Conversación amplia, un episodio al mes: lavado de dinero, cripto y temas financieros en general, explorando la zona ambigua entre lo legal y lo ilegal.</p>
           </div>
-          <div class="pillar" id="pilar-inversionistas">
+          <div class="pillar" id="pilar-decodificado">
             <span class="num">02</span>
-            <h3>Inversionistas</h3>
-            <p>Asesoría legal para quienes compran, venden o mueven cripto-activos en Paraguay, incluyendo operaciones que involucran capital extranjero.</p>
+            <h3>Decodificado</h3>
+            <p>Shorts educativos que traducen la jerga técnica de cripto y compliance — AML, KYC, GAFI, SEPRELAD — a lenguaje simple.</p>
           </div>
-          <div class="pillar" id="pilar-profesionales">
+          <div class="pillar" id="pilar-bajo-lupa">
             <span class="num">03</span>
-            <h3>Profesionales y equipos</h3>
-            <p>Capacitación mensual en compliance cripto para quienes necesitan mantenerse al día con la normativa AML/CFT vigente.</p>
+            <h3>Bajo Lupa</h3>
+            <p>Shorts de análisis: casos reales, sanciones y noticias puntuales del mundo cripto y compliance, explicados a fondo.</p>
           </div>
         </div>
       </div>
@@ -258,7 +266,7 @@
             <p>Contanos tu situación por WhatsApp y te decimos, sin costo, si tu operación necesita ajustes antes de seguir.</p>
           </div>
           <div class="actions">
-            <a class="btn btn-primary" href="https://wa.me/595XXXXXXXXX" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            <a class="btn btn-primary" href="mailto:contacto@nodoscompliance.com">Escribir por correo</a>
           </div>
         </div>
         <p class="disclaimer">
