@@ -172,6 +172,14 @@
   .pillar .num{color:var(--cobre);font-family:var(--serif);font-size:0.95rem;font-weight:600;}
   .pillar h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:10px;}
   .pillar p{color:var(--marfil-muted);font-size:0.98rem;position:relative;}
+  .pillar-link{
+    display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 16px;
+    border:1.5px solid var(--cobre);border-radius:20px;
+    color:var(--cobre);font-family:var(--sans);font-weight:500;font-size:0.88rem;text-decoration:none;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .pillar-link svg{width:13px;height:13px;flex-shrink:0;}
+  .pillar-link:hover{background:var(--cobre);color:var(--marfil);}
 
   .about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:start;}
   .about h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;max-width:16ch;color:var(--musgo);}
@@ -333,6 +341,10 @@
             </div>
             <h3>Zona Gris</h3>
             <p>Conversación amplia, un episodio al mes: lavado de dinero, cripto y temas financieros en general, explorando la zona ambigua entre lo legal y lo ilegal.</p>
+            <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_ZONA_GRIS" target="_blank" rel="noopener">
+              Ver en YouTube
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </a>
           </div>
           <div class="pillar" id="pilar-decodificado">
             <div class="pillar-head">
@@ -341,6 +353,10 @@
             </div>
             <h3>Decodificado</h3>
             <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de cripto y compliance: AML, KYC, GAFI, SEPRELAD.</p>
+            <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_DECODIFICADO" target="_blank" rel="noopener">
+              Ver en YouTube
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </a>
           </div>
           <div class="pillar" id="pilar-bajo-lupa">
             <div class="pillar-head">
@@ -349,6 +365,10 @@
             </div>
             <h3>Bajo Lupa</h3>
             <p>Shorts de análisis: casos reales, sanciones y noticias puntuales del mundo cripto y compliance, explicados a fondo.</p>
+            <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_BAJO_LUPA" target="_blank" rel="noopener">
+              Ver en YouTube
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -495,6 +515,13 @@
       var label = 'otro';
       Object.keys(nodeLabels).forEach(function(cls){ if(node.classList.contains(cls)){ label = nodeLabels[cls]; } });
       track('node_click', {node: label});
+    });
+  });
+
+  document.querySelectorAll('.pillar-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      var pillar = link.closest('.pillar');
+      track('pillar_youtube_click', {pillar: pillar ? pillar.id : 'otro'});
     });
   });
 
