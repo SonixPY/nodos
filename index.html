@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nodos — Compliance para cripto-activos en Paraguay</title>
+<title>Nodos: Compliance para cripto-activos en Paraguay</title>
 <meta name="description" content="Nodos: el punto de encuentro entre el mundo cripto y el compliance. Podcast, contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='32' fill='%231E2F25'/><g transform='translate(10,10)'><g stroke='%23B8734A' fill='none' stroke-linejoin='round'><polyline points='110,118 66,118 54,106 54,64' stroke-width='5'/><polyline points='110,118 64,118 50,132' stroke-width='4'/><polyline points='110,118 110,74 122,62 157,62' stroke-width='6'/></g><circle cx='54' cy='54' r='10' fill='none' stroke='%23F2EEE6' stroke-width='3.5'/><circle cx='46' cy='140' r='9' fill='none' stroke='%23F2EEE6' stroke-width='3'/><circle cx='168' cy='62' r='11' fill='none' stroke='%23F2EEE6' stroke-width='4'/><circle cx='110' cy='118' r='24' fill='%23B8734A'/><circle cx='110' cy='118' r='14' fill='none' stroke='%231E2F25' stroke-width='2'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,10 +153,25 @@
   .section-head p{color:var(--carbon-muted);margin-top:12px;}
 
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .pillar{background:var(--bosque);color:var(--marfil);padding:30px 24px;position:relative;scroll-margin-top:88px;}
-  .pillar .num{color:var(--cobre);font-family:var(--serif);font-size:0.95rem;font-weight:600;display:block;margin-bottom:14px;}
+  .pillar{
+    background-color:var(--bosque);
+    background-image:linear-gradient(135deg, transparent 55%, rgba(184,115,74,0.1) 100%);
+    color:var(--marfil);padding:30px 24px;position:relative;overflow:hidden;
+    scroll-margin-top:88px;border-top:3px solid var(--cobre);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .pillar:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(0,0,0,0.22);}
+  .pillar:hover .pillar-badge{border-color:var(--cobre);}
+  .pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .pillar-badge{
+    width:44px;height:44px;border-radius:50%;flex-shrink:0;
+    border:2.5px solid var(--marfil);display:flex;align-items:center;justify-content:center;
+    transition:border-color 0.2s ease;
+  }
+  .pillar-icon{width:18px;height:18px;color:var(--cobre);}
+  .pillar .num{color:var(--cobre);font-family:var(--serif);font-size:0.95rem;font-weight:600;}
   .pillar h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:10px;}
-  .pillar p{color:var(--marfil-muted);font-size:0.98rem;}
+  .pillar p{color:var(--marfil-muted);font-size:0.98rem;position:relative;}
 
   .about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:start;}
   .about h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;max-width:16ch;color:var(--musgo);}
@@ -283,7 +298,7 @@
         <span class="node-tip">Bajo Lupa</span>
       </a>
       <span class="node node-central locked" tabindex="0" role="button" aria-disabled="true" aria-label="Bloqueado, próximamente disponible" style="--x:54.55%;--y:58.18%;--d:21.82%;">
-        <span class="node-tip">Bloqueado — próximamente</span>
+        <span class="node-tip">Bloqueado, próximamente</span>
       </span>
     </div>
     <div class="splash-hint">
@@ -308,21 +323,30 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Tres pilares, una sola validación</h2>
-          <p>Cada formato aborda el mismo compromiso desde un ángulo distinto — todo nace de la misma grabación mensual y confluye en el mismo criterio.</p>
+          <p>Cada formato aborda el mismo compromiso desde un ángulo distinto. Todo nace de la misma grabación mensual y confluye en el mismo criterio.</p>
         </div>
         <div class="pillars">
           <div class="pillar" id="pilar-zona-gris">
-            <span class="num">01</span>
+            <div class="pillar-head">
+              <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0014 0M12 18v3" stroke-linecap="round"></path></svg></div>
+              <span class="num">01</span>
+            </div>
             <h3>Zona Gris</h3>
             <p>Conversación amplia, un episodio al mes: lavado de dinero, cripto y temas financieros en general, explorando la zona ambigua entre lo legal y lo ilegal.</p>
           </div>
           <div class="pillar" id="pilar-decodificado">
-            <span class="num">02</span>
+            <div class="pillar-head">
+              <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4L3 12l5 8M16 4l5 8-5 8"></path></svg></div>
+              <span class="num">02</span>
+            </div>
             <h3>Decodificado</h3>
-            <p>Shorts educativos que traducen la jerga técnica de cripto y compliance — AML, KYC, GAFI, SEPRELAD — a lenguaje simple.</p>
+            <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de cripto y compliance: AML, KYC, GAFI, SEPRELAD.</p>
           </div>
           <div class="pillar" id="pilar-bajo-lupa">
-            <span class="num">03</span>
+            <div class="pillar-head">
+              <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><path d="M20 20l-5.5-5.5"></path></svg></div>
+              <span class="num">03</span>
+            </div>
             <h3>Bajo Lupa</h3>
             <p>Shorts de análisis: casos reales, sanciones y noticias puntuales del mundo cripto y compliance, explicados a fondo.</p>
           </div>
@@ -335,7 +359,7 @@
         <h2>La trayectoria detrás de Nodos</h2>
         <div class="about-body">
           <p>Nodos nace de la práctica, no de la teoría. Quien lidera el proyecto trabaja hoy como Compliance Officer en una firma legal de primer nivel en Paraguay, diseñando e implementando programas de prevención de lavado de activos y financiamiento del terrorismo.</p>
-          <p>Esa experiencia se combina con formación jurídica en curso, una especialización puntual en Prevención de Lavado de Dinero y Financiamiento del Terrorismo, y años previos en gestión comercial y en el sector público — una mirada que conecta lo legal con cómo se mueven realmente las operaciones.</p>
+          <p>Esa experiencia se combina con formación jurídica en curso, una especialización puntual en Prevención de Lavado de Dinero y Financiamiento del Terrorismo, y años previos en gestión comercial y en el sector público, con una mirada que conecta lo legal con cómo se mueven realmente las operaciones.</p>
           <p>El proyecto está pensado para crecer: la idea es sumar más profesionales a este equipo a medida que Nodos se consolida.</p>
           <div class="credential-list">
             <div><span>Compliance Officer AML/CFT</span><span>Firma legal, Paraguay</span></div>
@@ -381,7 +405,7 @@
           <a href="https://open.spotify.com/show/TU_SHOW_ID" target="_blank" rel="noopener">Spotify</a>
         </nav>
         <div class="footer-meta">
-          <span>© 2026 Nodos — Asunción, Paraguay</span>
+          <span>© 2026 Nodos, Asunción, Paraguay</span>
           <span><a href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a></span>
         </div>
       </div>
