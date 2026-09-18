@@ -33,7 +33,8 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--marfil);color:var(--carbon);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  body{background:var(--marfil);color:var(--carbon);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  p{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
   a{color:inherit;-webkit-tap-highlight-color:transparent;}
   img,svg{max-width:100%;display:block;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
@@ -142,7 +143,7 @@
 
   .hero-text{padding:56px 0 48px;text-align:center;max-width:640px;margin:0 auto;}
   .hero-text h1{font-family:var(--serif);font-size:clamp(2.1rem,4.4vw,3.15rem);font-weight:600;line-height:1.16;color:var(--musgo);}
-  .hero-text p{margin-top:20px;color:var(--carbon-muted);font-size:1.08rem;}
+  .hero-text p{margin-top:20px;color:var(--carbon-muted);font-size:1.08rem;text-align:center;}
   .hero-text .actions{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
   section{padding:64px 0;}
@@ -151,16 +152,31 @@
   .section-head h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;color:var(--musgo);}
   .section-head p{color:var(--carbon-muted);margin-top:12px;}
 
-  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .pillars{display:flex;flex-direction:column;gap:20px;}
   .pillar{
     background-color:var(--bosque);
     background-image:linear-gradient(135deg, transparent 55%, rgba(184,115,74,0.1) 100%);
-    color:var(--marfil);padding:30px 24px;position:relative;overflow:hidden;
+    color:var(--marfil);position:relative;overflow:hidden;
     scroll-margin-top:88px;border-top:3px solid var(--cobre);
     transition:transform 0.2s ease, box-shadow 0.2s ease;
+    display:flex;align-items:stretch;
   }
   .pillar:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(0,0,0,0.22);}
   .pillar:hover .pillar-badge{border-color:var(--cobre);}
+  .pillar-content{padding:28px 26px;flex:1 1 65%;}
+  .pillar-thumb{
+    flex:0 0 35%;position:relative;min-height:150px;text-decoration:none;
+    background:linear-gradient(135deg, var(--musgo), var(--bosque));
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity 0.2s ease;
+  }
+  .pillar-thumb:hover{opacity:0.85;}
+  .pillar-thumb:hover .pillar-thumb-play{border-color:var(--cobre);}
+  .pillar-thumb-play{
+    width:52px;height:52px;border-radius:50%;border:2px solid rgba(242,238,230,0.5);
+    display:flex;align-items:center;justify-content:center;transition:border-color 0.2s ease;
+  }
+  .pillar-thumb-play svg{width:18px;height:18px;color:rgba(242,238,230,0.7);}
   .pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
   .pillar-badge{
     width:44px;height:44px;border-radius:50%;flex-shrink:0;
@@ -180,6 +196,11 @@
   .pillar-link svg{width:13px;height:13px;flex-shrink:0;}
   .pillar-link:hover{background:var(--cobre);color:var(--marfil);}
 
+  @media (max-width:600px){
+    .pillar{flex-direction:column;}
+    .pillar-thumb{min-height:140px;}
+  }
+
   .about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:start;}
   .about h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;max-width:16ch;color:var(--musgo);}
   .about-body p{color:var(--carbon-muted);margin-bottom:16px;}
@@ -192,13 +213,12 @@
   .timeline-stop h4{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--musgo);margin-bottom:8px;}
   .timeline-stop p{color:var(--carbon-muted);font-size:0.92rem;}
 
-  .team-module{margin-top:40px;padding:28px 26px;max-width:640px;border:1.5px dashed #93755D;background:rgba(147,117,93,0.08);}
+  .team-module{margin-top:40px;padding:28px 26px;max-width:640px;border:1.5px dashed #93755D;background:rgba(147,117,93,0.08);scroll-margin-top:88px;}
   .team-module h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--musgo);margin-bottom:16px;}
   .team-slides{position:relative;min-height:96px;margin-bottom:18px;}
   .team-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;color:var(--carbon-muted);font-size:0.96rem;}
   .team-slide.active{opacity:1;visibility:visible;transform:translateY(0);}
   .team-dots{display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:relative;}
-  .team-dots::before{content:"";position:absolute;top:50%;left:9px;right:9px;height:1.5px;background:var(--line);transform:translateY(-50%);z-index:0;}
   .team-dot{position:relative;z-index:1;width:18px;height:18px;border-radius:50%;border:2px solid #93755D;background:var(--marfil);cursor:pointer;padding:0;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;}
   .team-dot.filled{background:#B8734A;border-color:#B8734A;}
   .team-dot:not(.filled){border-style:dashed;}
@@ -215,7 +235,7 @@
   .disclaimer{color:var(--marfil-muted);font-size:0.85rem;max-width:64ch;margin-top:28px;}
 
   footer{background:var(--musgo);padding:32px 0 28px;color:var(--marfil-muted);font-size:0.85rem;}
-  .footer-social{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:18px;}
+  .footer-social{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;}
   .footer-social a{color:var(--marfil-muted);text-decoration:none;font-weight:500;}
   .footer-social a:hover{color:var(--cobre);}
   .footer-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:16px;border-top:1px solid var(--line-on-dark, rgba(242,238,230,0.16));}
@@ -235,6 +255,7 @@
 
   @media (max-width:600px){
     .node{min-width:44px;min-height:44px;}
+    .team-slides{min-height:190px;}
   }
 
   @media (max-width:480px){
@@ -354,39 +375,54 @@
         </div>
         <div class="pillars">
           <div class="pillar" id="pilar-zona-gris">
-            <div class="pillar-head">
-              <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0014 0M12 18v3" stroke-linecap="round"></path></svg></div>
-              <span class="num">01</span>
+            <div class="pillar-content">
+              <div class="pillar-head">
+                <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0014 0M12 18v3" stroke-linecap="round"></path></svg></div>
+                <span class="num">01</span>
+              </div>
+              <h3>Zona Gris</h3>
+              <p>Conversación amplia, un episodio al mes: lavado de dinero, cripto y temas financieros en general, explorando la zona ambigua entre lo legal y lo ilegal.</p>
+              <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_ZONA_GRIS" target="_blank" rel="noopener">
+                Ver en YouTube
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+              </a>
             </div>
-            <h3>Zona Gris</h3>
-            <p>Conversación amplia, un episodio al mes: lavado de dinero, cripto y temas financieros en general, explorando la zona ambigua entre lo legal y lo ilegal.</p>
-            <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_ZONA_GRIS" target="_blank" rel="noopener">
-              Ver en YouTube
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            <a class="pillar-thumb" href="https://youtube.com/playlist?list=TU_PLAYLIST_ZONA_GRIS" target="_blank" rel="noopener" aria-label="Ver Zona Gris en YouTube">
+              <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
             </a>
           </div>
           <div class="pillar" id="pilar-decodificado">
-            <div class="pillar-head">
-              <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4L3 12l5 8M16 4l5 8-5 8"></path></svg></div>
-              <span class="num">02</span>
+            <div class="pillar-content">
+              <div class="pillar-head">
+                <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4L3 12l5 8M16 4l5 8-5 8"></path></svg></div>
+                <span class="num">02</span>
+              </div>
+              <h3>Decodificado</h3>
+              <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de cripto y compliance: AML, KYC, GAFI, SEPRELAD.</p>
+              <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_DECODIFICADO" target="_blank" rel="noopener">
+                Ver en YouTube
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+              </a>
             </div>
-            <h3>Decodificado</h3>
-            <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de cripto y compliance: AML, KYC, GAFI, SEPRELAD.</p>
-            <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_DECODIFICADO" target="_blank" rel="noopener">
-              Ver en YouTube
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            <a class="pillar-thumb" href="https://youtube.com/playlist?list=TU_PLAYLIST_DECODIFICADO" target="_blank" rel="noopener" aria-label="Ver Decodificado en YouTube">
+              <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
             </a>
           </div>
           <div class="pillar" id="pilar-bajo-lupa">
-            <div class="pillar-head">
-              <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><path d="M20 20l-5.5-5.5"></path></svg></div>
-              <span class="num">03</span>
+            <div class="pillar-content">
+              <div class="pillar-head">
+                <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><path d="M20 20l-5.5-5.5"></path></svg></div>
+                <span class="num">03</span>
+              </div>
+              <h3>Bajo Lupa</h3>
+              <p>Shorts de análisis: casos reales, sanciones y noticias puntuales del mundo cripto y compliance, explicados a fondo.</p>
+              <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_BAJO_LUPA" target="_blank" rel="noopener">
+                Ver en YouTube
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+              </a>
             </div>
-            <h3>Bajo Lupa</h3>
-            <p>Shorts de análisis: casos reales, sanciones y noticias puntuales del mundo cripto y compliance, explicados a fondo.</p>
-            <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_BAJO_LUPA" target="_blank" rel="noopener">
-              Ver en YouTube
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            <a class="pillar-thumb" href="https://youtube.com/playlist?list=TU_PLAYLIST_BAJO_LUPA" target="_blank" rel="noopener" aria-label="Ver Bajo Lupa en YouTube">
+              <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
             </a>
           </div>
         </div>
@@ -473,8 +509,10 @@
           <a href="https://youtube.com/@TU_HANDLE" target="_blank" rel="noopener">YouTube</a>
           <a href="https://tiktok.com/@TU_HANDLE" target="_blank" rel="noopener">TikTok</a>
           <a href="https://instagram.com/TU_HANDLE" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://x.com/TU_HANDLE" target="_blank" rel="noopener">X</a>
           <a href="https://threads.net/@TU_HANDLE" target="_blank" rel="noopener">Threads</a>
           <a href="https://open.spotify.com/show/TU_SHOW_ID" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">WhatsApp</a>
         </nav>
         <div class="footer-meta">
           <span>© 2026 Nodos, Asunción, Paraguay</span>
@@ -598,6 +636,7 @@
       if(link.closest('header')) location = 'header';
       else if(link.closest('.hero-text')) location = 'hero';
       else if(link.closest('.cta-section')) location = 'contacto';
+      else if(link.closest('footer')) location = 'footer';
       track('click_whatsapp', {location: location});
     });
   });
