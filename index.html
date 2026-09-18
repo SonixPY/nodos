@@ -82,7 +82,6 @@
   .node-diagram{position:relative;width:min(560px,86vw);aspect-ratio:1/1;overflow:visible;}
   .node-diagram-bg{position:absolute;inset:0;width:100%;height:100%;}
   .shape-1,.shape-2,.shape-3{transform-box:fill-box;transform-origin:center;transition:transform 0.2s ease;}
-  .node.locked{cursor:not-allowed;}
 
   /* invisible hit-boxes: handle click, tooltip, and (via :has) trigger the real shape's hover scale */
   .node{position:absolute;left:var(--x);top:var(--y);width:var(--d);aspect-ratio:1/1;transform:translate(-50%,-50%);display:block;text-decoration:none;cursor:pointer;}
@@ -185,10 +184,26 @@
   .about h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;max-width:16ch;color:var(--musgo);}
   .about-body p{color:var(--carbon-muted);margin-bottom:16px;}
   .about-body p:first-child{color:var(--carbon);font-size:1.05rem;}
-  .credential-list{margin-top:22px;border-top:1px solid var(--cobre);}
-  .credential-list div{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;font-size:0.95rem;}
-  .credential-list span:first-child{color:var(--carbon);}
-  .credential-list span:last-child{color:var(--carbon-muted);text-align:right;}
+
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;margin:8px 0 44px;}
+  .timeline::before{content:"";position:absolute;top:8px;left:0;right:0;height:2px;background:var(--line);}
+  .timeline-stop{position:relative;padding-top:30px;}
+  .timeline-dot{position:absolute;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--cobre);border:3px solid var(--marfil);}
+  .timeline-stop h4{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--musgo);margin-bottom:8px;}
+  .timeline-stop p{color:var(--carbon-muted);font-size:0.92rem;}
+
+  .team-module{margin-top:40px;padding:28px 26px;max-width:640px;border:1.5px dashed #93755D;background:rgba(147,117,93,0.08);}
+  .team-module h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--musgo);margin-bottom:16px;}
+  .team-slides{position:relative;min-height:96px;margin-bottom:18px;}
+  .team-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;color:var(--carbon-muted);font-size:0.96rem;}
+  .team-slide.active{opacity:1;visibility:visible;transform:translateY(0);}
+  .team-dots{display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:relative;}
+  .team-dots::before{content:"";position:absolute;top:50%;left:9px;right:9px;height:1.5px;background:var(--line);transform:translateY(-50%);z-index:0;}
+  .team-dot{position:relative;z-index:1;width:18px;height:18px;border-radius:50%;border:2px solid #93755D;background:var(--marfil);cursor:pointer;padding:0;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;}
+  .team-dot.filled{background:#B8734A;border-color:#B8734A;}
+  .team-dot:not(.filled){border-style:dashed;}
+  .team-dot:hover{transform:scale(1.15);}
+  .team-dot.active{box-shadow:0 0 0 3px rgba(184,115,74,0.22);transform:scale(1.1);}
 
   .cta-section{background:var(--musgo);}
   .cta-section .btn-ghost{border-color:rgba(242,238,230,0.3);color:var(--marfil);}
@@ -209,6 +224,10 @@
   @media (max-width:820px){
     .pillars{grid-template-columns:1fr;}
     .about{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr;gap:22px;}
+    .timeline::before{top:0;bottom:0;left:8px;right:auto;width:2px;height:auto;}
+    .timeline-stop{padding-top:0;padding-left:32px;}
+    .timeline-dot{top:2px;left:0;}
     .cta{grid-template-columns:1fr;text-align:left;}
     .cta .actions{align-items:flex-start;}
     .node-tip{font-size:0.78rem;padding:6px 10px;}
@@ -305,9 +324,9 @@
       <a href="#pilar-bajo-lupa" class="node node-3" style="--x:80.91%;--y:32.73%;--d:10%;">
         <span class="node-tip">Bajo Lupa</span>
       </a>
-      <span class="node node-central locked" tabindex="0" role="button" aria-disabled="true" aria-label="Bloqueado, próximamente disponible" style="--x:54.55%;--y:58.18%;--d:21.82%;">
+      <a href="#crecimiento" class="node node-central" style="--x:54.55%;--y:58.18%;--d:21.82%;">
         <span class="node-tip">Bloqueado, próximamente</span>
-      </span>
+      </a>
     </div>
     <div class="splash-hint">
       <span>Tocá un nodo</span>
@@ -375,17 +394,50 @@
     </section>
 
     <section id="equipo">
-      <div class="wrap about">
-        <h2>La trayectoria detrás de Nodos</h2>
-        <div class="about-body">
-          <p>Nodos nace de la práctica, no de la teoría. Quien lidera el proyecto trabaja hoy como Compliance Officer en una firma legal de primer nivel en Paraguay, diseñando e implementando programas de prevención de lavado de activos y financiamiento del terrorismo.</p>
-          <p>Esa experiencia se combina con formación jurídica en curso, una especialización puntual en Prevención de Lavado de Dinero y Financiamiento del Terrorismo, y años previos en gestión comercial y en el sector público, con una mirada que conecta lo legal con cómo se mueven realmente las operaciones.</p>
-          <p>El proyecto está pensado para crecer: la idea es sumar más profesionales a este equipo a medida que Nodos se consolida.</p>
-          <div class="credential-list">
-            <div><span>Compliance Officer AML/CFT</span><span>Firma legal, Paraguay</span></div>
-            <div><span>Especialización en Prevención de Lavado de Dinero</span><span>2025</span></div>
-            <div><span>Formación en Derecho</span><span>En curso</span></div>
-            <div><span>Columnas de derecho corporativo</span><span>Medio nacional</span></div>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>El camino de Nodos</h2>
+          <p>Antes de llegar a esto, cada contenido pasa por varias etapas. Así se construye Nodos.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-stop">
+            <span class="timeline-dot"></span>
+            <h4>Grabación mensual</h4>
+            <p>Un episodio de Zona Gris, la base de todo el contenido del mes.</p>
+          </div>
+          <div class="timeline-stop">
+            <span class="timeline-dot"></span>
+            <h4>Cortes y shorts</h4>
+            <p>Se transforma en Decodificado y Bajo Lupa para redes.</p>
+          </div>
+          <div class="timeline-stop">
+            <span class="timeline-dot"></span>
+            <h4>Comunidad</h4>
+            <p>Canal de WhatsApp y redes sociales, construyendo audiencia real.</p>
+          </div>
+          <div class="timeline-stop">
+            <span class="timeline-dot"></span>
+            <h4>Validación abierta</h4>
+            <p>Todavía bloqueada. Se activa cuando el proyecto esté listo.</p>
+          </div>
+        </div>
+        <div class="team-module" id="crecimiento">
+          <h3>Quiénes están detrás</h3>
+          <div class="team-slides">
+            <div class="team-slide active" data-slide="0">
+              <p>Detrás de Nodos hay más de una persona trabajando, con experiencia real en derecho y compliance. Por ahora, cada uno prefiere mantenerse en el anonimato. A medida que el proyecto se consolide, cada integrante va a tener su propio espacio acá, con su historia y su rol.</p>
+            </div>
+            <div class="team-slide" data-slide="1"><p>Próximamente.</p></div>
+            <div class="team-slide" data-slide="2"><p>Próximamente.</p></div>
+            <div class="team-slide" data-slide="3"><p>Próximamente.</p></div>
+            <div class="team-slide" data-slide="4"><p>Próximamente.</p></div>
+          </div>
+          <div class="team-dots">
+            <button type="button" class="team-dot filled active" data-slide="0" aria-label="Equipo"></button>
+            <button type="button" class="team-dot" data-slide="1" aria-label="Próximamente"></button>
+            <button type="button" class="team-dot" data-slide="2" aria-label="Próximamente"></button>
+            <button type="button" class="team-dot" data-slide="3" aria-label="Próximamente"></button>
+            <button type="button" class="team-dot" data-slide="4" aria-label="Próximamente"></button>
           </div>
         </div>
       </div>
@@ -507,7 +559,7 @@
     });
   }
 
-  var nodeLabels = {'node-1':'empresas','node-2':'inversionistas','node-3':'profesionales','node-central':'ver_servicios'};
+  var nodeLabels = {'node-1':'zona_gris','node-2':'decodificado','node-3':'bajo_lupa','node-central':'equipo_crecimiento'};
   document.querySelectorAll('.node').forEach(function(node){
     node.addEventListener('click', function(){
       reveal();
@@ -523,6 +575,21 @@
       var pillar = link.closest('.pillar');
       track('pillar_youtube_click', {pillar: pillar ? pillar.id : 'otro'});
     });
+  });
+
+  var teamDots = document.querySelectorAll('.team-dot');
+  var teamSlides = document.querySelectorAll('.team-slide');
+  function goToSlide(idx){
+    teamDots.forEach(function(d){ d.classList.remove('active'); });
+    teamSlides.forEach(function(s){ s.classList.remove('active'); });
+    var dot = document.querySelector('.team-dot[data-slide="'+idx+'"]');
+    var slide = document.querySelector('.team-slide[data-slide="'+idx+'"]');
+    if(dot) dot.classList.add('active');
+    if(slide) slide.classList.add('active');
+    track('team_slide_click', {slide: idx});
+  }
+  teamDots.forEach(function(dot){
+    dot.addEventListener('click', function(){ goToSlide(dot.getAttribute('data-slide')); });
   });
 
   document.querySelectorAll('a[href^="https://wa.me/"], a[href^="https://whatsapp.com/channel/"]').forEach(function(link){
