@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='32' fill='%231E2F25'/><g transform='translate(10,10)'><g stroke='%23B8734A' fill='none' stroke-linejoin='round'><polyline points='110,118 66,118 54,106 54,64' stroke-width='5'/><polyline points='110,118 64,118 50,132' stroke-width='4'/><polyline points='110,118 110,74 122,62 157,62' stroke-width='6'/></g><circle cx='54' cy='54' r='10' fill='none' stroke='%23F2EEE6' stroke-width='3.5'/><circle cx='46' cy='140' r='9' fill='none' stroke='%23F2EEE6' stroke-width='3'/><circle cx='168' cy='62' r='11' fill='none' stroke='%23F2EEE6' stroke-width='4'/><circle cx='110' cy='118' r='24' fill='%23B8734A'/><circle cx='110' cy='118' r='14' fill='none' stroke='%231E2F25' stroke-width='2'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WSLHTJ44Z"></script>
@@ -34,7 +34,7 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{background:var(--marfil);color:var(--carbon);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  a{color:inherit;}
+  a{color:inherit;-webkit-tap-highlight-color:transparent;}
   img,svg{max-width:100%;display:block;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
   :focus-visible{outline:2px solid var(--cobre);outline-offset:3px;}
@@ -56,7 +56,7 @@
   .btn-icon svg{width:20px;height:20px;}
 
   /* Splash: solid green, only the diagram lives here */
-  .splash{background:var(--musgo);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;}
+  .splash{background:var(--musgo);min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;}
   .splash-hint{margin-top:28px;display:flex;align-items:center;gap:6px;color:var(--marfil-muted);font-family:var(--sans);font-size:0.85rem;}
   @media (prefers-reduced-motion: no-preference){
     .splash-hint{opacity:0;animation:hintIn 0.5s ease-out 2.3s forwards;}
@@ -80,13 +80,22 @@
   .node-tip{
     position:absolute;top:100%;left:50%;margin-top:14px;transform:translate(-50%,4px);
     background:var(--marfil);color:var(--musgo);font-family:var(--sans);font-weight:500;font-size:0.85rem;
-    white-space:nowrap;padding:7px 14px;border-radius:2px;border-bottom:2px solid var(--cobre);
+    max-width:min(200px,80vw);white-space:nowrap;padding:7px 14px;border-radius:2px;border-bottom:2px solid var(--cobre);
     opacity:0;pointer-events:none;transition:opacity 0.18s ease, transform 0.18s ease;
   }
-  .node:hover .node-tip,.node:focus-visible .node-tip{opacity:1;transform:translate(-50%,0);}
+  .node:focus-visible .node-tip{opacity:1;transform:translate(-50%,0);}
+  @media (hover:hover) and (pointer:fine){
+    .node:hover .node-tip{opacity:1;transform:translate(-50%,0);}
+  }
 
   /* Load-in "validation" animation — separate wrapping <g> so it never fights the hover transform */
   .ping{transform-box:fill-box;transform-origin:center;opacity:0;pointer-events:none;}
+
+  /* Performance: pause the infinite loops entirely when off-screen or the tab is backgrounded */
+  #mainDiagram.paused .line-1,#mainDiagram.paused .line-2,#mainDiagram.paused .line-3,
+  #mainDiagram.paused .ping-1,#mainDiagram.paused .ping-2,#mainDiagram.paused .ping-3{
+    animation-play-state:paused;
+  }
 
   @media (prefers-reduced-motion: no-preference){
     .line-1{stroke-dasharray:100;stroke-dashoffset:100;animation:lineFlow 3.5s ease-in-out 0.3s infinite;}
@@ -165,6 +174,19 @@
     .cta{grid-template-columns:1fr;text-align:left;}
     .cta .actions{justify-content:flex-start;}
     .node-tip{font-size:0.78rem;padding:6px 10px;}
+  }
+
+  @media (max-width:600px){
+    .node{min-width:44px;min-height:44px;}
+  }
+
+  @media (max-width:480px){
+    .ping-1,.ping-2,.ping-3{animation:none;opacity:0;}
+  }
+
+  @media (max-height:500px){
+    .splash{padding:70px 24px 24px;}
+    .node-diagram{width:min(320px,70vw);}
   }
 </style>
 </head>
@@ -342,7 +364,9 @@
   var reveals = document.querySelectorAll('.reveal-item');
   var splash = document.querySelector('.splash');
   var rest = document.getElementById('rest');
+  var diagram = document.getElementById('mainDiagram');
   var scrollTracked = false;
+  var splashVisible = true;
 
   function track(name, params){
     if(typeof gtag === 'function'){ gtag('event', name, params || {}); }
@@ -351,14 +375,20 @@
   function showHeader(){ reveals.forEach(function(el){ el.classList.add('visible'); }); }
   function hideHeader(){ reveals.forEach(function(el){ el.classList.remove('visible'); }); }
   function reveal(){ if(rest) rest.classList.add('revealed'); }
+  function pauseDiagram(){ if(diagram) diagram.classList.add('paused'); }
+  function resumeDiagram(){ if(diagram && !document.hidden) diagram.classList.remove('paused'); }
 
   if(splash && rest && 'IntersectionObserver' in window){
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if(entry.isIntersecting){ hideHeader(); }
-        else {
+        splashVisible = entry.isIntersecting;
+        if(entry.isIntersecting){
+          hideHeader();
+          resumeDiagram();
+        } else {
           showHeader();
           reveal();
+          pauseDiagram();
           if(!scrollTracked){ scrollTracked = true; track('scroll_past_splash'); }
         }
       });
@@ -368,6 +398,11 @@
     showHeader();
     reveal();
   }
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){ pauseDiagram(); }
+    else if(splashVisible){ resumeDiagram(); }
+  });
 
   var nodeLabels = {'node-1':'empresas','node-2':'inversionistas','node-3':'profesionales','node-central':'ver_servicios'};
   document.querySelectorAll('.node').forEach(function(node){
