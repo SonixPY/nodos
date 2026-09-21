@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nodos: Compliance para cripto-activos en Paraguay</title>
 <meta name="description" content="Nodos: el punto de encuentro entre el mundo cripto y el compliance. Podcast, contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
+<link rel="canonical" href="https://nodoscompliance.com/">
+
+<!-- Open Graph / redes sociales -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nodos">
+<meta property="og:url" content="https://nodoscompliance.com/">
+<meta property="og:title" content="Nodos: Compliance para cripto-activos en Paraguay">
+<meta property="og:description" content="El punto de encuentro entre el mundo cripto y el compliance. Contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
+<meta property="og:image" content="https://nodoscompliance.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nodos — Cripto-activos + Compliance">
+<meta property="og:locale" content="es_PY">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nodos: Compliance para cripto-activos en Paraguay">
+<meta name="twitter:description" content="El punto de encuentro entre el mundo cripto y el compliance. Contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
+<meta name="twitter:image" content="https://nodoscompliance.com/og-image.png">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='32' fill='%231E2F25'/><g transform='translate(10,10)'><g stroke='%23B8734A' fill='none' stroke-linejoin='round'><polyline points='110,118 66,118 54,106 54,64' stroke-width='5'/><polyline points='110,118 64,118 50,132' stroke-width='4'/><polyline points='110,118 110,74 122,62 157,62' stroke-width='6'/></g><circle cx='54' cy='54' r='10' fill='none' stroke='%23F2EEE6' stroke-width='3.5'/><circle cx='46' cy='140' r='9' fill='none' stroke='%23F2EEE6' stroke-width='3'/><circle cx='168' cy='62' r='11' fill='none' stroke='%23F2EEE6' stroke-width='4'/><circle cx='110' cy='118' r='24' fill='%23B8734A'/><circle cx='110' cy='118' r='14' fill='none' stroke='%231E2F25' stroke-width='2'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,6 +88,11 @@
   .menu-panel a{display:block;color:var(--carbon);text-decoration:none;font-family:var(--sans);font-weight:500;font-size:0.95rem;padding:10px 18px;}
   .menu-panel a:hover{background:var(--bosque);color:var(--marfil);}
   .menu.open .menu-panel{opacity:1;transform:translateY(0);pointer-events:auto;}
+
+  .back-to-top{position:fixed;bottom:24px;right:24px;z-index:15;box-shadow:0 6px 18px rgba(0,0,0,0.22);}
+  @media (max-width:600px){
+    .back-to-top{bottom:16px;right:16px;}
+  }
 
   /* Splash: solid green, only the diagram lives here */
   .splash{background:var(--musgo);min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 40px;}
@@ -306,6 +331,12 @@
     </div>
   </div>
 </header>
+
+<a href="#top" class="btn btn-icon btn-primary back-to-top reveal-item" aria-label="Volver al inicio">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke="#F2EEE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  </svg>
+</a>
 
 <main id="top">
 
@@ -638,6 +669,17 @@
       else if(link.closest('.cta-section')) location = 'contacto';
       else if(link.closest('footer')) location = 'footer';
       track('click_whatsapp', {location: location});
+    });
+  });
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(link){
+    link.addEventListener('click', function(){
+      var location = 'otro';
+      if(link.closest('header')) location = 'header';
+      else if(link.closest('.hero-text')) location = 'hero';
+      else if(link.closest('.cta-section')) location = 'contacto';
+      else if(link.closest('footer')) location = 'footer';
+      track('click_email', {location: location});
     });
   });
 })();
