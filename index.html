@@ -3,32 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nodos: Compliance para cripto-activos en Paraguay</title>
-<meta name="description" content="Nodos: el punto de encuentro entre el mundo cripto y el compliance. Podcast, contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
+<title>Nodos: el punto de encuentro entre finanzas, proyectos y ley</title>
+<meta name="description" content="Nodos: el punto de encuentro entre finanzas, proyectos y ley — con foco en cripto. Podcast y contenido educativo, sin hype ni señales de inversión.">
 <link rel="canonical" href="https://nodoscompliance.com/">
 
 <!-- Open Graph / redes sociales -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nodos">
 <meta property="og:url" content="https://nodoscompliance.com/">
-<meta property="og:title" content="Nodos: Compliance para cripto-activos en Paraguay">
-<meta property="og:description" content="El punto de encuentro entre el mundo cripto y el compliance. Contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
+<meta property="og:title" content="Nodos: el punto de encuentro entre finanzas, proyectos y ley">
+<meta property="og:description" content="El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto. Contenido educativo, sin hype ni señales de inversión.">
 <meta property="og:image" content="https://nodoscompliance.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Nodos — Cripto-activos + Compliance">
+<meta property="og:image:alt" content="Nodos — Finanzas, proyectos y ley">
 <meta property="og:locale" content="es_PY">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nodos: Compliance para cripto-activos en Paraguay">
-<meta name="twitter:description" content="El punto de encuentro entre el mundo cripto y el compliance. Contenido educativo y análisis de casos sobre AML/CFT en Paraguay.">
+<meta name="twitter:title" content="Nodos: el punto de encuentro entre finanzas, proyectos y ley">
+<meta name="twitter:description" content="El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto. Contenido educativo, sin hype ni señales de inversión.">
 <meta name="twitter:image" content="https://nodoscompliance.com/og-image.png">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><rect width='220' height='220' rx='32' fill='%231E2F25'/><g transform='translate(10,10)'><g stroke='%23B8734A' fill='none' stroke-linejoin='round'><polyline points='110,118 66,118 54,106 54,64' stroke-width='5'/><polyline points='110,118 64,118 50,132' stroke-width='4'/><polyline points='110,118 110,74 122,62 157,62' stroke-width='6'/></g><circle cx='54' cy='54' r='10' fill='none' stroke='%23F2EEE6' stroke-width='3.5'/><circle cx='46' cy='140' r='9' fill='none' stroke='%23F2EEE6' stroke-width='3'/><circle cx='168' cy='62' r='11' fill='none' stroke='%23F2EEE6' stroke-width='4'/><circle cx='110' cy='118' r='24' fill='%23B8734A'/><circle cx='110' cy='118' r='14' fill='none' stroke='%231E2F25' stroke-width='2'/></g></svg>">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WSLHTJ44Z"></script>
@@ -47,13 +47,15 @@
     --carbon:#242522;
     --carbon-muted:rgba(36,37,34,0.62);
     --marfil-muted:rgba(242,238,230,0.68);
-    --line:rgba(36,37,34,0.14);
-    --serif:'Source Serif 4', Georgia, serif;
-    --sans:'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+    --line:#34483a33;
+    --cobre-hover:#8C5934;
+    --r-sm:4px;--r-md:8px;--r-lg:16px;
+    --serif:'Space Grotesk', system-ui, sans-serif; /* display oficial */
+    --sans:'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--marfil);color:var(--carbon);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  body{background:var(--marfil);color:var(--carbon);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
   p{text-align:justify;-webkit-hyphens:auto;hyphens:auto;}
   a{color:inherit;-webkit-tap-highlight-color:transparent;}
   img,svg{max-width:100%;display:block;}
@@ -65,13 +67,13 @@
   .header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto;}
   .reveal-item{opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity 0.35s ease, transform 0.35s ease;}
   .reveal-item.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .logo{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--marfil);text-decoration:none;}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:1.15rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--marfil);text-decoration:none;}
   .logo-icon{display:inline-flex;}
   .logo svg{width:34px;height:34px;flex-shrink:0;}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:500;font-size:0.95rem;padding:11px 22px;border-radius:2px;text-decoration:none;transition:background 0.15s ease, opacity 0.15s ease;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:500;font-size:0.95rem;padding:11px 22px;border-radius:var(--r-md);text-decoration:none;transition:background 0.15s ease, opacity 0.15s ease;}
   .btn svg{width:17px;height:17px;flex-shrink:0;}
-  .btn-primary{background:var(--cobre);color:var(--marfil);}
-  .btn-primary:hover{opacity:0.88;}
+  .btn-primary{background:var(--cobre-hover);color:var(--marfil);}
+  .btn-primary:hover{background:#7a4c2c;}
   .btn-ghost{border:1px solid var(--line);color:var(--carbon);font-size:0.9rem;padding:9px 18px;}
   .btn-ghost:hover{border-color:var(--cobre);}
   .btn-icon{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;border-radius:50%;border:none;cursor:pointer;font:inherit;}
@@ -80,7 +82,7 @@
   .menu{position:relative;}
   .menu-panel{
     position:absolute;top:calc(100% + 10px);right:0;min-width:170px;
-    background:var(--marfil);border-radius:2px;box-shadow:0 10px 28px rgba(0,0,0,0.28);
+    background:var(--marfil);border-radius:var(--r-md);box-shadow:0 10px 28px rgba(0,0,0,0.28);
     display:flex;flex-direction:column;padding:8px 0;
     opacity:0;transform:translateY(-6px);pointer-events:none;
     transition:opacity 0.18s ease, transform 0.18s ease;
@@ -167,14 +169,14 @@
   #rest.revealed{opacity:1;pointer-events:auto;transform:translateY(0);}
 
   .hero-text{padding:56px 0 48px;text-align:center;max-width:640px;margin:0 auto;}
-  .hero-text h1{font-family:var(--serif);font-size:clamp(2.1rem,4.4vw,3.15rem);font-weight:600;line-height:1.16;color:var(--musgo);}
+  .hero-text h1{font-family:var(--serif);font-size:clamp(2.1rem,4.4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--musgo);}
   .hero-text p{margin-top:20px;color:var(--carbon-muted);font-size:1.08rem;text-align:center;}
   .hero-text .actions{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
   section{padding:64px 0;}
   section[id]{scroll-margin-top:88px;}
   .section-head{max-width:52ch;margin-bottom:44px;}
-  .section-head h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;color:var(--musgo);}
+  .section-head h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.125rem);font-weight:700;letter-spacing:-0.01em;color:var(--musgo);}
   .section-head p{color:var(--carbon-muted);margin-top:12px;}
 
   .pillars{display:flex;flex-direction:column;gap:20px;}
@@ -227,7 +229,7 @@
   }
 
   .about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:start;}
-  .about h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;max-width:16ch;color:var(--musgo);}
+  .about h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.125rem);font-weight:700;letter-spacing:-0.01em;max-width:16ch;color:var(--musgo);}
   .about-body p{color:var(--carbon-muted);margin-bottom:16px;}
   .about-body p:first-child{color:var(--carbon);font-size:1.05rem;}
 
@@ -258,6 +260,38 @@
   .cta p{color:var(--marfil-muted);margin-top:10px;max-width:42ch;}
   .cta .actions{display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
   .disclaimer{color:var(--marfil-muted);font-size:0.85rem;max-width:64ch;margin-top:28px;}
+
+  /* Accesos a las apps */
+  .header-right{display:flex;align-items:center;gap:10px;}
+  .apps{position:relative;}
+  .apps-toggle{display:inline-flex;align-items:center;gap:8px;background:rgba(242,238,230,0.1);color:var(--marfil);border:1px solid rgba(242,238,230,0.22);border-radius:999px;padding:8px 16px;font:500 0.9rem var(--sans);cursor:pointer;transition:background 0.15s ease;}
+  .apps-toggle:hover{background:rgba(242,238,230,0.18);}
+  .apps-toggle svg{width:16px;height:16px;}
+  .apps-panel{position:absolute;top:calc(100% + 10px);right:0;width:300px;background:#fff;border-radius:var(--r-md);box-shadow:0 12px 32px rgba(0,0,0,0.28);padding:8px;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity 0.18s ease, transform 0.18s ease;}
+  .apps.open .apps-panel{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .apps-panel a{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:6px;text-decoration:none;color:var(--carbon);}
+  .apps-panel a:hover{background:var(--marfil);}
+  .apps-panel strong{display:block;font-family:var(--serif);font-weight:600;color:var(--musgo);font-size:0.98rem;}
+  .apps-panel small{display:block;color:var(--carbon-muted);font-size:0.8rem;line-height:1.35;}
+  .apps-panel .ico{flex-shrink:0;width:30px;height:30px;border-radius:6px;background:var(--musgo);display:flex;align-items:center;justify-content:center;}
+  .apps-panel .ico svg{width:16px;height:16px;}
+  .apps-panel hr{border:0;border-top:1px solid var(--line);margin:6px 4px;}
+  .apps-panel .foot{text-align:left;font-size:0.78rem;color:var(--carbon-muted);padding:6px 12px 4px;}
+  @media (max-width:480px){ .apps-toggle span.lbl{display:none;} .apps-toggle{padding:9px;} }
+
+  .tools{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;transition:transform 0.15s ease, box-shadow 0.15s ease;}
+  .tool:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,47,37,0.1);}
+  .tool .tag{font:500 0.78rem var(--sans);letter-spacing:0.12em;text-transform:uppercase;color:var(--cobre-hover);}
+  .tool h3{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--musgo);margin:8px 0 10px;}
+  .tool h3 span{font-weight:500;}
+  .tool p{color:var(--carbon-muted);text-align:left;}
+  .tool ul{list-style:none;margin:16px 0 22px;display:grid;gap:8px;}
+  .tool li{display:flex;gap:10px;align-items:flex-start;font-size:0.94rem;}
+  .tool li::before{content:"";flex-shrink:0;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--cobre);}
+  .tool .btn{margin-top:auto;align-self:flex-start;}
+  .tools-note{margin-top:18px;color:var(--carbon-muted);font-size:0.88rem;text-align:center;}
+  @media (max-width:820px){ .tools{grid-template-columns:1fr;} }
 
   footer{background:var(--musgo);padding:32px 0 28px;color:var(--marfil-muted);font-size:0.85rem;}
   .footer-social{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;}
@@ -315,8 +349,31 @@
           </g>
         </svg>
       </span>
-      Nodos
+      NODOS
     </a>
+    <div class="header-right">
+    <div class="apps">
+      <button type="button" class="apps-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="lbl" data-apps-label>Ingresar</span>
+      </button>
+      <div class="apps-panel" id="apps-panel" role="menu">
+        <a href="https://finanzas.nodoscompliance.com" role="menuitem" data-app="finanzas">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+          <span><strong>NODOS Finanzas</strong><small>Inversiones digitales y tradicionales, trading y gastos.</small></span>
+        </a>
+        <a href="https://empresas.nodoscompliance.com" role="menuitem" data-app="empresas">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
+          <span><strong>NODOS Empresas</strong><small>Actas, vencimientos, accionistas y SEPRELAD.</small></span>
+        </a>
+        <hr>
+        <a href="https://empresas.nodoscompliance.com/soporte" role="menuitem">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></span>
+          <span><strong>Soporte</strong><small>Escribile al equipo de IT.</small></span>
+        </a>
+        <p class="foot">Una sola cuenta para Finanzas y Empresas.</p>
+      </div>
+    </div>
     <div class="menu reveal-item">
       <button type="button" class="btn btn-primary btn-icon menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menú">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -325,9 +382,11 @@
       </button>
       <nav class="menu-panel" id="menu-panel" aria-label="Secciones">
         <a href="#pilares">Pilares</a>
+        <a href="#herramientas">Herramientas</a>
         <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
       </nav>
+    </div>
     </div>
   </div>
 </header>
@@ -390,8 +449,8 @@
 
   <div id="rest">
     <div class="wrap hero-text">
-      <h1>La conversación que falta entre el mundo cripto y compliance</h1>
-      <p>Nodos es el punto de encuentro entre el mundo cripto y el compliance: contenido real, sin promesas de rendimiento, hecho por alguien que vive el AML/CFT todos los días en Paraguay.</p>
+      <h1>El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto</h1>
+      <p>Contenido real, sin promesas de rendimiento ni señales de inversión. Un episodio al mes, sin relleno — y si alguien te escribe pidiendo dinero en nuestro nombre, es un fraude.</p>
       <div class="actions">
         <a class="btn btn-ghost" href="#pilares">Ver los pilares</a>
         <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">Sumate al Canal de WhatsApp</a>
@@ -412,13 +471,13 @@
                 <span class="num">01</span>
               </div>
               <h3>Zona Gris</h3>
-              <p>Conversación amplia, un episodio al mes: lavado de dinero, cripto y temas financieros en general, explorando la zona ambigua entre lo legal y lo ilegal.</p>
-              <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_ZONA_GRIS" target="_blank" rel="noopener">
+              <p>Conversación amplia, un episodio al mes: dinero, proyectos y ley — casos donde el límite entre lo legal y lo ilegal no siempre es obvio. Cripto es el tema más recurrente, no el único.</p>
+              <a class="pillar-link" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">
                 Ver en YouTube
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
               </a>
             </div>
-            <a class="pillar-thumb" href="https://youtube.com/playlist?list=TU_PLAYLIST_ZONA_GRIS" target="_blank" rel="noopener" aria-label="Ver Zona Gris en YouTube">
+            <a class="pillar-thumb" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener" aria-label="Ver Zona Gris en YouTube">
               <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
             </a>
           </div>
@@ -429,13 +488,13 @@
                 <span class="num">02</span>
               </div>
               <h3>Decodificado</h3>
-              <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de cripto y compliance: AML, KYC, GAFI, SEPRELAD.</p>
-              <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_DECODIFICADO" target="_blank" rel="noopener">
+              <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de finanzas, legal y cripto: AML, KYC, GAFI, SEPRELAD y demás.</p>
+              <a class="pillar-link" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">
                 Ver en YouTube
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
               </a>
             </div>
-            <a class="pillar-thumb" href="https://youtube.com/playlist?list=TU_PLAYLIST_DECODIFICADO" target="_blank" rel="noopener" aria-label="Ver Decodificado en YouTube">
+            <a class="pillar-thumb" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener" aria-label="Ver Decodificado en YouTube">
               <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
             </a>
           </div>
@@ -446,17 +505,51 @@
                 <span class="num">03</span>
               </div>
               <h3>Bajo Lupa</h3>
-              <p>Shorts de análisis: casos reales, sanciones y noticias puntuales del mundo cripto y compliance, explicados a fondo.</p>
-              <a class="pillar-link" href="https://youtube.com/playlist?list=TU_PLAYLIST_BAJO_LUPA" target="_blank" rel="noopener">
+              <p>Shorts de análisis: casos reales, proyectos y noticias puntuales del mundo financiero, legal y cripto, explicados a fondo.</p>
+              <a class="pillar-link" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">
                 Ver en YouTube
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
               </a>
             </div>
-            <a class="pillar-thumb" href="https://youtube.com/playlist?list=TU_PLAYLIST_BAJO_LUPA" target="_blank" rel="noopener" aria-label="Ver Bajo Lupa en YouTube">
+            <a class="pillar-thumb" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener" aria-label="Ver Bajo Lupa en YouTube">
               <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
             </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="herramientas">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Herramientas NODOS</h2>
+          <p>Lo que explicamos en el contenido, llevado a la práctica. Dos apps con una sola cuenta.</p>
+        </div>
+        <div class="tools">
+          <article class="tool">
+            <span class="tag">Personas</span>
+            <h3>NODOS <span>Finanzas</span></h3>
+            <p>Tu mapa de inversiones y gastos en un solo lugar, sin planillas sueltas.</p>
+            <ul>
+              <li>Inversiones digitales (cripto, bStocks, trading) y tradicionales (bonos, inmuebles, agro, ahorros).</li>
+              <li>Calendarios de cobros, distribuciones y PnL.</li>
+              <li>Calculadoras de IVA, intereses y préstamos.</li>
+            </ul>
+            <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com">Entrar a Finanzas</a>
+          </article>
+          <article class="tool">
+            <span class="tag">Empresas familiares</span>
+            <h3>NODOS <span>Empresas</span></h3>
+            <p>El orden legal de tu empresa familiar: qué vence, qué firmar y quién es dueño de qué.</p>
+            <ul>
+              <li>Calendario de asambleas, edictos y registros (Código Civil, Ley 6446/2019).</li>
+              <li>Libro de accionistas con alerta de beneficiarios finales.</li>
+              <li>Actas y documentos listos, más el módulo de cumplimiento SEPRELAD.</li>
+            </ul>
+            <a class="btn btn-primary" href="https://empresas.nodoscompliance.com">Entrar a Empresas</a>
+          </article>
+        </div>
+        <p class="tools-note">Herramientas de organización e información: no constituyen asesoría de inversión ni asesoramiento legal personalizado.</p>
       </div>
     </section>
 
@@ -492,7 +585,7 @@
           <h3>Quiénes están detrás</h3>
           <div class="team-slides">
             <div class="team-slide active" data-slide="0">
-              <p>Detrás de Nodos hay más de una persona trabajando, con experiencia real en derecho y compliance. Por ahora, cada uno prefiere mantenerse en el anonimato. A medida que el proyecto se consolide, cada integrante va a tener su propio espacio acá, con su historia y su rol.</p>
+              <p>Detrás de Nodos hay más de una persona trabajando en esto. Por ahora, cada uno prefiere mantenerse en el anonimato. A medida que el proyecto se consolide, cada integrante va a tener su propio espacio acá, con su historia y su rol.</p>
             </div>
             <div class="team-slide" data-slide="1"><p>Próximamente.</p></div>
             <div class="team-slide" data-slide="2"><p>Próximamente.</p></div>
@@ -537,17 +630,17 @@
     <footer>
       <div class="wrap">
         <nav class="footer-social" aria-label="Redes sociales de Nodos">
-          <a href="https://youtube.com/@TU_HANDLE" target="_blank" rel="noopener">YouTube</a>
-          <a href="https://tiktok.com/@TU_HANDLE" target="_blank" rel="noopener">TikTok</a>
-          <a href="https://instagram.com/TU_HANDLE" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://x.com/TU_HANDLE" target="_blank" rel="noopener">X</a>
-          <a href="https://threads.net/@TU_HANDLE" target="_blank" rel="noopener">Threads</a>
-          <a href="https://open.spotify.com/show/TU_SHOW_ID" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.tiktok.com/@nodoscompliance" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.instagram.com/nodoscompliance/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://x.com/nodoscompliance" target="_blank" rel="noopener">X</a>
+          <a href="https://www.threads.com/@nodoscompliance" target="_blank" rel="noopener">Threads</a>
+          <span title="Próximamente" style="opacity:0.55">Spotify · pronto</span>
           <a href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">WhatsApp</a>
         </nav>
         <div class="footer-meta">
-          <span>© 2026 Nodos, Asunción, Paraguay</span>
-          <span><a href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a></span>
+          <span>© 2026 NODOS, Asunción, Paraguay</span>
+          <span><a href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a> · <a href="https://empresas.nodoscompliance.com/soporte">Soporte técnico</a></span>
         </div>
       </div>
     </footer>
@@ -555,6 +648,19 @@
 
 </main>
 
+<script>
+(function(){
+  var apps = document.querySelector('.apps');
+  if(!apps) return;
+  var t = apps.querySelector('.apps-toggle');
+  t.addEventListener('click', function(e){ e.stopPropagation(); var o = apps.classList.toggle('open'); t.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  document.addEventListener('click', function(e){ if(!apps.contains(e.target)){ apps.classList.remove('open'); t.setAttribute('aria-expanded','false'); } });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ apps.classList.remove('open'); t.setAttribute('aria-expanded','false'); } });
+  // Con la sesión NODOS abierta (cookie compartida de .nodoscompliance.com) el botón dice "Mis apps".
+  if(/(?:^|;\s*)sb-[^=]*-auth-token/.test(document.cookie)){ var l = apps.querySelector('[data-apps-label]'); if(l) l.textContent = 'Mis apps'; }
+  apps.querySelectorAll('a[data-app]').forEach(function(a){ a.addEventListener('click', function(){ if(typeof gtag === 'function'){ gtag('event','abrir_app',{app:a.getAttribute('data-app')}); } }); });
+})();
+</script>
 <script>
 (function(){
   var reveals = document.querySelectorAll('.reveal-item');
