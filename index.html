@@ -293,6 +293,28 @@
   .tools-note{margin-top:18px;color:var(--carbon-muted);font-size:0.88rem;text-align:center;}
   @media (max-width:820px){ .tools{grid-template-columns:1fr;} }
 
+  /* Formulario de consulta */
+  .consulta{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:start;}
+  .consulta-intro h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.125rem);line-height:1.15;font-weight:700;letter-spacing:-0.01em;color:var(--musgo);}
+  .consulta-intro p{color:var(--carbon-muted);margin-top:12px;text-align:left;}
+  .consulta-intro ul{list-style:none;margin-top:18px;display:grid;gap:8px;}
+  .consulta-intro li{display:flex;gap:10px;font-size:0.94rem;}
+  .consulta-intro li::before{content:"";flex-shrink:0;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--cobre);}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .form-grid .full{grid-column:1/-1;}
+  .form-card label{display:block;font-size:0.8rem;font-weight:500;color:var(--carbon);opacity:0.8;margin-bottom:4px;}
+  .form-card input,.form-card select,.form-card textarea{width:100%;border:1px solid var(--line);border-radius:var(--r-sm);padding:9px 12px;font:15px var(--sans);color:var(--carbon);background:#fff;}
+  .form-card input:focus,.form-card select:focus,.form-card textarea:focus{outline:2px solid var(--cobre);outline-offset:1px;}
+  .form-card .check{display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;opacity:1;color:var(--carbon-muted);}
+  .form-card .check input{width:auto;margin-top:3px;}
+  .form-card .trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .form-card button[type=submit]{margin-top:18px;border:0;cursor:pointer;}
+  .form-card button[disabled]{opacity:0.6;cursor:wait;}
+  .form-msg{margin-top:12px;font-size:0.9rem;text-align:left;}
+  .form-msg.ok{color:#3f6b52;} .form-msg.err{color:#b23b3b;}
+  @media (max-width:820px){ .consulta{grid-template-columns:1fr;} .form-grid{grid-template-columns:1fr;} }
+
   footer{background:var(--musgo);padding:32px 0 28px;color:var(--marfil-muted);font-size:0.85rem;}
   .footer-social{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;}
   .footer-social a{color:var(--marfil-muted);text-decoration:none;font-weight:500;}
@@ -383,6 +405,7 @@
       <nav class="menu-panel" id="menu-panel" aria-label="Secciones">
         <a href="#pilares">Pilares</a>
         <a href="#herramientas">Herramientas</a>
+        <a href="#consulta">Consultas</a>
         <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -603,6 +626,45 @@
       </div>
     </section>
 
+    <section id="consulta">
+      <div class="wrap">
+        <div class="consulta">
+          <div class="consulta-intro">
+            <h2>¿Tenés una consulta puntual?</h2>
+            <p>Contanos qué necesitás y te respondemos en días hábiles, por el medio que elijas.</p>
+            <ul>
+              <li>Cripto-activos y compliance (PLA/FT, SEPRELAD, GAFI).</li>
+              <li>Empresas familiares: actas, accionistas, vencimientos.</li>
+              <li>Dudas sobre NODOS Finanzas o NODOS Empresas.</li>
+            </ul>
+            <p style="font-size:0.85rem">No damos recomendaciones de inversión ni señales. Nunca te vamos a pedir dinero ni claves por mensaje.</p>
+          </div>
+          <form class="form-card" id="form-consulta" novalidate>
+            <div class="form-grid">
+              <div><label for="c-nombre">Nombre *</label><input id="c-nombre" name="nombre" required autocomplete="name"></div>
+              <div><label for="c-empresa">Empresa (opcional)</label><input id="c-empresa" name="empresa" autocomplete="organization"></div>
+              <div><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email"></div>
+              <div><label for="c-tel">WhatsApp</label><input id="c-tel" name="telefono" type="tel" autocomplete="tel" placeholder="0981 123 456"></div>
+              <div class="full"><label for="c-tema">Tema</label>
+                <select id="c-tema" name="tema">
+                  <option value="cripto-compliance">Cripto-activos y compliance</option>
+                  <option value="empresa-familiar">Empresa familiar</option>
+                  <option value="finanzas">Finanzas personales</option>
+                  <option value="apps">Soporte de las apps NODOS</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="full"><label for="c-msg">¿Qué necesitás? *</label><textarea id="c-msg" name="mensaje" rows="4" required placeholder="Sin contraseñas, números de cuenta ni datos de terceros."></textarea></div>
+              <div class="trampa" aria-hidden="true"><label for="c-web">No completar</label><input id="c-web" name="sitio_web" tabindex="-1" autocomplete="off"></div>
+              <label class="check full"><input type="checkbox" name="consentimiento" required> Acepto que NODOS use estos datos solo para responder mi consulta, conforme a la normativa de protección de datos personales vigente en Paraguay.</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar consulta</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section id="contacto" class="cta-section">
       <div class="wrap">
         <div class="cta">
@@ -648,6 +710,31 @@
 
 </main>
 
+<script>
+(function(){
+  var f = document.getElementById('form-consulta');
+  if(!f) return;
+  var msg = f.querySelector('.form-msg');
+  var btn = f.querySelector('button[type=submit]');
+  f.addEventListener('submit', async function(e){
+    e.preventDefault();
+    msg.className = 'form-msg'; msg.textContent = '';
+    var d = Object.fromEntries(new FormData(f).entries());
+    d.consentimiento = f.consentimiento.checked;
+    if(!d.nombre || !d.mensaje){ msg.className='form-msg err'; msg.textContent='Completá tu nombre y tu consulta.'; return; }
+    if(!d.email && !d.telefono){ msg.className='form-msg err'; msg.textContent='Dejanos un email o un WhatsApp para responderte.'; return; }
+    if(!d.consentimiento){ msg.className='form-msg err'; msg.textContent='Necesitamos que aceptes el aviso de privacidad.'; return; }
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    try{
+      var r = await fetch('https://empresas.nodoscompliance.com/api/public/consulta', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)});
+      var j = await r.json().catch(function(){ return {}; });
+      if(r.ok){ f.reset(); msg.className='form-msg ok'; msg.textContent='¡Gracias! Recibimos tu consulta y te respondemos en días hábiles.'; if(typeof gtag==='function'){ gtag('event','consulta_enviada',{tema:d.tema}); } }
+      else { msg.className='form-msg err'; msg.textContent = j.message || 'No pudimos enviar tu consulta. Escribinos a contacto@nodoscompliance.com.'; }
+    }catch(err){ msg.className='form-msg err'; msg.textContent='No pudimos enviar tu consulta. Escribinos a contacto@nodoscompliance.com.'; }
+    btn.disabled = false; btn.textContent = 'Enviar consulta';
+  });
+})();
+</script>
 <script>
 (function(){
   var apps = document.querySelector('.apps');
