@@ -25,7 +25,55 @@
 <meta name="twitter:description" content="El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto. Contenido educativo, sin hype ni señales de inversión.">
 <meta name="twitter:image" content="https://nodoscompliance.com/og-image.png">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Íconos: Google usa el favicon (múltiplo de 48 px) en los resultados de búsqueda -->
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1E2F25">
+
+<!-- Datos estructurados: nombre del sitio y logo para Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nodoscompliance.com/#organizacion",
+      "name": "NODOS",
+      "alternateName": "Nodos Compliance",
+      "url": "https://nodoscompliance.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nodoscompliance.com/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "contacto@nodoscompliance.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Asunción", "addressCountry": "PY" },
+      "sameAs": [
+        "https://www.youtube.com/@NodosCompliance",
+        "https://www.instagram.com/nodoscompliance/",
+        "https://www.tiktok.com/@nodoscompliance",
+        "https://x.com/nodoscompliance",
+        "https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nodoscompliance.com/#sitio",
+      "name": "NODOS",
+      "alternateName": ["Nodos Compliance", "nodoscompliance.com"],
+      "url": "https://nodoscompliance.com/",
+      "inLanguage": "es",
+      "publisher": { "@id": "https://nodoscompliance.com/#organizacion" }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -277,7 +325,10 @@
   .apps-panel .ico svg{width:16px;height:16px;}
   .apps-panel hr{border:0;border-top:1px solid var(--line);margin:6px 4px;}
   .apps-panel .foot{text-align:left;font-size:0.78rem;color:var(--carbon-muted);padding:6px 12px 4px;}
-  @media (max-width:480px){ .apps-toggle span.lbl{display:none;} .apps-toggle{padding:9px;} }
+  .apps-panel .head{text-align:left;font:600 0.95rem var(--serif);color:var(--musgo);padding:8px 12px 6px;}
+  .apps-toggle .lbl{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .bienvenida{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:50;background:var(--musgo);color:var(--marfil);border:1px solid var(--cobre);border-radius:var(--r-md);padding:12px 18px;font-size:0.92rem;box-shadow:0 10px 30px rgba(0,0,0,0.25);max-width:calc(100% - 32px);}
+  @media (max-width:480px){ .apps-toggle span.lbl{display:none;} .apps-toggle{padding:9px;} .apps{position:static;} .apps-panel{right:16px;top:calc(100% - 4px);width:min(300px, calc(100vw - 32px));} }
 
   .tools{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;transition:transform 0.15s ease, box-shadow 0.15s ease;}
@@ -740,11 +791,58 @@
   var apps = document.querySelector('.apps');
   if(!apps) return;
   var t = apps.querySelector('.apps-toggle');
-  t.addEventListener('click', function(e){ e.stopPropagation(); var o = apps.classList.toggle('open'); t.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  var panel = apps.querySelector('.apps-panel');
+  var label = apps.querySelector('[data-apps-label]');
+  var API = 'https://empresas.nodoscompliance.com/api/cuenta';
+  var logueado = false;
+  // Sin sesión, "Ingresar" lleva a la pantalla única de ingreso.
+  t.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(!logueado){ location.href = '/ingresar'; return; }
+    var o = apps.classList.toggle('open'); t.setAttribute('aria-expanded', o ? 'true' : 'false');
+  });
   document.addEventListener('click', function(e){ if(!apps.contains(e.target)){ apps.classList.remove('open'); t.setAttribute('aria-expanded','false'); } });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ apps.classList.remove('open'); t.setAttribute('aria-expanded','false'); } });
-  // Con la sesión NODOS abierta (cookie compartida de .nodoscompliance.com) el botón dice "Mis apps".
-  if(/(?:^|;\s*)sb-[^=]*-auth-token/.test(document.cookie)){ var l = apps.querySelector('[data-apps-label]'); if(l) l.textContent = 'Mis apps'; }
+
+  function item(href, titulo, detalle, icono){
+    var a = document.createElement('a'); a.href = href; a.setAttribute('role','menuitem');
+    a.innerHTML = '<span class="ico">' + icono + '</span><span><strong></strong><small></small></span>';
+    a.querySelector('strong').textContent = titulo; a.querySelector('small').textContent = detalle;
+    return a;
+  }
+  var ICO_CUENTA = '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>';
+  var ICO_PANEL = '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1117.4 0"/></svg>';
+  var ICO_SALIR = '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>';
+
+  // Con la cookie de sesión NODOS (compartida en .nodoscompliance.com) se pide el perfil (sin email).
+  if(/(?:^|;\s*)sb-[^=]*-auth-token/.test(document.cookie)){
+    fetch(API + '/sesion', {credentials:'include'}).then(function(r){ return r.json(); }).then(function(s){
+      if(!s || !s.logueado) return;
+      logueado = true;
+      label.textContent = s.usuario ? '@' + s.usuario : (s.nombre ? s.nombre.split(' ')[0] : 'Mis apps');
+      var cab = document.createElement('p'); cab.className = 'head';
+      cab.textContent = 'Hola' + (s.nombre ? ', ' + s.nombre.split(' ')[0] : '') + '. ¿A dónde vamos?';
+      panel.insertBefore(cab, panel.firstChild);
+      if(s.acceso_finanzas === false){ var f = panel.querySelector('[data-app=finanzas]'); if(f) f.remove(); }
+      if(s.acceso_empresas === false){ var em = panel.querySelector('[data-app=empresas]'); if(em) em.remove(); }
+      var hr = panel.querySelector('hr');
+      if(s.is_admin) panel.insertBefore(item('https://empresas.nodoscompliance.com/panel', 'NODOS Panel', 'Leads, consultas y contenido.', ICO_PANEL), hr);
+      var sop = hr.nextElementSibling;
+      panel.insertBefore(item('https://' + (s.acceso_empresas === false ? 'finanzas' : 'empresas') + '.nodoscompliance.com/cuenta', 'Mi cuenta', s.usuario ? 'Nombre, usuario y contraseña.' : 'Elegí tu nombre de usuario.', ICO_CUENTA), sop);
+      var salir = item('#', 'Salir', 'Cerrar sesión en todas las apps.', ICO_SALIR);
+      salir.addEventListener('click', function(e){
+        e.preventDefault();
+        fetch(API + '/salir', {method:'POST', credentials:'include'}).finally(function(){ location.reload(); });
+      });
+      panel.insertBefore(salir, panel.querySelector('.foot'));
+    }).catch(function(){});
+  }
+  if(/[?&]bienvenida=1/.test(location.search)){
+    var b = document.createElement('div'); b.className = 'bienvenida'; b.setAttribute('role','status');
+    b.textContent = '¡Tu cuenta NODOS quedó confirmada! Elegí una app desde el botón de arriba.';
+    document.body.appendChild(b); setTimeout(function(){ b.remove(); }, 7000);
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
   apps.querySelectorAll('a[data-app]').forEach(function(a){ a.addEventListener('click', function(){ if(typeof gtag === 'function'){ gtag('event','abrir_app',{app:a.getAttribute('data-app')}); } }); });
 })();
 </script>

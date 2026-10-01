@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingresar · NODOS</title>
+<meta name="description" content="Ingresá a tu cuenta NODOS: una sola cuenta para NODOS Finanzas y NODOS Empresas.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nodoscompliance.com/ingresar">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1E2F25">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --musgo:#1E2F25;--bosque:#34483A;--cobre:#B8734A;--cobre-hover:#8C5934;--marfil:#F2EEE6;--carbon:#242522;
+    --muted:rgba(36,37,34,0.62);--line:#34483a33;--bad:#A3412F;--good:#3F6B4A;
+    --serif:'Space Grotesk',system-ui,sans-serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--marfil);color:var(--carbon);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;display:grid;grid-template-columns:1fr;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--cobre);outline-offset:3px;}
+  .brand{background:var(--musgo);color:var(--marfil);padding:22px 20px;display:flex;flex-direction:column;gap:14px;}
+  .brand .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.1rem var(--serif);letter-spacing:0.08em;}
+  .brand .logo svg{width:34px;height:34px;}
+  .brand h1{font:600 1.5rem/1.2 var(--serif);letter-spacing:-0.01em;}
+  .brand h1 em{font-style:normal;color:var(--cobre);}
+  .brand p{color:rgba(242,238,230,0.7);font-size:0.93rem;max-width:420px;}
+  .brand ul{list-style:none;display:none;gap:10px;flex-direction:column;margin-top:8px;}
+  .brand li{display:flex;gap:10px;align-items:flex-start;color:rgba(242,238,230,0.82);font-size:0.92rem;}
+  .brand li b{display:block;color:var(--marfil);font:600 0.98rem var(--serif);}
+  .brand li span.dot{flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--cobre);margin-top:7px;}
+  .brand .legal{margin-top:auto;font-size:0.75rem;color:rgba(242,238,230,0.5);display:none;}
+  main{display:flex;align-items:flex-start;justify-content:center;padding:24px 16px 48px;}
+  .card{width:100%;max-width:420px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 20px;box-shadow:0 10px 30px rgba(30,47,37,0.08);}
+  .tabs{display:flex;background:var(--marfil);border-radius:999px;padding:4px;margin-bottom:22px;}
+  .tabs button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 6px;font:500 0.88rem var(--sans);color:var(--muted);cursor:pointer;white-space:nowrap;}
+  .tabs button[aria-selected=true]{background:var(--musgo);color:var(--marfil);}
+  h2{font:600 1.35rem/1.25 var(--serif);color:var(--musgo);margin-bottom:6px;}
+  .sub{color:var(--muted);font-size:0.9rem;margin-bottom:18px;}
+  label{display:block;font-weight:500;font-size:0.86rem;margin:14px 0 6px;color:var(--carbon);}
+  .hint{font-size:0.78rem;color:var(--muted);margin-top:5px;}
+  .hint.ok{color:var(--good);} .hint.err{color:var(--bad);}
+  input{width:100%;border:1px solid #34483a40;border-radius:8px;padding:11px 12px;font:15px var(--sans);background:#fff;color:var(--carbon);}
+  input:focus{outline:none;border-color:var(--cobre);box-shadow:0 0 0 3px rgba(184,115,74,0.18);}
+  .pref{position:relative;} .pref span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;} .pref input{padding-left:28px;}
+  .pw{position:relative;} .pw input{padding-right:70px;}
+  .pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--cobre-hover);font:500 0.8rem var(--sans);padding:6px 8px;cursor:pointer;}
+  .btn{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;margin-top:20px;border:0;border-radius:999px;padding:12px 18px;background:var(--cobre);color:#fff;font:600 0.95rem var(--sans);cursor:pointer;transition:background 0.15s;}
+  .btn:hover{background:var(--cobre-hover);} .btn[disabled]{opacity:0.6;cursor:wait;}
+  .link{background:none;border:0;color:var(--cobre-hover);font:500 0.86rem var(--sans);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;}
+  .row{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:0.86rem;gap:10px;flex-wrap:wrap;}
+  .msg{display:none;margin-top:16px;border-radius:8px;padding:10px 12px;font-size:0.88rem;}
+  .msg.err{display:block;background:#a3412f14;color:var(--bad);border:1px solid #a3412f33;}
+  .msg.ok{display:block;background:#3f6b4a14;color:var(--good);border:1px solid #3f6b4a33;}
+  .panel[hidden]{display:none;}
+  .apps{display:none;margin-top:6px;}
+  .apps a{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:8px;text-decoration:none;margin-top:10px;}
+  .apps a:hover{background:var(--marfil);}
+  .apps b{font:600 1rem var(--serif);color:var(--musgo);display:block;}
+  .apps small{color:var(--muted);font-size:0.8rem;}
+  .foot{margin-top:22px;text-align:center;font-size:0.8rem;color:var(--muted);}
+  .foot a{color:var(--cobre-hover);}
+  @media (min-width:900px){
+    body{grid-template-columns:minmax(380px,44%) 1fr;}
+    .brand{padding:48px 56px;gap:22px;min-height:100vh;position:sticky;top:0;}
+    .brand h1{font-size:2.4rem;}
+    .brand ul,.brand .legal{display:flex;}
+    .brand .legal{display:block;}
+    main{align-items:center;padding:48px 32px;}
+    .card{padding:32px 30px;}
+  }
+</style>
+</head>
+<body>
+
+<aside class="brand">
+  <a href="/" class="logo" aria-label="NODOS — inicio">
+    <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="220" height="220" rx="32" fill="#34483A"/><g transform="translate(10,10)"><g stroke="#B8734A" fill="none" stroke-linejoin="round"><polyline points="110,118 66,118 54,106 54,64" stroke-width="7"/><polyline points="110,118 64,118 50,132" stroke-width="6"/><polyline points="110,118 110,74 122,62 157,62" stroke-width="8"/></g><circle cx="54" cy="54" r="11" fill="#F2EEE6"/><circle cx="46" cy="140" r="10" fill="#F2EEE6"/><circle cx="168" cy="62" r="12" fill="#F2EEE6"/><circle cx="110" cy="118" r="24" fill="#B8734A"/></g></svg>
+    NODOS
+  </a>
+  <h1>Una sola cuenta para <em>todo NODOS</em>.</h1>
+  <p>Ingresás una vez y entrás a cualquiera de las herramientas, con tus datos privados y protegidos.</p>
+  <ul>
+    <li><span class="dot"></span><span><b>NODOS Finanzas</b>Inversiones digitales y tradicionales, trading y gastos.</span></li>
+    <li><span class="dot"></span><span><b>NODOS Empresas</b>Actas, vencimientos, libro de accionistas y SEPRELAD.</span></li>
+  </ul>
+  <p class="legal">Herramientas de organización. No constituyen asesoría de inversión, legal ni contable.</p>
+</aside>
+
+<main>
+  <div class="card">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="ingresar" aria-selected="true">Ingresar</button>
+      <button type="button" role="tab" data-tab="crear" aria-selected="false">Crear cuenta</button>
+    </div>
+
+    <!-- Ingresar -->
+    <section class="panel" data-panel="ingresar">
+      <h2>Hola de nuevo</h2>
+      <p class="sub">Ingresá con tu usuario o tu email.</p>
+      <form id="f-ingresar" novalidate>
+        <label for="i-id">Usuario o email</label>
+        <input id="i-id" name="identificador" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+        <label for="i-pw">Contraseña</label>
+        <div class="pw"><input id="i-pw" name="clave" type="password" autocomplete="current-password" required><button type="button" data-ver>Ver</button></div>
+        <button class="btn" type="submit">Ingresar</button>
+        <div class="row"><button type="button" class="link" data-ir="recuperar">Olvidé mi contraseña</button></div>
+        <p class="msg" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- Crear cuenta -->
+    <section class="panel" data-panel="crear" hidden>
+      <h2>Creá tu cuenta NODOS</h2>
+      <p class="sub">Sirve para Finanzas y para Empresas.</p>
+      <form id="f-crear" novalidate>
+        <label for="c-nombre">Nombre</label>
+        <input id="c-nombre" name="nombre" autocomplete="name" required maxlength="80">
+        <label for="c-usuario">Nombre de usuario</label>
+        <div class="pref"><span>@</span><input id="c-usuario" name="usuario" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20" required placeholder="tu.usuario"></div>
+        <p class="hint" id="c-usuario-hint">Es lo que se ve en las apps (tu email queda privado). De 3 a 20 caracteres: minúsculas, números, punto o guion bajo.</p>
+        <label for="c-email">Email</label>
+        <input id="c-email" name="email" type="email" autocomplete="email" required>
+        <label for="c-pw">Contraseña</label>
+        <div class="pw"><input id="c-pw" name="clave" type="password" autocomplete="new-password" minlength="8" required><button type="button" data-ver>Ver</button></div>
+        <p class="hint">Al menos 8 caracteres.</p>
+        <button class="btn" type="submit">Crear cuenta</button>
+        <p class="msg" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- Recuperar -->
+    <section class="panel" data-panel="recuperar" hidden>
+      <h2>Recuperá tu contraseña</h2>
+      <p class="sub">Te mandamos un email con un link para elegir una nueva.</p>
+      <form id="f-recuperar" novalidate>
+        <label for="r-id">Usuario o email</label>
+        <input id="r-id" name="identificador" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+        <button class="btn" type="submit">Enviar link</button>
+        <div class="row"><button type="button" class="link" data-ir="ingresar">Volver a ingresar</button></div>
+        <p class="msg" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- Ya con sesión -->
+    <section class="panel" data-panel="listo" hidden>
+      <h2 id="hola">¡Listo!</h2>
+      <p class="sub">Elegí a dónde querés ir.</p>
+      <div class="apps" style="display:block">
+        <a href="https://finanzas.nodoscompliance.com" data-app="finanzas"><span><b>NODOS Finanzas</b><small>Inversiones, trading y gastos.</small></span></a>
+        <a href="https://empresas.nodoscompliance.com" data-app="empresas"><span><b>NODOS Empresas</b><small>Actas, vencimientos y SEPRELAD.</small></span></a>
+        <a href="/"><span><b>nodoscompliance.com</b><small>Volver al inicio.</small></span></a>
+      </div>
+    </section>
+
+    <p class="foot">¿Problemas para ingresar? <a href="https://empresas.nodoscompliance.com/soporte">Escribinos</a>.</p>
+  </div>
+</main>
+
+<script>
+(function(){
+  // La cuenta la maneja el servidor de NODOS Empresas: deja la sesión en una
+  // cookie de .nodoscompliance.com que comparten las tres páginas.
+  var API = 'https://empresas.nodoscompliance.com/api/cuenta';
+  var qs = new URLSearchParams(location.search);
+
+  function destinoSeguro(u){
+    try{ var x = new URL(u); var h = x.hostname.toLowerCase();
+      return x.protocol === 'https:' && (h === 'nodoscompliance.com' || /\.nodoscompliance\.com$/.test(h)) ? x.toString() : null;
+    }catch(e){ return null; }
+  }
+  var next = destinoSeguro(qs.get('next'));
+  function salir(){ location.href = next || '/'; }
+
+  function post(ruta, cuerpo){
+    return fetch(API + ruta, {method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify(cuerpo)})
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ j._ok = r.ok; return j; }); })
+      .catch(function(){ return {_ok:false, message:'No pudimos conectarnos. Revisá tu conexión y probá de nuevo.'}; });
+  }
+
+  // Pestañas
+  var tabs = document.querySelectorAll('[data-tab]');
+  function mostrar(nombre){
+    document.querySelectorAll('[data-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-panel') !== nombre; });
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-tab') === nombre ? 'true' : 'false'); });
+    document.querySelector('.tabs').style.display = nombre === 'listo' ? 'none' : '';
+    var primero = document.querySelector('[data-panel="'+nombre+'"] input'); if(primero && innerWidth > 700) primero.focus();
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ mostrar(t.getAttribute('data-tab')); history.replaceState(null, '', location.pathname + location.search + (t.getAttribute('data-tab') === 'crear' ? '#crear' : '')); }); });
+  document.querySelectorAll('[data-ir]').forEach(function(b){ b.addEventListener('click', function(){ mostrar(b.getAttribute('data-ir')); }); });
+  document.querySelectorAll('[data-ver]').forEach(function(b){ b.addEventListener('click', function(){ var i = b.previousElementSibling; var v = i.type === 'password'; i.type = v ? 'text' : 'password'; b.textContent = v ? 'Ocultar' : 'Ver'; }); });
+  var h = location.hash.replace('#','');
+  mostrar(h === 'crear' || h === 'recuperar' ? h : 'ingresar');
+
+  function aviso(form, tipo, texto){ var m = form.querySelector('.msg'); m.className = 'msg ' + tipo; m.textContent = texto; }
+  function ocupado(form, si, texto){ var b = form.querySelector('.btn'); if(!b.dataset.txt) b.dataset.txt = b.textContent; b.disabled = si; b.textContent = si ? texto : b.dataset.txt; }
+
+  // ¿Ya hay sesión? Directo a destino.
+  if(/(?:^|;\s*)sb-[^=]*-auth-token/.test(document.cookie)){
+    fetch(API + '/sesion', {credentials:'include'}).then(function(r){ return r.json(); }).then(function(s){
+      if(s && s.logueado){ if(next) return salir(); document.getElementById('hola').textContent = 'Hola' + (s.usuario ? ', @' + s.usuario : s.nombre ? ', ' + s.nombre.split(' ')[0] : '') + ' 👋'; mostrar('listo'); }
+    }).catch(function(){});
+  }
+
+  document.getElementById('f-ingresar').addEventListener('submit', function(e){
+    e.preventDefault(); var f = e.target;
+    var id = f.identificador.value.trim(), clave = f.clave.value;
+    if(!id || !clave) return aviso(f, 'err', 'Completá tu usuario (o email) y tu contraseña.');
+    ocupado(f, true, 'Ingresando…');
+    post('/ingresar', {identificador:id.replace(/^@/, ''), clave:clave}).then(function(j){
+      ocupado(f, false);
+      if(!j._ok) return aviso(f, 'err', j.message || 'No pudimos ingresar.');
+      if(typeof gtag === 'function') gtag('event', 'login');
+      salir();
+    });
+  });
+
+  var usuarioIn = document.getElementById('c-usuario'), hint = document.getElementById('c-usuario-hint'), hintBase = hint.textContent;
+  usuarioIn.addEventListener('input', function(){
+    var v = usuarioIn.value.toLowerCase().replace(/[^a-z0-9._]/g, '');
+    if(v !== usuarioIn.value) usuarioIn.value = v;
+    hint.className = 'hint'; hint.textContent = v && !/^[a-z0-9._]{3,20}$/.test(v) ? 'De 3 a 20 caracteres: minúsculas, números, punto o guion bajo.' : hintBase;
+  });
+  // Sugerencia de usuario a partir del nombre.
+  document.getElementById('c-nombre').addEventListener('blur', function(e){
+    if(usuarioIn.value) return;
+    var s = e.target.value.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim().split(/\s+/).slice(0,2).join('.').replace(/[^a-z0-9._]/g,'').slice(0,20);
+    if(s.length >= 3) usuarioIn.value = s;
+  });
+
+  document.getElementById('f-crear').addEventListener('submit', function(e){
+    e.preventDefault(); var f = e.target;
+    var d = {nombre:f.nombre.value.trim(), usuario:f.usuario.value.trim(), email:f.email.value.trim(), clave:f.clave.value};
+    if(d.nombre.length < 2) return aviso(f, 'err', 'Contanos tu nombre.');
+    if(!/^[a-z0-9._]{3,20}$/.test(d.usuario)) return aviso(f, 'err', 'Elegí un usuario de 3 a 20 caracteres: minúsculas, números, punto o guion bajo.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return aviso(f, 'err', 'Ese email no parece válido.');
+    if(d.clave.length < 8) return aviso(f, 'err', 'La contraseña necesita al menos 8 caracteres.');
+    ocupado(f, true, 'Creando cuenta…');
+    post('/registro', d).then(function(j){
+      ocupado(f, false);
+      if(!j._ok) return aviso(f, 'err', j.message || 'No pudimos crear la cuenta.');
+      if(typeof gtag === 'function') gtag('event', 'sign_up');
+      if(j.confirmar){ f.reset(); aviso(f, 'ok', 'Te mandamos un email a ' + d.email + ' para confirmar tu cuenta. Abrí el link y quedás adentro.'); }
+      else salir();
+    });
+  });
+
+  document.getElementById('f-recuperar').addEventListener('submit', function(e){
+    e.preventDefault(); var f = e.target;
+    var id = f.identificador.value.trim().replace(/^@/, '');
+    if(!id) return aviso(f, 'err', 'Escribí tu usuario o tu email.');
+    ocupado(f, true, 'Enviando…');
+    post('/recuperar', {identificador:id}).then(function(j){
+      ocupado(f, false);
+      if(!j._ok) return aviso(f, 'err', j.message || 'No pudimos enviar el link.');
+      aviso(f, 'ok', 'Si existe una cuenta con esos datos, te llega un email con el link en unos minutos. Revisá también spam.');
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /ingresar
+
+Sitemap: https://nodoscompliance.com/sitemap.xml
