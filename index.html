@@ -325,6 +325,41 @@
   .apps-panel .ico svg{width:16px;height:16px;}
   .apps-panel hr{border:0;border-top:1px solid var(--line);margin:6px 4px;}
   .apps-panel .foot{text-align:left;font-size:0.78rem;color:var(--carbon-muted);padding:6px 12px 4px;}
+
+  /* Hub: punto de partida de todo NODOS */
+  .nav-links{display:none;gap:4px;margin-left:auto;margin-right:12px;}
+  .nav-links a{color:rgba(242,238,230,0.75);text-decoration:none;font:500 0.9rem var(--sans);padding:8px 12px;border-radius:999px;}
+  .nav-links a:hover{color:var(--marfil);background:rgba(242,238,230,0.1);}
+  @media (min-width:900px){ .nav-links{display:flex;} .menu{display:none;} }
+  .splash-hint{text-decoration:none;}
+  .hub{padding:56px 0 24px;scroll-margin-top:72px;}
+  .hub-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;}
+  .hub-kicker{font:600 0.8rem var(--sans);letter-spacing:0.08em;text-transform:uppercase;color:var(--cobre-hover);margin-bottom:4px;text-align:left;}
+  .hub-head h2{font:600 1.9rem/1.15 var(--serif);color:var(--musgo);letter-spacing:-0.01em;}
+  .hub-acciones{display:flex;gap:8px;flex-wrap:wrap;}
+  .hub-acciones[hidden]{display:none;}
+  .hub-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+  @media (min-width:620px){ .hub-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:960px){ .hub-grid{grid-template-columns:repeat(3,1fr);} }
+  .hub-tile{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:10px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;text-decoration:none;color:var(--carbon);transition:border-color 0.15s, transform 0.15s, box-shadow 0.15s;}
+  .hub-tile:hover{border-color:var(--cobre);transform:translateY(-2px);box-shadow:0 10px 24px rgba(30,47,37,0.08);}
+  .hub-app{background:var(--musgo);color:var(--marfil);border-color:var(--musgo);}
+  .hub-app small{color:rgba(242,238,230,0.72)!important;}
+  .hub-app strong{color:var(--marfil)!important;}
+  .hub-ico{grid-row:span 2;width:44px;height:44px;border-radius:12px;background:var(--marfil);color:var(--cobre-hover);display:flex;align-items:center;justify-content:center;}
+  .hub-app .hub-ico{background:rgba(242,238,230,0.1);color:var(--cobre);}
+  .hub-ico svg{width:22px;height:22px;}
+  .hub-txt strong{display:block;font:600 1.05rem var(--serif);color:var(--musgo);}
+  .hub-txt small{display:block;font-size:0.86rem;color:var(--carbon-muted);line-height:1.4;margin-top:2px;}
+  .hub-cta{font:600 0.85rem var(--sans);color:var(--cobre-hover);}
+  .hub-app .hub-cta{color:var(--cobre);}
+  .hub-tile.bloqueada{opacity:0.55;}
+  .hub-extra{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .hub-extra[hidden]{display:none;}
+  .hub-extra a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:500 0.88rem var(--sans);text-decoration:none;color:var(--musgo);}
+  .hub-extra a:hover{border-color:var(--cobre);}
+  .hub-nota{margin-top:14px;font-size:0.8rem;color:var(--carbon-muted);text-align:left;}
+  @media (max-width:480px){ .hub{padding-top:40px;} .hub-head h2{font-size:1.5rem;} }
   .apps-panel .head{text-align:left;font:600 0.95rem var(--serif);color:var(--musgo);padding:8px 12px 6px;}
   .apps-toggle .lbl{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .bienvenida{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:50;background:var(--musgo);color:var(--marfil);border:1px solid var(--cobre);border-radius:var(--r-md);padding:12px 18px;font-size:0.92rem;box-shadow:0 10px 30px rgba(0,0,0,0.25);max-width:calc(100% - 32px);}
@@ -405,7 +440,7 @@
 <header>
   <div class="header-inner">
     <a href="#top" class="logo">
-      <span class="logo-icon reveal-item">
+      <span class="logo-icon">
         <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="220" height="220" rx="32" fill="#1E2F25"></rect>
           <g transform="translate(10,10)">
@@ -424,6 +459,13 @@
       </span>
       NODOS
     </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#hub">Inicio</a>
+      <a href="#herramientas">Apps</a>
+      <a href="#pilares">Contenido</a>
+      <a href="#consulta">Consultas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
     <div class="header-right">
     <div class="apps">
       <button type="button" class="apps-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
@@ -447,15 +489,16 @@
         <p class="foot">Una sola cuenta para Finanzas y Empresas.</p>
       </div>
     </div>
-    <div class="menu reveal-item">
+    <div class="menu">
       <button type="button" class="btn btn-primary btn-icon menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menú">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M4 6h16M4 12h16M4 18h16" stroke="#F2EEE6" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </button>
       <nav class="menu-panel" id="menu-panel" aria-label="Secciones">
-        <a href="#pilares">Pilares</a>
-        <a href="#herramientas">Herramientas</a>
+        <a href="#hub">Inicio</a>
+        <a href="#herramientas">Apps NODOS</a>
+        <a href="#pilares">Contenido</a>
         <a href="#consulta">Consultas</a>
         <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
@@ -513,15 +556,63 @@
         <span class="node-tip">Bloqueado, próximamente</span>
       </a>
     </div>
-    <div class="splash-hint">
-      <span>Tocá un nodo</span>
+    <a class="splash-hint" href="#hub">
+      <span>Explorá NODOS</span>
       <svg class="hint-arrow" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
         <path d="M12 20V6m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
-    </div>
+    </a>
   </div>
 
   <div id="rest">
+    <section id="hub" class="hub">
+      <div class="wrap">
+        <div class="hub-head">
+          <div>
+            <p class="hub-kicker" data-hub-saludo>Todo NODOS en un solo lugar</p>
+            <h2 data-hub-titulo>¿Qué querés hacer hoy?</h2>
+          </div>
+          <div class="hub-acciones" data-hub-anonimo>
+            <a class="btn btn-primary" href="/ingresar">Ingresar</a>
+            <a class="btn btn-ghost hub-ghost" href="/ingresar#crear">Crear cuenta</a>
+          </div>
+        </div>
+        <div class="hub-grid">
+          <a class="hub-tile hub-app" href="https://finanzas.nodoscompliance.com" data-app="finanzas">
+            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+            <span class="hub-txt"><strong>NODOS Finanzas</strong><small>Inversiones, trading, gastos y calendarios.</small></span>
+            <span class="hub-cta" data-hub-cta>Abrir app →</span>
+          </a>
+          <a class="hub-tile hub-app" href="https://empresas.nodoscompliance.com" data-app="empresas">
+            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
+            <span class="hub-txt"><strong>NODOS Empresas</strong><small>Actas, poderes, vencimientos, SIARA y SEPRELAD.</small></span>
+            <span class="hub-cta" data-hub-cta>Abrir app →</span>
+          </a>
+          <a class="hub-tile" href="#pilares">
+            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span>
+            <span class="hub-txt"><strong>Contenido</strong><small>Zona Gris, Decodificado y Bajo Lupa.</small></span>
+            <span class="hub-cta">Ver →</span>
+          </a>
+          <a class="hub-tile" href="#consulta">
+            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.6 7.1L4 21l1.9-5.4A8 8 0 1121 12z"/></svg></span>
+            <span class="hub-txt"><strong>Hacé una consulta</strong><small>Cripto-compliance, empresas familiares o las apps.</small></span>
+            <span class="hub-cta">Escribir →</span>
+          </a>
+          <a class="hub-tile" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
+            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20h5v-2a4 4 0 00-3-3.9M9 20H2v-2a4 4 0 014-4h3a4 4 0 014 4v2M12 7a3 3 0 11-6 0 3 3 0 016 0zM20 8a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>
+            <span class="hub-txt"><strong>Comunidad</strong><small>Canal de WhatsApp con episodios y análisis.</small></span>
+            <span class="hub-cta">Sumarme →</span>
+          </a>
+          <a class="hub-tile" href="https://empresas.nodoscompliance.com/soporte">
+            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></span>
+            <span class="hub-txt"><strong>Soporte</strong><small>Problemas con tu cuenta o las apps.</small></span>
+            <span class="hub-cta">Contactar →</span>
+          </a>
+        </div>
+        <div class="hub-extra" data-hub-extra hidden></div>
+        <p class="hub-nota">Una sola cuenta para Finanzas y Empresas. Herramientas de organización: no son asesoría de inversión ni asesoramiento legal personalizado.</p>
+      </div>
+    </section>
     <div class="wrap hero-text">
       <h1>El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto</h1>
       <p>Contenido real, sin promesas de rendimiento ni señales de inversión. Un episodio al mes, sin relleno — y si alguien te escribe pidiendo dinero en nuestro nombre, es un fraude.</p>
@@ -835,11 +926,34 @@
         fetch(API + '/salir', {method:'POST', credentials:'include'}).finally(function(){ location.reload(); });
       });
       panel.insertBefore(salir, panel.querySelector('.foot'));
+      hubConSesion(s, salir);
     }).catch(function(){});
+  }
+  // Hub personalizado cuando hay sesión.
+  function hubConSesion(s, salirLink){
+    var hub = document.getElementById('hub'); if(!hub) return;
+    var primer = s.nombre ? s.nombre.split(' ')[0] : '';
+    hub.querySelector('[data-hub-saludo]').textContent = 'Hola' + (primer ? ', ' + primer : '') + (s.usuario ? ' · @' + s.usuario : '');
+    hub.querySelector('[data-hub-titulo]').textContent = 'Tus apps y accesos NODOS';
+    var anon = hub.querySelector('[data-hub-anonimo]'); if(anon) anon.hidden = true;
+    ['finanzas','empresas'].forEach(function(app){
+      var tile = hub.querySelector('.hub-tile[data-app=' + app + ']');
+      if(tile && s['acceso_' + app] === false){ tile.classList.add('bloqueada'); tile.querySelector('[data-hub-cta]').textContent = 'Sin acceso · pedilo a soporte'; tile.href = 'https://empresas.nodoscompliance.com/soporte'; }
+    });
+    var extra = hub.querySelector('[data-hub-extra]'); extra.hidden = false;
+    function chip(href, txt){ var a = document.createElement('a'); a.href = href; a.textContent = txt; extra.appendChild(a); return a; }
+    var base = 'https://' + (s.acceso_empresas === false ? 'finanzas' : 'empresas') + '.nodoscompliance.com';
+    chip(base + '/cuenta', s.usuario ? 'Mi cuenta' : 'Elegí tu nombre de usuario');
+    if(s.is_admin){
+      chip('https://empresas.nodoscompliance.com/panel', 'NODOS Panel');
+      chip('https://empresas.nodoscompliance.com/panel/leads', 'Leads');
+      chip('https://empresas.nodoscompliance.com/admin', 'Administración de cuentas');
+    }
+    var x = chip('#', 'Salir'); x.addEventListener('click', function(e){ e.preventDefault(); salirLink.click(); });
   }
   if(/[?&]bienvenida=1/.test(location.search)){
     var b = document.createElement('div'); b.className = 'bienvenida'; b.setAttribute('role','status');
-    b.textContent = '¡Tu cuenta NODOS quedó confirmada! Elegí una app desde el botón de arriba.';
+    b.textContent = '¡Tu cuenta NODOS quedó confirmada! Elegí una app acá abajo.';
     document.body.appendChild(b); setTimeout(function(){ b.remove(); }, 7000);
     history.replaceState(null, '', location.pathname + location.hash);
   }
