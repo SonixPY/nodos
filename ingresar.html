@@ -203,7 +203,7 @@
   // ¿Ya hay sesión? Directo a destino.
   if(/(?:^|;\s*)sb-[^=]*-auth-token/.test(document.cookie)){
     fetch(API + '/sesion', {credentials:'include'}).then(function(r){ return r.json(); }).then(function(s){
-      if(s && s.logueado){ if(next) return salir(); document.getElementById('hola').textContent = 'Hola' + (s.usuario ? ', @' + s.usuario : s.nombre ? ', ' + s.nombre.split(' ')[0] : '') + ' 👋'; mostrar('listo'); }
+      if(s && s.logueado){ if(next) return salir(); document.getElementById('hola').textContent = 'Hola' + (s.usuario ? ', @' + s.usuario : s.nombre ? ', ' + s.nombre.split(' ')[0] : ''); mostrar('listo'); }
     }).catch(function(){});
   }
 

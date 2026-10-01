@@ -351,7 +351,8 @@
   .hub-ico svg{width:22px;height:22px;}
   .hub-txt strong{display:block;font:600 1.05rem var(--serif);color:var(--musgo);}
   .hub-txt small{display:block;font-size:0.86rem;color:var(--carbon-muted);line-height:1.4;margin-top:2px;}
-  .hub-cta{font:600 0.85rem var(--sans);color:var(--cobre-hover);}
+  .hub-cta{display:inline-flex;align-items:center;gap:4px;font:600 0.85rem var(--sans);color:var(--cobre-hover);}
+  .hub-cta svg{width:14px;height:14px;flex-shrink:0;}
   .hub-app .hub-cta{color:var(--cobre);}
   .hub-tile.bloqueada{opacity:0.55;}
   .hub-extra{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
@@ -361,9 +362,44 @@
   .hub-nota{margin-top:14px;font-size:0.8rem;color:var(--carbon-muted);text-align:left;}
   @media (max-width:480px){ .hub{padding-top:40px;} .hub-head h2{font-size:1.5rem;} }
   .apps-panel .head{text-align:left;font:600 0.95rem var(--serif);color:var(--musgo);padding:8px 12px 6px;}
+  /* Selector de páginas NODOS (logo) y menú de cuenta */
+  .apps-panel{visibility:hidden;transition:opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;}
+  .apps.open .apps-panel,.sitios.open .sitios-panel{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;}
+  .sitios{position:relative;}
+  .sitios-toggle{background:none;border:0;cursor:pointer;padding:4px 10px 4px 4px;margin-left:-4px;border-radius:999px;transition:background 0.15s ease;}
+  .sitios-toggle:hover,.sitios.open .sitios-toggle{background:rgba(242,238,230,0.1);}
+  .sitios-toggle .chev{width:16px;height:16px;margin-left:-3px;color:rgba(242,238,230,0.6);transition:transform 0.15s ease;}
+  .sitios.open .sitios-toggle .chev{transform:rotate(180deg);}
+  .sitios-panel{left:0;right:auto;}
+  .sitios-panel::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px;}
+  .apps-panel .cap{text-align:left;font:600 0.7rem var(--sans);letter-spacing:0.12em;text-transform:uppercase;color:var(--carbon-muted);padding:6px 12px 4px;}
+  .apps-panel a.actual{background:var(--marfil);}
+  .apps-panel strong em{font:500 0.72rem var(--sans);font-style:normal;color:var(--carbon-muted);margin-left:8px;}
+  .apps-panel a.bloqueada{opacity:0.55;}
+  a.apps-toggle{text-decoration:none;}
+  .apps-toggle .chev{width:14px;height:14px;opacity:0.6;transition:transform 0.15s ease;}
+  .apps.open .apps-toggle .chev{transform:rotate(180deg);}
+  #cuenta-panel{max-height:calc(100vh - 90px);overflow-y:auto;overscroll-behavior:contain;}
+  .apps-panel a.cuenta-head{align-items:center;background:rgba(242,238,230,0.6);margin:-8px -8px 6px;padding:12px 16px;border-bottom:1px solid var(--line);border-radius:var(--r-md) var(--r-md) 0 0;}
+  .apps-panel a.cuenta-head:hover{background:var(--marfil);}
+  .apps-panel .cuenta-head > span:nth-child(2){min-width:0;}
+  .apps-panel .cuenta-head strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .apps-panel .cuenta-head .aviso{color:var(--cobre-hover);}
+  .apps-panel .cuenta-head .mas{margin-left:auto;display:flex;align-items:center;gap:2px;font-size:0.78rem;color:var(--carbon-muted);white-space:nowrap;}
+  .apps-panel .cuenta-head .mas svg{width:14px;height:14px;}
+  .apps-panel .fila{display:flex;width:100%;gap:12px;align-items:center;padding:10px 12px;border-radius:6px;background:none;border:0;cursor:pointer;color:var(--carbon);font:inherit;text-align:left;}
+  .apps-panel .fila:hover{background:var(--marfil);}
+  .apps-panel .fila > .chev{margin-left:auto;width:16px;height:16px;flex-shrink:0;color:var(--carbon-muted);transition:transform 0.15s ease;}
+  .apps-panel .fila[aria-expanded="true"] > .chev{transform:rotate(180deg);}
+  .apps-panel .grupo{margin:0 0 6px 27px;padding-left:8px;border-left:1px solid var(--line);}
+  .apps-panel .grupo[hidden]{display:none;}
+  .apps-panel .grupo a{align-items:center;gap:10px;padding:7px 10px;font-size:0.88rem;color:var(--carbon);}
+  .apps-panel .grupo a svg{width:15px;height:15px;flex-shrink:0;}
+  .apps-panel a.salir strong{color:var(--cobre-hover);}
   .apps-toggle .lbl{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .bienvenida{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:50;background:var(--musgo);color:var(--marfil);border:1px solid var(--cobre);border-radius:var(--r-md);padding:12px 18px;font-size:0.92rem;box-shadow:0 10px 30px rgba(0,0,0,0.25);max-width:calc(100% - 32px);}
   @media (max-width:480px){ .apps-toggle span.lbl{display:none;} .apps-toggle{padding:9px;} .apps{position:static;} .apps-panel{right:16px;top:calc(100% - 4px);width:min(300px, calc(100vw - 32px));} }
+  @media (max-width:480px){ .sitios-panel{left:0;right:auto;top:calc(100% + 10px);} .apps-toggle .chev{display:none;} }
 
   .tools{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;transition:transform 0.15s ease, box-shadow 0.15s ease;}
@@ -439,7 +475,8 @@
 
 <header>
   <div class="header-inner">
-    <a href="#top" class="logo">
+    <div class="sitios">
+      <button type="button" class="logo sitios-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sitios-panel" aria-label="NODOS: cambiar de página">
       <span class="logo-icon">
         <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="220" height="220" rx="32" fill="#1E2F25"></rect>
@@ -457,8 +494,26 @@
           </g>
         </svg>
       </span>
-      NODOS
-    </a>
+        NODOS
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="apps-panel sitios-panel" id="sitios-panel" role="menu" aria-label="Páginas NODOS">
+        <p class="cap">Páginas NODOS</p>
+        <a href="#top" role="menuitem" class="actual" aria-current="page">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 014 9 14 14 0 01-4 9 14 14 0 01-4-9 14 14 0 014-9z"/></svg></span>
+          <span><strong>NODOS<em>estás acá</em></strong><small>Sitio principal: contenido, consultas y accesos.</small></span>
+        </a>
+        <a href="https://finanzas.nodoscompliance.com" role="menuitem" data-app="finanzas">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+          <span><strong>NODOS Finanzas</strong><small data-app-detalle>Inversiones digitales y tradicionales, trading y gastos.</small></span>
+        </a>
+        <a href="https://empresas.nodoscompliance.com" role="menuitem" data-app="empresas">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
+          <span><strong>NODOS Empresas</strong><small data-app-detalle>Actas, vencimientos, accionistas y SEPRELAD.</small></span>
+        </a>
+        <p class="foot">Una sola cuenta para Finanzas y Empresas.</p>
+      </div>
+    </div>
     <nav class="nav-links" aria-label="Secciones">
       <a href="#hub">Inicio</a>
       <a href="#herramientas">Apps</a>
@@ -468,26 +523,11 @@
     </nav>
     <div class="header-right">
     <div class="apps">
-      <button type="button" class="apps-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <a class="apps-toggle" href="/ingresar" aria-label="Ingresar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
         <span class="lbl" data-apps-label>Ingresar</span>
-      </button>
-      <div class="apps-panel" id="apps-panel" role="menu">
-        <a href="https://finanzas.nodoscompliance.com" role="menuitem" data-app="finanzas">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-          <span><strong>NODOS Finanzas</strong><small>Inversiones digitales y tradicionales, trading y gastos.</small></span>
-        </a>
-        <a href="https://empresas.nodoscompliance.com" role="menuitem" data-app="empresas">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
-          <span><strong>NODOS Empresas</strong><small>Actas, vencimientos, accionistas y SEPRELAD.</small></span>
-        </a>
-        <hr>
-        <a href="https://empresas.nodoscompliance.com/soporte" role="menuitem">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></span>
-          <span><strong>Soporte</strong><small>Escribile al equipo de IT.</small></span>
-        </a>
-        <p class="foot">Una sola cuenta para Finanzas y Empresas.</p>
-      </div>
+      </a>
+      <div class="apps-panel" id="cuenta-panel" role="menu" aria-label="Cuenta y opciones"></div>
     </div>
     <div class="menu">
       <button type="button" class="btn btn-primary btn-icon menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menú">
@@ -581,32 +621,32 @@
           <a class="hub-tile hub-app" href="https://finanzas.nodoscompliance.com" data-app="finanzas">
             <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
             <span class="hub-txt"><strong>NODOS Finanzas</strong><small>Inversiones, trading, gastos y calendarios.</small></span>
-            <span class="hub-cta" data-hub-cta>Abrir app →</span>
+            <span class="hub-cta" data-hub-cta>Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="hub-tile hub-app" href="https://empresas.nodoscompliance.com" data-app="empresas">
             <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
             <span class="hub-txt"><strong>NODOS Empresas</strong><small>Actas, poderes, vencimientos, SIARA y SEPRELAD.</small></span>
-            <span class="hub-cta" data-hub-cta>Abrir app →</span>
+            <span class="hub-cta" data-hub-cta>Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="hub-tile" href="#pilares">
             <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span>
             <span class="hub-txt"><strong>Contenido</strong><small>Zona Gris, Decodificado y Bajo Lupa.</small></span>
-            <span class="hub-cta">Ver →</span>
+            <span class="hub-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="hub-tile" href="#consulta">
             <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.6 7.1L4 21l1.9-5.4A8 8 0 1121 12z"/></svg></span>
             <span class="hub-txt"><strong>Hacé una consulta</strong><small>Cripto-compliance, empresas familiares o las apps.</small></span>
-            <span class="hub-cta">Escribir →</span>
+            <span class="hub-cta">Escribir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="hub-tile" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
             <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20h5v-2a4 4 0 00-3-3.9M9 20H2v-2a4 4 0 014-4h3a4 4 0 014 4v2M12 7a3 3 0 11-6 0 3 3 0 016 0zM20 8a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>
             <span class="hub-txt"><strong>Comunidad</strong><small>Canal de WhatsApp con episodios y análisis.</small></span>
-            <span class="hub-cta">Sumarme →</span>
+            <span class="hub-cta">Sumarme <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="hub-tile" href="https://empresas.nodoscompliance.com/soporte">
             <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></span>
             <span class="hub-txt"><strong>Soporte</strong><small>Problemas con tu cuenta o las apps.</small></span>
-            <span class="hub-cta">Contactar →</span>
+            <span class="hub-cta">Contactar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </div>
         <div class="hub-extra" data-hub-extra hidden></div>
@@ -880,20 +920,76 @@
 <script>
 (function(){
   var apps = document.querySelector('.apps');
-  if(!apps) return;
-  var t = apps.querySelector('.apps-toggle');
+  var sitios = document.querySelector('.sitios');
+  if(!apps || !sitios) return;
   var panel = apps.querySelector('.apps-panel');
-  var label = apps.querySelector('[data-apps-label]');
   var API = 'https://empresas.nodoscompliance.com/api/cuenta';
-  var logueado = false;
-  // Sin sesión, "Ingresar" lleva a la pantalla única de ingreso.
-  t.addEventListener('click', function(e){
-    e.stopPropagation();
-    if(!logueado){ location.href = '/ingresar'; return; }
-    var o = apps.classList.toggle('open'); t.setAttribute('aria-expanded', o ? 'true' : 'false');
-  });
-  document.addEventListener('click', function(e){ if(!apps.contains(e.target)){ apps.classList.remove('open'); t.setAttribute('aria-expanded','false'); } });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ apps.classList.remove('open'); t.setAttribute('aria-expanded','false'); } });
+  var EMP = 'https://empresas.nodoscompliance.com';
+
+  // Desplegable del header: click/tap o teclado (Enter, Espacio), Escape y
+  // click afuera cierran; con hover (mouse) abre y cierra con una pequeña demora.
+  function desplegable(root, toggle, menu, hover){
+    var timer = null, fijado = false, porHover = false;
+    function abierto(){ return root.classList.contains('open'); }
+    function abrir(){ root.classList.add('open'); toggle.setAttribute('aria-expanded','true'); }
+    function cerrar(foco){
+      clearTimeout(timer); fijado = false; porHover = false;
+      root.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
+      if(foco) toggle.focus();
+    }
+    function items(){ return [].slice.call(menu.querySelectorAll('[role=menuitem]')).filter(function(el){ return el.offsetParent !== null; }); }
+    toggle.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      if(abierto() && porHover && !fijado){ fijado = true; porHover = false; return; }
+      if(abierto()){ cerrar(); return; }
+      fijado = true; abrir();
+      if(e.detail === 0){ var p = items()[0]; if(p) setTimeout(function(){ p.focus(); }, 20); }
+    });
+    if(hover){
+      root.addEventListener('pointerenter', function(e){
+        if(e.pointerType !== 'mouse') return;
+        clearTimeout(timer);
+        if(!abierto()){ porHover = true; abrir(); }
+      });
+      root.addEventListener('pointerleave', function(e){
+        if(e.pointerType !== 'mouse' || fijado) return;
+        clearTimeout(timer);
+        timer = setTimeout(function(){ porHover = false; root.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }, 180);
+      });
+    }
+    document.addEventListener('click', function(e){ if(abierto() && !root.contains(e.target)) cerrar(); });
+    document.addEventListener('keydown', function(e){
+      if(!abierto()) return;
+      if(e.key === 'Escape'){ cerrar(root.contains(document.activeElement)); return; }
+      if((e.key === 'ArrowDown' || e.key === 'ArrowUp') && root.contains(document.activeElement)){
+        var l = items(); if(!l.length) return;
+        e.preventDefault();
+        var i = l.indexOf(document.activeElement);
+        l[e.key === 'ArrowDown' ? (i + 1) % l.length : (i <= 0 ? l.length - 1 : i - 1)].focus();
+      }
+    });
+    root.addEventListener('focusout', function(e){ if(abierto() && e.relatedTarget && !root.contains(e.relatedTarget)) cerrar(); });
+    menu.addEventListener('click', function(e){ if(e.target.closest('a')) cerrar(); });
+  }
+
+  // Selector de páginas NODOS en el logo.
+  desplegable(sitios, sitios.querySelector('.sitios-toggle'), sitios.querySelector('.sitios-panel'), true);
+
+  function svg(paths){ return '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + paths + '</svg>'; }
+  var ICO_CUENTA = svg('<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>');
+  var ICO_PANEL = svg('<path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1117.4 0"/>');
+  var ICO_SALIR = svg('<path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>');
+  var ICO_SOPORTE = svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>');
+  var CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+  var CHEV_DER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+  // NODOS Panel: todo lo de administradores (vive en NODOS Empresas).
+  var PANEL = [
+    ['/panel', 'Panel de control', '<path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1117.4 0"/>'],
+    ['/panel/leads', 'Leads', '<circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 014-4h6a4 4 0 014 4v2M16 3.1a4 4 0 010 7.8M22 21v-2a4 4 0 00-3-3.9"/>'],
+    ['/panel/contenido', 'Contenido', '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'],
+    ['/panel/notas', 'Notas', '<path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9a2 2 0 012-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>'],
+    ['/admin', 'Administración de cuentas', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>']
+  ];
 
   function item(href, titulo, detalle, icono){
     var a = document.createElement('a'); a.href = href; a.setAttribute('role','menuitem');
@@ -901,31 +997,78 @@
     a.querySelector('strong').textContent = titulo; a.querySelector('small').textContent = detalle;
     return a;
   }
-  var ICO_CUENTA = '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>';
-  var ICO_PANEL = '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1117.4 0"/></svg>';
-  var ICO_SALIR = '<svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>';
+
+  // Menú de cuenta (solo con sesión; sin sesión el botón es un link a /ingresar).
+  function menuCuenta(s){
+    var link = apps.querySelector('.apps-toggle');
+    var nombre = s.usuario ? '@' + s.usuario : (s.nombre ? s.nombre.split(' ')[0] : 'Mi cuenta');
+    var t = document.createElement('button');
+    t.type = 'button'; t.className = 'apps-toggle';
+    t.setAttribute('aria-haspopup','true'); t.setAttribute('aria-expanded','false'); t.setAttribute('aria-controls','cuenta-panel');
+    t.setAttribute('aria-label','Cuenta y opciones (' + nombre + ')');
+    t.innerHTML = ICO_CUENTA.replace('stroke="#B8734A" stroke-width="2"', 'stroke="currentColor" stroke-width="1.8"') + '<span class="lbl" data-apps-label></span>' + CHEV;
+    t.querySelector('.lbl').textContent = nombre;
+    link.replaceWith(t);
+
+    var base = 'https://' + (s.acceso_empresas === false ? 'finanzas' : 'empresas') + '.nodoscompliance.com';
+    var head = document.createElement('a');
+    head.href = base + '/cuenta'; head.className = 'cuenta-head'; head.setAttribute('role','menuitem');
+    head.innerHTML = '<span class="ico">' + ICO_CUENTA + '</span><span><small>Cuenta NODOS</small><strong></strong></span><span class="mas">Mi cuenta' + CHEV_DER + '</span>';
+    head.querySelector('strong').textContent = nombre;
+    if(!s.usuario){ var av = document.createElement('small'); av.className = 'aviso'; av.textContent = 'Elegí tu nombre de usuario'; head.children[1].appendChild(av); }
+    panel.appendChild(head);
+
+    panel.appendChild(item(EMP + '/soporte', 'Soporte', 'Escribile al equipo de IT.', ICO_SOPORTE));
+
+    if(s.is_admin){
+      var g = document.createElement('button');
+      g.type = 'button'; g.className = 'fila'; g.setAttribute('role','menuitem');
+      g.setAttribute('aria-expanded','false'); g.setAttribute('aria-controls','nodos-panel-grupo');
+      g.innerHTML = '<span class="ico">' + ICO_PANEL + '</span><span><strong>NODOS Panel</strong><small>Solo administradores.</small></span>' + CHEV;
+      var grupo = document.createElement('div');
+      grupo.className = 'grupo'; grupo.id = 'nodos-panel-grupo'; grupo.hidden = true;
+      grupo.setAttribute('role','group'); grupo.setAttribute('aria-label','NODOS Panel');
+      PANEL.forEach(function(p){
+        var a = document.createElement('a'); a.href = EMP + p[0]; a.setAttribute('role','menuitem');
+        a.innerHTML = svg(p[2]) + '<span></span>'; a.querySelector('span').textContent = p[1];
+        grupo.appendChild(a);
+      });
+      g.addEventListener('click', function(){
+        var abrir = grupo.hidden; grupo.hidden = !abrir; g.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+      });
+      panel.appendChild(g); panel.appendChild(grupo);
+    }
+
+    panel.appendChild(document.createElement('hr'));
+    var salir = item('#', 'Salir', 'Cerrar sesión en todas las apps.', ICO_SALIR);
+    salir.classList.add('salir');
+    salir.addEventListener('click', function(e){
+      e.preventDefault();
+      fetch(API + '/salir', {method:'POST', credentials:'include'}).finally(function(){ location.reload(); });
+    });
+    panel.appendChild(salir);
+
+    desplegable(apps, t, panel, false);
+    return salir;
+  }
+
+  // Páginas sin acceso para la cuenta: se marcan en el selector del logo.
+  function marcarAccesos(s){
+    ['finanzas','empresas'].forEach(function(app){
+      var a = sitios.querySelector('a[data-app=' + app + ']');
+      if(a && s['acceso_' + app] === false){
+        a.classList.add('bloqueada'); a.href = EMP + '/soporte';
+        a.querySelector('[data-app-detalle]').textContent = 'Sin acceso: pedilo a soporte.';
+      }
+    });
+  }
 
   // Con la cookie de sesión NODOS (compartida en .nodoscompliance.com) se pide el perfil (sin email).
   if(/(?:^|;\s*)sb-[^=]*-auth-token/.test(document.cookie)){
     fetch(API + '/sesion', {credentials:'include'}).then(function(r){ return r.json(); }).then(function(s){
       if(!s || !s.logueado) return;
-      logueado = true;
-      label.textContent = s.usuario ? '@' + s.usuario : (s.nombre ? s.nombre.split(' ')[0] : 'Mis apps');
-      var cab = document.createElement('p'); cab.className = 'head';
-      cab.textContent = 'Hola' + (s.nombre ? ', ' + s.nombre.split(' ')[0] : '') + '. ¿A dónde vamos?';
-      panel.insertBefore(cab, panel.firstChild);
-      if(s.acceso_finanzas === false){ var f = panel.querySelector('[data-app=finanzas]'); if(f) f.remove(); }
-      if(s.acceso_empresas === false){ var em = panel.querySelector('[data-app=empresas]'); if(em) em.remove(); }
-      var hr = panel.querySelector('hr');
-      if(s.is_admin) panel.insertBefore(item('https://empresas.nodoscompliance.com/panel', 'NODOS Panel', 'Leads, consultas y contenido.', ICO_PANEL), hr);
-      var sop = hr.nextElementSibling;
-      panel.insertBefore(item('https://' + (s.acceso_empresas === false ? 'finanzas' : 'empresas') + '.nodoscompliance.com/cuenta', 'Mi cuenta', s.usuario ? 'Nombre, usuario y contraseña.' : 'Elegí tu nombre de usuario.', ICO_CUENTA), sop);
-      var salir = item('#', 'Salir', 'Cerrar sesión en todas las apps.', ICO_SALIR);
-      salir.addEventListener('click', function(e){
-        e.preventDefault();
-        fetch(API + '/salir', {method:'POST', credentials:'include'}).finally(function(){ location.reload(); });
-      });
-      panel.insertBefore(salir, panel.querySelector('.foot'));
+      marcarAccesos(s);
+      var salir = menuCuenta(s);
       hubConSesion(s, salir);
     }).catch(function(){});
   }
@@ -945,9 +1088,9 @@
     var base = 'https://' + (s.acceso_empresas === false ? 'finanzas' : 'empresas') + '.nodoscompliance.com';
     chip(base + '/cuenta', s.usuario ? 'Mi cuenta' : 'Elegí tu nombre de usuario');
     if(s.is_admin){
-      chip('https://empresas.nodoscompliance.com/panel', 'NODOS Panel');
-      chip('https://empresas.nodoscompliance.com/panel/leads', 'Leads');
-      chip('https://empresas.nodoscompliance.com/admin', 'Administración de cuentas');
+      chip(EMP + '/panel', 'NODOS Panel');
+      chip(EMP + '/panel/leads', 'Leads');
+      chip(EMP + '/admin', 'Administración de cuentas');
     }
     var x = chip('#', 'Salir'); x.addEventListener('click', function(e){ e.preventDefault(); salirLink.click(); });
   }
@@ -957,7 +1100,7 @@
     document.body.appendChild(b); setTimeout(function(){ b.remove(); }, 7000);
     history.replaceState(null, '', location.pathname + location.hash);
   }
-  apps.querySelectorAll('a[data-app]').forEach(function(a){ a.addEventListener('click', function(){ if(typeof gtag === 'function'){ gtag('event','abrir_app',{app:a.getAttribute('data-app')}); } }); });
+  sitios.querySelectorAll('a[data-app]').forEach(function(a){ a.addEventListener('click', function(){ if(typeof gtag === 'function'){ gtag('event','abrir_app',{app:a.getAttribute('data-app')}); } }); });
 })();
 </script>
 <script>
