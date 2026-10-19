@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y condiciones · NODOS</title>
+<meta name="description" content="Términos y condiciones de uso y de suscripción de NODOS Finanzas y NODOS Empresas.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nodoscompliance.com/terminos">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1E2F25">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --musgo:#1E2F25;--bosque:#34483A;--cobre:#B8734A;--cobre-hover:#8C5934;--marfil:#F2EEE6;--carbon:#242522;
+    --muted:rgba(36,37,34,0.66);--line:#34483a33;--marfil-muted:rgba(242,238,230,0.72);
+    --r-sm:4px;--r-md:8px;--r-lg:16px;
+    --serif:'Space Grotesk',system-ui,sans-serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--marfil);color:var(--carbon);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:var(--cobre-hover);text-underline-offset:3px;}
+  a:hover{color:var(--musgo);}
+  :focus-visible{outline:2px solid var(--cobre);outline-offset:3px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px;}
+  @media (min-width:600px){.wrap{padding:0 24px;}}
+
+  /* Cabecera */
+  .top{background:var(--musgo);}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px;}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--marfil);text-decoration:none;font:700 1.08rem var(--serif);letter-spacing:0.08em;}
+  .logo:hover{color:var(--marfil);}
+  .logo svg{width:32px;height:32px;flex-shrink:0;}
+  .top nav{display:flex;align-items:center;gap:6px;}
+  .top nav a{color:var(--marfil-muted);text-decoration:none;font:500 0.88rem var(--sans);padding:8px 10px;border-radius:var(--r-md);}
+  .top nav a:hover{color:var(--marfil);}
+  .top nav a.cta{background:var(--cobre-hover);color:var(--marfil);padding:8px 14px;}
+  .top nav a.cta:hover{background:#7a4c2c;}
+  @media (max-width:420px){.top nav a.opt{display:none;}}
+
+  /* Título */
+  .hero{padding:40px 0 8px;}
+  .eyebrow{font:600 0.75rem var(--sans);letter-spacing:0.14em;text-transform:uppercase;color:var(--cobre-hover);}
+  h1{font:600 clamp(1.8rem,5vw,2.6rem)/1.15 var(--serif);color:var(--musgo);letter-spacing:-0.01em;margin:8px 0 10px;}
+  .meta{color:var(--muted);font-size:0.9rem;}
+
+  .borrador[hidden]{display:none;}
+  .borrador{display:flex;gap:12px;align-items:flex-start;margin:22px 0 4px;padding:14px 16px;border:1.5px dashed var(--cobre);border-radius:var(--r-md);background:#B8734A1A;color:var(--carbon);font-size:0.93rem;line-height:1.55;}
+  .borrador svg{width:22px;height:22px;flex-shrink:0;color:var(--cobre-hover);margin-top:1px;}
+  .borrador b{font-family:var(--serif);color:var(--cobre-hover);display:block;font-size:1rem;}
+
+  /* Marcadores a completar: imposibles de pasar por alto */
+  .ph{background:#FFE27A;color:#3A2C00;font-weight:600;font-size:0.9em;padding:1px 6px;border-radius:var(--r-sm);outline:1.5px dashed #B08A00;outline-offset:1px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  .ph-bloque{display:block;background:#FFF4C2;border:1.5px dashed #B08A00;border-radius:var(--r-md);padding:12px 14px;margin:10px 0 14px;font-size:0.95rem;}
+  .ph-bloque .ph{margin-right:4px;}
+
+  /* Índice + texto */
+  .doc{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:24px 0 64px;}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:4px 16px;}
+  .toc summary{cursor:pointer;font:600 0.95rem var(--serif);color:var(--musgo);padding:12px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  .toc summary::-webkit-details-marker{display:none;}
+  .toc summary svg{width:18px;height:18px;transition:transform 0.2s;}
+  .toc[open] summary svg{transform:rotate(180deg);}
+  .toc ol{list-style:none;counter-reset:t;padding:0 0 12px;}
+  .toc li{counter-increment:t;}
+  .toc li a{display:flex;gap:8px;color:var(--carbon);text-decoration:none;font-size:0.9rem;line-height:1.4;padding:6px 0;}
+  .toc li a::before{content:counter(t) ".";color:var(--cobre-hover);font-weight:600;min-width:1.6em;}
+  .toc li a:hover{color:var(--cobre-hover);}
+  @media (min-width:960px){
+    .doc{grid-template-columns:250px minmax(0,1fr);gap:48px;}
+    .toc{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;}
+  }
+
+  article{max-width:70ch;counter-reset:s;}
+  article section{counter-increment:s;scroll-margin-top:16px;padding-top:8px;}
+  article h2{font:600 1.3rem/1.3 var(--serif);color:var(--musgo);margin:28px 0 10px;display:flex;gap:10px;}
+  article h2::before{content:counter(s) ".";color:var(--cobre);}
+  article h3{font:600 1.02rem/1.4 var(--serif);color:var(--bosque);margin:18px 0 6px;}
+  article p,article li{-webkit-hyphens:auto;hyphens:auto;}
+  article p{margin:0 0 12px;}
+  article ul,article ol.lista{margin:0 0 14px 1.2em;}
+  article li{margin:4px 0;}
+  article li::marker{color:var(--cobre);}
+  .nota{border-left:3px solid var(--cobre);background:#fff;padding:12px 16px;border-radius:0 var(--r-md) var(--r-md) 0;margin:14px 0;font-size:0.95rem;}
+  .tabla{overflow-x:auto;margin:10px 0 16px;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;}
+  table{border-collapse:collapse;width:100%;font-size:0.9rem;line-height:1.5;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font:600 0.85rem var(--serif);color:var(--musgo);background:#34483a0d;}
+  tr:last-child td{border-bottom:0;}
+  .normas li{margin:8px 0;}
+  @media (max-width:599px){
+    .tabla{border:0;background:transparent;overflow:visible;}
+    .tabla table,.tabla tbody,.tabla tr,.tabla td{display:block;width:100%;}
+    .tabla thead{display:none;}
+    .tabla tr{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px;padding:6px 0;}
+    .tabla td{border:0;padding:4px 14px;}
+    .tabla td[data-label]::before{content:attr(data-label);display:block;font:600 0.72rem var(--sans);letter-spacing:0.08em;text-transform:uppercase;color:var(--cobre-hover);}
+  }
+  .faq h2::before{content:none;}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin:10px 0;}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;font:600 1rem/1.4 var(--serif);color:var(--musgo);}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"";flex-shrink:0;width:9px;height:9px;margin-top:6px;border-right:2px solid var(--cobre);border-bottom:2px solid var(--cobre);transform:rotate(45deg);transition:transform 0.2s;}
+  .faq details[open] summary::after{transform:rotate(-135deg);margin-top:10px;}
+  .faq details p{padding:0 16px;margin-bottom:12px;}
+  .faq details p:last-child{padding-bottom:4px;}
+  .faq details p.aviso{font-size:0.88rem;color:var(--muted);border-left:2px solid var(--cobre);padding:0 0 0 10px;margin:0 16px 14px;}
+  .volver{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;margin-top:28px;}
+
+  footer{background:var(--musgo);color:var(--marfil-muted);font-size:0.85rem;padding:28px 0;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--marfil-muted);text-decoration:none;}
+  footer a:hover{color:var(--cobre);}
+  footer nav{display:flex;gap:16px;flex-wrap:wrap;}
+  @media print{.top nav,.toc,footer{display:none;} .doc{display:block;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="NODOS — inicio">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="220" height="220" rx="32" fill="#34483A"/><g transform="translate(10,10)"><g stroke="#B8734A" fill="none" stroke-linejoin="round"><polyline points="110,118 66,118 54,106 54,64" stroke-width="7"/><polyline points="110,118 64,118 50,132" stroke-width="6"/><polyline points="110,118 110,74 122,62 157,62" stroke-width="8"/></g><circle cx="54" cy="54" r="11" fill="#F2EEE6"/><circle cx="46" cy="140" r="10" fill="#F2EEE6"/><circle cx="168" cy="62" r="12" fill="#F2EEE6"/><circle cx="110" cy="118" r="24" fill="#B8734A"/></g></svg>
+      NODOS
+    </a>
+    <nav aria-label="Principal">
+      <a class="opt" href="/ayuda">Ayuda</a>
+      <a class="opt" href="/privacidad">Privacidad</a>
+      <a class="cta" href="/ingresar">Ingresar</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Legal</p>
+    <h1>Términos y condiciones</h1>
+    <p class="meta">Suscripción a NODOS Finanzas y NODOS Empresas · Versión del <span class="ph">[FECHA DE VIGENCIA]</span></p>
+    <div class="borrador" id="borrador" role="note" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+      <span><b>Borrador para revisión — no publicado como definitivo</b>Los datos marcados <span class="ph">[ASÍ]</span> están pendientes de completar por el titular del servicio y el texto completo está sujeto a revisión legal.</span>
+    </div>
+    <script>
+      // Pasar a false cuando el texto esté revisado y sin marcadores pendientes.
+      var BORRADOR = true;
+      if (BORRADOR) document.getElementById('borrador').hidden = false;
+    </script>
+  </div>
+
+  <div class="doc">
+    <details class="toc" open>
+      <summary>Contenido <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <ol>
+        <li><a href="#proveedor">Quién presta el servicio</a></li>
+        <li><a href="#aceptacion">Aceptación y capacidad</a></li>
+        <li><a href="#objeto">Qué es NODOS y qué no es</a></li>
+        <li><a href="#cuenta">Tu cuenta NODOS</a></li>
+        <li><a href="#prueba">Prueba gratis de 14 días</a></li>
+        <li><a href="#planes">Planes y precios</a></li>
+        <li><a href="#pagos">Pagos y comprobantes</a></li>
+        <li><a href="#renovacion">Renovación automática y cancelación</a></li>
+        <li><a href="#reembolsos">Reembolsos</a></li>
+        <li><a href="#cambios-precio">Cambios de precio</a></li>
+        <li><a href="#impago">Falta de pago, suspensión y conservación de datos</a></li>
+        <li><a href="#uso">Uso aceptable</a></li>
+        <li><a href="#propiedad">Propiedad intelectual y licencia de las plantillas</a></li>
+        <li><a href="#contenido">Tu contenido y la confidencialidad</a></li>
+        <li><a href="#terceros">Noticias y contenido de terceros</a></li>
+        <li><a href="#disponibilidad">Disponibilidad del servicio</a></li>
+        <li><a href="#responsabilidad">Límites de responsabilidad</a></li>
+        <li><a href="#datos">Protección de datos</a></li>
+        <li><a href="#suspension">Suspensión por incumplimiento</a></li>
+        <li><a href="#modificaciones">Cambios en estos términos</a></li>
+        <li><a href="#ley">Ley aplicable y jurisdicción</a></li>
+        <li><a href="#consumidor">Defensa del consumidor y comercio electrónico</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ol>
+    </details>
+
+    <article>
+      <section id="proveedor">
+        <h2>Quién presta el servicio</h2>
+        <p>NODOS es la marca que agrupa el sitio <a href="/">nodoscompliance.com</a> y las herramientas <b>NODOS Finanzas</b> (finanzas.nodoscompliance.com) y <b>NODOS Empresas</b> (empresas.nodoscompliance.com), en adelante «NODOS» o «el servicio».</p>
+        <p>El servicio es prestado por <span class="ph">[RAZÓN SOCIAL O NOMBRE DEL TITULAR]</span>, RUC <span class="ph">[RUC]</span>, con domicilio en <span class="ph">[DOMICILIO]</span>, República del Paraguay (en adelante, «el titular»). Correo de soporte: <span class="ph">[EMAIL DE SOPORTE]</span>.</p>
+      </section>
+
+      <section id="aceptacion">
+        <h2>Aceptación y capacidad</h2>
+        <p>Al crear una cuenta marcás que aceptás estos términos y la <a href="/privacidad">Política de privacidad</a>. Esa aceptación rige también para la prueba gratis y para cualquier plan que contrates después. Si no estás de acuerdo, no uses el servicio.</p>
+        <p>Para usar NODOS tenés que ser mayor de 18 años y tener capacidad para contratar. Si usás NODOS en nombre de una empresa, declarás que tenés facultades para obligarla con estos términos.</p>
+      </section>
+
+      <section id="objeto">
+        <h2>Qué es NODOS y qué no es</h2>
+        <p>NODOS es una <b>herramienta de organización e información</b>. Te ayuda a ordenar datos, documentos y fechas; no toma decisiones por vos ni actúa ante ningún organismo en tu nombre.</p>
+        <ul>
+          <li><b>NODOS Finanzas</b> sirve para registrar tus inversiones (digitales y tradicionales), operaciones de trading, ingresos y gastos, y para mostrarte noticias relacionadas. Cotizaciones, rendimientos y noticias son informativos. <b>No es asesoría de inversión</b> ni una recomendación de comprar, vender o mantener ningún activo.</li>
+          <li><b>NODOS Empresas</b> sirve para llevar el orden de empresas familiares y sociedades: datos societarios, accionistas, beneficiarios finales, poderes, archivo privado de documentos, vencimientos con calendario, módulo de cumplimiento y generador de documentos a partir de plantillas.</li>
+        </ul>
+        <div class="nota">NODOS <b>no presta asesoramiento de inversión, legal, contable ni tributario</b> y su uso no crea una relación abogado-cliente. Las plantillas legales son <b>modelos generales</b>: no reemplazan el asesoramiento de un profesional matriculado que conozca tu caso. Nada de lo que muestra NODOS constituye asesoramiento legal para tu caso.</div>
+        <p>Las secciones de beneficiarios finales y de cumplimiento son un apoyo para preparar y ordenar información. NODOS no presenta declaraciones, reportes ni formularios ante la SEPRELAD ni ante ningún otro organismo, y no reemplaza al oficial de cumplimiento ni al profesional que asesore a tu empresa. Los plazos del calendario son una referencia: verificalos siempre con la normativa y las comunicaciones oficiales vigentes.</p>
+      </section>
+
+      <section id="cuenta">
+        <h2>Tu cuenta NODOS</h2>
+        <p>Con <b>una sola cuenta NODOS</b> ingresás a nodoscompliance.com, a NODOS Finanzas y a NODOS Empresas. A qué herramientas accedés depende del plan que tengas activo. Sos responsable de:</p>
+        <ul>
+          <li>dar datos de registro verdaderos y mantenerlos al día;</li>
+          <li>cuidar tu contraseña y no compartirla; NODOS nunca te la va a pedir por correo, mensaje ni teléfono;</li>
+          <li>la actividad que se haga con tu cuenta, y avisarnos enseguida si sospechás un uso no autorizado;</li>
+          <li>los accesos que otorgues a otras personas de tu equipo, cuando la herramienta lo permita.</li>
+        </ul>
+        <p>La cuenta es personal. Podés eliminarla cuando quieras desde <b>Mi cuenta</b> → <b>Eliminar mi cuenta</b>.</p>
+      </section>
+
+      <section id="prueba">
+        <h2>Prueba gratis de 14 días</h2>
+        <p>Al crear tu cuenta podés usar las herramientas incluidas en la prueba durante <b>14 días corridos</b> sin costo. Al terminar la prueba <b>no se te cobra nada automáticamente</b>: para seguir usando el servicio tenés que elegir un plan. Si no lo hacés, el acceso a las herramientas se pausa y tus datos se conservan según la <a href="#impago">sección 11</a>.</p>
+        <p>La prueba gratis es una por persona. Podemos negarla si detectamos cuentas creadas solo para repetirla.</p>
+      </section>
+
+      <section id="planes">
+        <h2>Planes y precios</h2>
+        <ul>
+          <li><b>Planes:</b> NODOS Finanzas, NODOS Empresas y Combo (ambas herramientas), con pago mensual o anual.</li>
+          <li><b>Precios:</b> lo que incluye cada plan y su precio, en guaraníes (y, si corresponde, su referencia en dólares estadounidenses), se publican en la <a href="/#precios">sección de precios</a> y se te muestran antes de pagar. El precio que rige es el publicado al momento de la contratación o de la renovación.</li>
+          <li><b>Impuestos:</b> los precios <span class="ph">[INCLUYEN IVA / SE LES SUMA EL IVA]</span>.</li>
+        </ul>
+      </section>
+
+      <section id="pagos">
+        <h2>Pagos y comprobantes</h2>
+        <p>Los pagos se procesan a través de un procesador de pagos externo, <span class="ph">[PROCESADOR DE PAGOS]</span>. Los datos de tu tarjeta o cuenta los ingresás en la plataforma del procesador: <b>NODOS nunca recibe ni guarda los datos de tu tarjeta</b>. Del procesador solo recibimos el resultado de cada pago (monto, fecha, estado e identificador de la operación).</p>
+        <p>Por cada cobro emitimos el comprobante que corresponda según <span class="ph">[RÉGIMEN DE FACTURACIÓN DEL TITULAR]</span>. Tus pagos y comprobantes quedan disponibles en <b>Mi plan</b>.</p>
+      </section>
+
+      <section id="renovacion">
+        <h2>Renovación automática y cancelación</h2>
+        <h3>Renovación</h3>
+        <p>Tu plan se <b>renueva automáticamente</b> al final de cada período (mes o año) y se cobra con el medio de pago que registraste, salvo que lo canceles antes de la fecha de renovación. Te avisamos por correo antes de cada renovación anual <span class="ph">[Y MENSUAL, SI SE DECIDE]</span>.</p>
+        <h3>Cancelación</h3>
+        <p>Podés <b>cancelar en cualquier momento</b> desde <b>Mi plan</b>, sin trámites, llamadas ni penalidades. La cancelación evita los cobros siguientes y <b>conservás el acceso hasta el último día del período ya pagado</b>. Después, se aplica lo previsto en la <a href="#impago">sección 11</a>.</p>
+      </section>
+
+      <section id="reembolsos">
+        <h2>Reembolsos</h2>
+        <div class="ph-bloque">
+          <span class="ph">[ELEGIR POLÍTICA DE REEMBOLSOS]</span> Texto recomendado (opción por defecto):
+          <br><br>
+          «Si es el <b>primer pago</b> de un plan y pedís el reembolso dentro de los <b>7 días corridos</b> siguientes, te devolvemos el total. Las renovaciones y los pagos posteriores no se reembolsan de forma proporcional: podés cancelar en cualquier momento y conservás el acceso hasta el fin del período pagado. Si un cobro se hizo por error nuestro (por ejemplo, un cobro duplicado), lo devolvemos completo.»
+          <br><br>
+          Alternativas: sin reembolsos salvo error de cobro; o reembolso proporcional del período no usado en planes anuales.
+        </div>
+        <p>Los reembolsos se pagan por el mismo medio de pago, a través de <span class="ph">[PROCESADOR DE PAGOS]</span>, en el plazo que este establezca. Nada de esta sección limita los derechos que la ley de defensa del consumidor te reconoce (ver <a href="#consumidor">sección 22</a>).</p>
+      </section>
+
+      <section id="cambios-precio">
+        <h2>Cambios de precio</h2>
+        <p>Si cambiamos el precio de tu plan, te avisamos por correo con al menos <b>30 días corridos</b> de anticipación. El nuevo precio se aplica recién en la primera renovación posterior a ese plazo. Si no estás de acuerdo, podés cancelar antes de esa renovación sin costo. Un cambio de precio nunca afecta un período que ya pagaste.</p>
+      </section>
+
+      <section id="impago">
+        <h2>Falta de pago, suspensión y conservación de datos</h2>
+        <ul>
+          <li><b>Gracia de 5 días:</b> si un cobro no se puede realizar, tenés 5 días corridos con acceso normal para actualizar el medio de pago. Te avisamos por correo.</li>
+          <li><b>Suspensión:</b> pasados los 5 días sin regularizar, el acceso a las herramientas del plan queda suspendido. Podés seguir ingresando a <b>Mi cuenta</b> y a <b>Mi plan</b> para pagar, descargar tus datos o eliminar la cuenta.</li>
+          <li><b>Conservación:</b> tus datos se conservan durante <span class="ph">[PLAZO]</span> desde la suspensión o desde el fin del período pagado (si cancelaste), para que puedas volver sin perder nada. Antes de que venza ese plazo te avisamos por correo.</li>
+          <li><b>Eliminación:</b> vencido el plazo, los datos se eliminan de forma definitiva, salvo los registros que la ley obligue a conservar (por ejemplo, los de facturación).</li>
+        </ul>
+        <p>Si eliminás tu cuenta desde <b>Mi cuenta</b>, tus datos se borran en ese momento, sin esperar ese plazo. Te recomendamos usar antes <b>Descargar mis datos</b>.</p>
+      </section>
+
+      <section id="uso">
+        <h2>Uso aceptable</h2>
+        <ul>
+          <li><b>Veracidad.</b> Lo que cargás es responsabilidad tuya. NODOS no verifica los datos de empresas, accionistas, beneficiarios finales ni operaciones.</li>
+          <li><b>Datos de otras personas.</b> Si cargás datos de terceros (socios, apoderados, beneficiarios finales, familiares), declarás que tenés derecho a hacerlo y que les informaste cuando corresponda.</li>
+          <li><b>Uso lícito.</b> No podés usar NODOS para actividades ilícitas, para ocultar el origen o el destino de fondos, para vulnerar derechos de terceros ni para guardar contenido que no tengas derecho a guardar.</li>
+          <li><b>Integridad del servicio.</b> No podés intentar acceder a cuentas o datos ajenos, eludir medidas de seguridad o de pago, cargar software malicioso, sobrecargar el servicio, extraer contenido de forma automatizada ni hacer ingeniería inversa del software.</li>
+          <li><b>Plazos.</b> Los recordatorios y el calendario son una ayuda: cumplir tus obligaciones en término sigue siendo responsabilidad tuya o de tu empresa.</li>
+        </ul>
+      </section>
+
+      <section id="propiedad">
+        <h2>Propiedad intelectual y licencia de las plantillas</h2>
+        <p>Las plantillas y modelos de documentos, sus códigos (por ejemplo, SOC, POD, FAM, SEP), los textos, guías, calendarios, contenidos educativos, el diseño y el software de NODOS son propiedad del titular o se usan con licencia, y están protegidos por las normas de propiedad intelectual.</p>
+        <ul>
+          <li><b>Licencia limitada.</b> Mientras tu plan esté activo, te otorgamos una licencia personal, no exclusiva, intransferible y revocable para usar las plantillas y el contenido <b>solo para uso interno</b>: tus propios asuntos o los de las empresas que administrás o en las que participás.</li>
+          <li><b>Lo que no está permitido.</b> Revender, sublicenciar, redistribuir, publicar o compartir las plantillas o el contenido (en todo o en parte, en blanco o con cambios menores); copiarlos de forma sistemática; usarlos para armar un banco de modelos, un curso, un producto o un servicio para terceros o que compita con NODOS.</li>
+          <li><b>Documentos que generás.</b> El documento concreto que completás con tus datos lo podés usar, imprimir y presentar libremente para el fin para el que lo generaste.</li>
+          <li><b>Formato.</b> Los documentos se generan para revisar, copiar e imprimir dentro de la herramienta; por decisión de diseño no se ofrecen como archivos editables descargables.</li>
+          <li><b>Revisión profesional.</b> Las plantillas son modelos generales: revisá que se ajusten a tu caso, a los estatutos de tu empresa y a la normativa vigente. Algunos actos requieren escritura pública ante escribano o inscripción registral para tener plena validez.</li>
+        </ul>
+        <p>Al terminar tu plan termina la licencia sobre las plantillas; los documentos que ya generaste para tus asuntos los podés seguir usando.</p>
+      </section>
+
+      <section id="contenido">
+        <h2>Tu contenido y la confidencialidad</h2>
+        <p>Los datos y documentos que cargás son tuyos. Nos das solo el permiso necesario para guardarlos, procesarlos y mostrártelos con el fin de prestarte el servicio.</p>
+        <p>Tratamos tu información como <b>confidencial</b>. No la vendemos ni la usamos para publicidad. Solo accedemos a ella cuando vos lo pedís para darte soporte, cuando es indispensable para la seguridad o el funcionamiento del servicio, o cuando lo ordena una autoridad competente conforme a la ley.</p>
+      </section>
+
+      <section id="terceros">
+        <h2>Noticias y contenido de terceros</h2>
+        <p>NODOS puede mostrar titulares, resúmenes y enlaces de medios y fuentes de terceros. No elaboramos ni controlamos ese contenido y no garantizamos su exactitud, integridad ni vigencia; su mención no implica respaldo. Las noticias son informativas y <b>no son asesoría de inversión</b>. Al abrir un enlace salís de NODOS y se aplican las condiciones del sitio de destino.</p>
+        <p>Para buscar noticias, NODOS solo envía a esas fuentes temas de una lista fija; nunca nombres de empresas, RUC ni datos de personas.</p>
+      </section>
+
+      <section id="disponibilidad">
+        <h2>Disponibilidad del servicio</h2>
+        <p>Buscamos que NODOS funcione siempre, pero <b>no garantizamos un servicio ininterrumpido ni libre de errores</b>. Puede haber interrupciones por mantenimiento, fallas de proveedores, de conectividad o causas ajenas a nosotros. Podemos mejorar, cambiar o retirar funciones; si retiramos una función central de tu plan, te avisamos con anticipación y podés cancelar.</p>
+        <p>Aplicamos medidas razonables de seguridad (ver la <a href="/privacidad#seguridad">Política de privacidad</a>). Ningún sistema es invulnerable: si ocurre un incidente que afecte tus datos, te vamos a avisar.</p>
+      </section>
+
+      <section id="responsabilidad">
+        <h2>Límites de responsabilidad</h2>
+        <p>En la medida en que lo permita la ley, y sin afectar los derechos irrenunciables que te reconoce la normativa de defensa del consumidor:</p>
+        <ul>
+          <li>el titular no responde por decisiones de inversión, societarias, legales, contables o tributarias que tomes a partir de la información de la herramienta;</li>
+          <li>no responde por errores en los datos que cargás vos ni por información de terceros (cotizaciones, noticias, fuentes externas);</li>
+          <li>no responde por daños derivados de interrupciones causadas por terceros o por caso fortuito o fuerza mayor;</li>
+          <li>no responde por lucro cesante ni daños indirectos;</li>
+          <li>la responsabilidad total del titular frente a vos se limita a <span class="ph">[MONTO — P. EJ. LO PAGADO EN LOS ÚLTIMOS 12 MESES]</span>, salvo dolo o culpa grave.</li>
+        </ul>
+      </section>
+
+      <section id="datos">
+        <h2>Protección de datos</h2>
+        <p>Cómo tratamos tus datos personales, qué proveedores usamos, dónde se alojan y cómo ejercer tus derechos (incluidos <b>Descargar mis datos</b> y <b>Eliminar mi cuenta</b>) está en la <a href="/privacidad">Política de privacidad</a>, que forma parte de estos términos.</p>
+      </section>
+
+      <section id="suspension">
+        <h2>Suspensión por incumplimiento</h2>
+        <p>Podemos suspender o cerrar una cuenta que incumpla estos términos, que ponga en riesgo la seguridad del servicio o de otros usuarios, o cuando lo ordene una autoridad. Salvo urgencia o impedimento legal, te avisamos antes y te damos la posibilidad de descargar tus datos. Si cerramos una cuenta sin incumplimiento de tu parte, te devolvemos la parte no usada del período pagado.</p>
+      </section>
+
+      <section id="modificaciones">
+        <h2>Cambios en estos términos</h2>
+        <p>Podemos actualizar estos términos. Si el cambio es importante, te avisamos por correo o dentro de la herramienta con al menos 30 días corridos de anticipación. Si no estás de acuerdo, podés cancelar antes de que rija y descargar tus datos; si seguís usando NODOS después de esa fecha, se entiende que aceptás la nueva versión.</p>
+      </section>
+
+      <section id="ley">
+        <h2>Ley aplicable y jurisdicción</h2>
+        <p>Estos términos se rigen por las leyes de la República del Paraguay. Para cualquier controversia son competentes los juzgados y tribunales de la ciudad de <span class="ph">[CIUDAD]</span>, sin perjuicio de los derechos que la normativa de defensa del consumidor te reconoce, incluido el de reclamar ante la autoridad de aplicación.</p>
+      </section>
+
+      <section id="consumidor">
+        <h2>Defensa del consumidor y comercio electrónico</h2>
+        <!-- Fuentes verificadas el 19/10/2026:
+             Ley N° 1334/1998 «De Defensa del Consumidor y del Usuario» (27/10/1998):
+               https://www.bacn.gov.py/leyes-paraguayas/5040/ley-n-2340-amplia-la-ley-n-1334-del-27-de-octubre-de-1998-de-defensa-del-consumidor-y-del-usuario-br
+             Ley N° 4868/2013 «De Comercio Electrónico» y Decreto Reglamentario N° 1165/2014; Ley N° 6822/2021 «De Servicios de Confianza»:
+               https://www.mic.gov.py/wp-content/uploads/2026/07/Guia-para-favorecer-el-ecommerce.pdf
+               https://www.abc.com.py/nacionales/sensibilizan-sobre-ley-de-comercio-electronico-1230392.html -->
+        <p>Estos términos buscan cumplir con la normativa paraguaya aplicable a la contratación de servicios a distancia, en particular:</p>
+        <ul class="normas">
+          <li><b>Ley N° 1334/98, De Defensa del Consumidor y del Usuario</b>, y sus modificaciones.</li>
+          <li><b>Ley N° 4868/13, De Comercio Electrónico</b>, y su Decreto Reglamentario N° 1165/2014.</li>
+        </ul>
+        <p>En cumplimiento de esas normas, antes de contratar te informamos quién presta el servicio, qué incluye cada plan, su precio total, los medios de pago, cómo cancelar y la política de reembolsos. Si alguna cláusula de estos términos contradice un derecho irrenunciable que esas leyes te reconocen, prevalece la ley.</p>
+        <p class="meta">Esta referencia es informativa y no constituye asesoramiento legal para tu caso.</p>
+      </section>
+
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Para consultas sobre estos términos, tu plan o tus pagos: <span class="ph">[EMAIL DE SOPORTE]</span> o el <a href="https://empresas.nodoscompliance.com/soporte">formulario de soporte</a>. Respuestas rápidas en <a href="/ayuda">Ayuda</a>.</p>
+        <a class="volver" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+          Volver arriba
+        </a>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 NODOS · Paraguay</span>
+    <nav aria-label="Legal y ayuda">
+      <a href="/terminos">Términos</a>
+      <a href="/privacidad">Privacidad</a>
+      <a href="/ayuda">Ayuda</a>
+      <a href="/#precios">Precios</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // En celular el índice arranca cerrado; las tablas muestran el nombre de cada columna.
+  if(innerWidth < 960) document.querySelectorAll('.toc').forEach(function(d){ d.removeAttribute('open'); });
+  document.querySelectorAll('.tabla table').forEach(function(t){
+    var h = [].map.call(t.querySelectorAll('thead th'), function(th){ return th.textContent; });
+    t.querySelectorAll('tbody tr').forEach(function(tr){ [].forEach.call(tr.children, function(td, i){ if(h[i]) td.setAttribute('data-label', h[i]); }); });
+  });
+</script>
+</body>
+</html>

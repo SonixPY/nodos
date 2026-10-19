@@ -1,0 +1,68 @@
+# Monitor de disponibilidad de las tres páginas NODOS.
+# Corre cada 30 minutos y a mano (Actions → Monitor NODOS → Run workflow).
+# Si algún chequeo falla, el job falla y GitHub le avisa por email al dueño del repo.
+name: Monitor NODOS
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: monitor
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Chequear sitios
+        shell: bash
+        run: |
+          set -uo pipefail
+          FALLAS=0
+
+          # pedir URL -> deja el código HTTP en $CODE y el cuerpo en /tmp/body
+          pedir() {
+            CODE=$(curl -sS -o /tmp/body -w '%{http_code}' \
+              --max-time 20 --connect-timeout 10 \
+              --retry 3 --retry-delay 5 --retry-all-errors \
+              -A 'NODOS-monitor/1.0 (+https://github.com/SonixPY/nodos)' \
+              "$1") || CODE=000
+          }
+          ok()   { echo "OK    $1 ($CODE)"; }
+          mal()  { echo "::error title=Caída::$1 respondió $CODE. $2"; FALLAS=$((FALLAS+1)); }
+
+          # 1 y 2: páginas que deben responder 2xx o 3xx
+          for URL in "https://nodoscompliance.com/" "https://finanzas.nodoscompliance.com/login"; do
+            pedir "$URL"
+            if [[ "$CODE" =~ ^[23][0-9][0-9]$ ]]; then ok "$URL"; else mal "$URL" "Se esperaba 2xx/3xx."; fi
+          done
+
+          # 3: API de sesión: 200 con JSON
+          URL="https://empresas.nodoscompliance.com/api/cuenta/sesion"
+          pedir "$URL"
+          if [[ "$CODE" == "200" ]] && jq -e 'type == "object"' /tmp/body >/dev/null 2>&1; then
+            ok "$URL"
+          else
+            mal "$URL" "Se esperaba 200 con JSON. Inicio del cuerpo: $(head -c 200 /tmp/body 2>/dev/null | tr -d '\r\n')"
+          fi
+
+          # 4: cron que mantiene activa la base: cuerpo con "ok":true.
+          # Si en Vercel se configura CRON_SECRET, sin la clave responde 401: se omite con aviso.
+          URL="https://empresas.nodoscompliance.com/api/cron/mantener-activa"
+          pedir "$URL"
+          if [[ "$CODE" == "401" ]]; then
+            echo "::warning title=Chequeo omitido::$URL respondió 401 (CRON_SECRET activo). Se omite este chequeo."
+          elif [[ "$CODE" =~ ^2[0-9][0-9]$ ]] && grep -Eq '"ok"[[:space:]]*:[[:space:]]*true' /tmp/body; then
+            ok "$URL"
+          else
+            mal "$URL" "Se esperaba un cuerpo con \"ok\":true. Inicio del cuerpo: $(head -c 200 /tmp/body 2>/dev/null | tr -d '\r\n')"
+          fi
+
+          echo "Fallas: $FALLAS"
+          if [[ "$FALLAS" -gt 0 ]]; then exit 1; fi

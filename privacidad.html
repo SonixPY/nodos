@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de privacidad · NODOS</title>
+<meta name="description" content="Qué datos trata NODOS, para qué, dónde se guardan y cómo ejercer tus derechos.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nodoscompliance.com/privacidad">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1E2F25">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --musgo:#1E2F25;--bosque:#34483A;--cobre:#B8734A;--cobre-hover:#8C5934;--marfil:#F2EEE6;--carbon:#242522;
+    --muted:rgba(36,37,34,0.66);--line:#34483a33;--marfil-muted:rgba(242,238,230,0.72);
+    --r-sm:4px;--r-md:8px;--r-lg:16px;
+    --serif:'Space Grotesk',system-ui,sans-serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--marfil);color:var(--carbon);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:var(--cobre-hover);text-underline-offset:3px;}
+  a:hover{color:var(--musgo);}
+  :focus-visible{outline:2px solid var(--cobre);outline-offset:3px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px;}
+  @media (min-width:600px){.wrap{padding:0 24px;}}
+
+  /* Cabecera */
+  .top{background:var(--musgo);}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px;}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--marfil);text-decoration:none;font:700 1.08rem var(--serif);letter-spacing:0.08em;}
+  .logo:hover{color:var(--marfil);}
+  .logo svg{width:32px;height:32px;flex-shrink:0;}
+  .top nav{display:flex;align-items:center;gap:6px;}
+  .top nav a{color:var(--marfil-muted);text-decoration:none;font:500 0.88rem var(--sans);padding:8px 10px;border-radius:var(--r-md);}
+  .top nav a:hover{color:var(--marfil);}
+  .top nav a.cta{background:var(--cobre-hover);color:var(--marfil);padding:8px 14px;}
+  .top nav a.cta:hover{background:#7a4c2c;}
+  @media (max-width:420px){.top nav a.opt{display:none;}}
+
+  /* Título */
+  .hero{padding:40px 0 8px;}
+  .eyebrow{font:600 0.75rem var(--sans);letter-spacing:0.14em;text-transform:uppercase;color:var(--cobre-hover);}
+  h1{font:600 clamp(1.8rem,5vw,2.6rem)/1.15 var(--serif);color:var(--musgo);letter-spacing:-0.01em;margin:8px 0 10px;}
+  .meta{color:var(--muted);font-size:0.9rem;}
+
+  .borrador[hidden]{display:none;}
+  .borrador{display:flex;gap:12px;align-items:flex-start;margin:22px 0 4px;padding:14px 16px;border:1.5px dashed var(--cobre);border-radius:var(--r-md);background:#B8734A1A;color:var(--carbon);font-size:0.93rem;line-height:1.55;}
+  .borrador svg{width:22px;height:22px;flex-shrink:0;color:var(--cobre-hover);margin-top:1px;}
+  .borrador b{font-family:var(--serif);color:var(--cobre-hover);display:block;font-size:1rem;}
+
+  /* Marcadores a completar: imposibles de pasar por alto */
+  .ph{background:#FFE27A;color:#3A2C00;font-weight:600;font-size:0.9em;padding:1px 6px;border-radius:var(--r-sm);outline:1.5px dashed #B08A00;outline-offset:1px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  .ph-bloque{display:block;background:#FFF4C2;border:1.5px dashed #B08A00;border-radius:var(--r-md);padding:12px 14px;margin:10px 0 14px;font-size:0.95rem;}
+  .ph-bloque .ph{margin-right:4px;}
+
+  /* Índice + texto */
+  .doc{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:24px 0 64px;}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:4px 16px;}
+  .toc summary{cursor:pointer;font:600 0.95rem var(--serif);color:var(--musgo);padding:12px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  .toc summary::-webkit-details-marker{display:none;}
+  .toc summary svg{width:18px;height:18px;transition:transform 0.2s;}
+  .toc[open] summary svg{transform:rotate(180deg);}
+  .toc ol{list-style:none;counter-reset:t;padding:0 0 12px;}
+  .toc li{counter-increment:t;}
+  .toc li a{display:flex;gap:8px;color:var(--carbon);text-decoration:none;font-size:0.9rem;line-height:1.4;padding:6px 0;}
+  .toc li a::before{content:counter(t) ".";color:var(--cobre-hover);font-weight:600;min-width:1.6em;}
+  .toc li a:hover{color:var(--cobre-hover);}
+  @media (min-width:960px){
+    .doc{grid-template-columns:250px minmax(0,1fr);gap:48px;}
+    .toc{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;}
+  }
+
+  article{max-width:70ch;counter-reset:s;}
+  article section{counter-increment:s;scroll-margin-top:16px;padding-top:8px;}
+  article h2{font:600 1.3rem/1.3 var(--serif);color:var(--musgo);margin:28px 0 10px;display:flex;gap:10px;}
+  article h2::before{content:counter(s) ".";color:var(--cobre);}
+  article h3{font:600 1.02rem/1.4 var(--serif);color:var(--bosque);margin:18px 0 6px;}
+  article p,article li{-webkit-hyphens:auto;hyphens:auto;}
+  article p{margin:0 0 12px;}
+  article ul,article ol.lista{margin:0 0 14px 1.2em;}
+  article li{margin:4px 0;}
+  article li::marker{color:var(--cobre);}
+  .nota{border-left:3px solid var(--cobre);background:#fff;padding:12px 16px;border-radius:0 var(--r-md) var(--r-md) 0;margin:14px 0;font-size:0.95rem;}
+  .tabla{overflow-x:auto;margin:10px 0 16px;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;}
+  table{border-collapse:collapse;width:100%;font-size:0.9rem;line-height:1.5;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font:600 0.85rem var(--serif);color:var(--musgo);background:#34483a0d;}
+  tr:last-child td{border-bottom:0;}
+  .normas li{margin:8px 0;}
+  @media (max-width:599px){
+    .tabla{border:0;background:transparent;overflow:visible;}
+    .tabla table,.tabla tbody,.tabla tr,.tabla td{display:block;width:100%;}
+    .tabla thead{display:none;}
+    .tabla tr{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px;padding:6px 0;}
+    .tabla td{border:0;padding:4px 14px;}
+    .tabla td[data-label]::before{content:attr(data-label);display:block;font:600 0.72rem var(--sans);letter-spacing:0.08em;text-transform:uppercase;color:var(--cobre-hover);}
+  }
+  .faq h2::before{content:none;}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin:10px 0;}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;font:600 1rem/1.4 var(--serif);color:var(--musgo);}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"";flex-shrink:0;width:9px;height:9px;margin-top:6px;border-right:2px solid var(--cobre);border-bottom:2px solid var(--cobre);transform:rotate(45deg);transition:transform 0.2s;}
+  .faq details[open] summary::after{transform:rotate(-135deg);margin-top:10px;}
+  .faq details p{padding:0 16px;margin-bottom:12px;}
+  .faq details p:last-child{padding-bottom:4px;}
+  .faq details p.aviso{font-size:0.88rem;color:var(--muted);border-left:2px solid var(--cobre);padding:0 0 0 10px;margin:0 16px 14px;}
+  .volver{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;margin-top:28px;}
+
+  footer{background:var(--musgo);color:var(--marfil-muted);font-size:0.85rem;padding:28px 0;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--marfil-muted);text-decoration:none;}
+  footer a:hover{color:var(--cobre);}
+  footer nav{display:flex;gap:16px;flex-wrap:wrap;}
+  @media print{.top nav,.toc,footer{display:none;} .doc{display:block;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="NODOS — inicio">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="220" height="220" rx="32" fill="#34483A"/><g transform="translate(10,10)"><g stroke="#B8734A" fill="none" stroke-linejoin="round"><polyline points="110,118 66,118 54,106 54,64" stroke-width="7"/><polyline points="110,118 64,118 50,132" stroke-width="6"/><polyline points="110,118 110,74 122,62 157,62" stroke-width="8"/></g><circle cx="54" cy="54" r="11" fill="#F2EEE6"/><circle cx="46" cy="140" r="10" fill="#F2EEE6"/><circle cx="168" cy="62" r="12" fill="#F2EEE6"/><circle cx="110" cy="118" r="24" fill="#B8734A"/></g></svg>
+      NODOS
+    </a>
+    <nav aria-label="Principal">
+      <a class="opt" href="/ayuda">Ayuda</a>
+      <a class="opt" href="/terminos">Términos</a>
+      <a class="cta" href="/ingresar">Ingresar</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Legal</p>
+    <h1>Política de privacidad</h1>
+    <p class="meta">nodoscompliance.com, NODOS Finanzas y NODOS Empresas · Versión del <span class="ph">[FECHA DE VIGENCIA]</span></p>
+    <div class="borrador" id="borrador" role="note" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+      <span><b>Borrador para revisión — no publicado como definitivo</b>Los datos marcados <span class="ph">[ASÍ]</span> están pendientes de completar por el titular del servicio y el texto completo está sujeto a revisión legal.</span>
+    </div>
+    <script>
+      // Pasar a false cuando el texto esté revisado y sin marcadores pendientes.
+      var BORRADOR = true;
+      if (BORRADOR) document.getElementById('borrador').hidden = false;
+    </script>
+  </div>
+
+  <div class="doc">
+    <details class="toc" open>
+      <summary>Contenido <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <ol>
+        <li><a href="#responsable">Quién es responsable de tus datos</a></li>
+        <li><a href="#resumen">Resumen en cinco puntos</a></li>
+        <li><a href="#datos">Qué datos tratamos</a></li>
+        <li><a href="#finalidades">Para qué los usamos y con qué base</a></li>
+        <li><a href="#terceros">Datos de otras personas que cargás vos</a></li>
+        <li><a href="#encargados">Proveedores que tratan datos por nosotros</a></li>
+        <li><a href="#transferencia">Transferencia internacional</a></li>
+        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#conservacion">Cuánto tiempo los guardamos</a></li>
+        <li><a href="#derechos">Tus derechos y cómo ejercerlos</a></li>
+        <li><a href="#cookies">Cookies y analítica</a></li>
+        <li><a href="#noticias">Noticias sin exponer tus datos</a></li>
+        <li><a href="#menores">Menores de edad</a></li>
+        <li><a href="#cambios">Cambios en esta política</a></li>
+        <li><a href="#normas">Marco normativo</a></li>
+        <li><a href="#contacto">Contacto y reclamos</a></li>
+      </ol>
+    </details>
+
+    <article>
+      <section id="responsable">
+        <h2>Quién es responsable de tus datos</h2>
+        <p>El responsable del tratamiento de los datos de tu cuenta es <span class="ph">[RAZÓN SOCIAL O NOMBRE DEL TITULAR]</span>, RUC <span class="ph">[RUC]</span>, con domicilio en <span class="ph">[DOMICILIO]</span>, República del Paraguay, titular de NODOS. Contacto para privacidad: <span class="ph">[EMAIL DE SOPORTE]</span>.</p>
+        <p>Esta política se aplica a nodoscompliance.com (incluida la página de ingreso), a NODOS Finanzas y a NODOS Empresas, y se complementa con los <a href="/terminos">Términos y condiciones</a>.</p>
+      </section>
+
+      <section id="resumen">
+        <h2>Resumen en cinco puntos</h2>
+        <ul>
+          <li>Usamos tus datos para prestarte el servicio. <b>No los vendemos</b> ni los usamos para publicidad.</li>
+          <li>Cada cuenta está aislada: nadie más ve tus inversiones, empresas ni documentos, salvo a quien vos le des acceso.</li>
+          <li>Los datos se alojan en servidores de <b>Estados Unidos</b>.</li>
+          <li>Los datos de tu tarjeta los maneja el procesador de pagos; <b>NODOS nunca los recibe</b>.</li>
+          <li>Podés descargar tus datos o eliminar tu cuenta desde <b>Mi cuenta</b>, cuando quieras.</li>
+        </ul>
+      </section>
+
+      <section id="datos">
+        <h2>Qué datos tratamos</h2>
+        <h3>Cuenta</h3>
+        <p>Nombre, nombre de usuario, correo electrónico y contraseña. La contraseña se guarda transformada de forma irreversible (no la podemos leer). También registramos la fecha de alta, el último ingreso, los permisos de tu cuenta y la aceptación de los términos.</p>
+        <h3>NODOS Finanzas</h3>
+        <p>Lo que cargás o importás: inversiones y activos (digitales y tradicionales), compras y ventas, operaciones de trading, ingresos, gastos, categorías y archivos de importación (por ejemplo, exportaciones de exchanges o extractos).</p>
+        <h3>NODOS Empresas</h3>
+        <p>Datos de las empresas que administrás y de las personas vinculadas: datos societarios, accionistas y participaciones, <b>beneficiarios finales</b> (que pueden incluir <b>número de documento de identidad</b>, nacionalidad, domicilio y porcentaje de participación o control), apoderados y <b>poderes</b>, vencimientos, registros de cumplimiento y los <b>documentos que subís</b> al archivo privado (estatutos, actas, documentos de identidad, entre otros).</p>
+        <h3>Suscripción y pagos</h3>
+        <p>Plan, estado, fechas, montos y el identificador de la operación que nos informa el procesador de pagos, y los datos de facturación que nos des (nombre o razón social y RUC). <b>No recibimos ni guardamos números de tarjeta ni claves bancarias.</b></p>
+        <h3>Formulario de consulta y soporte</h3>
+        <p>Lo que nos enviás por el formulario de consulta de nodoscompliance.com o por soporte: nombre, empresa (opcional), correo, WhatsApp, tema y mensaje.</p>
+        <h3>Datos técnicos</h3>
+        <p>Cookies de sesión, dirección IP, tipo de navegador y registros técnicos de los servidores, necesarios para la seguridad y para resolver errores. Solo en el sitio público nodoscompliance.com, estadísticas de uso de Google Analytics (ver <a href="#cookies">Cookies y analítica</a>). NODOS Finanzas y NODOS Empresas no usan Google Analytics.</p>
+      </section>
+
+      <section id="finalidades">
+        <h2>Para qué los usamos y con qué base</h2>
+        <div class="tabla"><table>
+          <thead><tr><th>Finalidad</th><th>Base</th></tr></thead>
+          <tbody>
+            <tr><td>Crear tu cuenta, prestarte las herramientas y guardar tu información</td><td>Tu consentimiento al registrarte y el contrato (Términos) que aceptás</td></tr>
+            <tr><td>Cobrar tu plan, emitir comprobantes y llevar registros contables</td><td>Contrato y obligaciones legales</td></tr>
+            <tr><td>Enviarte correos del servicio (confirmación, recuperación de contraseña, avisos de renovación, de pago y de cambios)</td><td>Contrato</td></tr>
+            <tr><td>Proteger el servicio, prevenir accesos indebidos y resolver errores</td><td>Interés legítimo en la seguridad del servicio</td></tr>
+            <tr><td>Responder tus consultas y pedidos de soporte</td><td>Tu consentimiento al enviarlos</td></tr>
+            <tr><td>Medir de forma agregada el uso del sitio público</td><td>Interés legítimo; podés oponerte (ver Cookies)</td></tr>
+          </tbody>
+        </table></div>
+        <p>No usamos tus datos para publicidad de terceros, no los vendemos y no tomamos decisiones automatizadas que produzcan efectos jurídicos sobre vos. Podés retirar tu consentimiento en cualquier momento eliminando tu cuenta; eso no afecta lo tratado antes.</p>
+      </section>
+
+      <section id="terceros">
+        <h2>Datos de otras personas que cargás vos</h2>
+        <p>Cuando cargás datos de otras personas (socios, apoderados, beneficiarios finales, familiares), sos vos o tu empresa quien decide para qué se usan; NODOS solo los guarda y procesa por tu cuenta para prestarte el servicio. Te corresponde contar con una base legítima para tratarlos e informar a esas personas cuando corresponda. Si alguna de ellas nos contacta, le indicaremos que se dirija a vos y te ayudaremos a responder.</p>
+      </section>
+
+      <section id="encargados">
+        <h2>Proveedores que tratan datos por nosotros</h2>
+        <p>Usamos estos proveedores, que tratan datos por cuenta nuestra y solo para las funciones indicadas:</p>
+        <div class="tabla"><table>
+          <thead><tr><th>Proveedor</th><th>Función</th><th>Ubicación</th></tr></thead>
+          <tbody>
+            <tr><td>Supabase</td><td>Base de datos, autenticación (cuentas y sesiones) y almacenamiento de documentos</td><td>Estados Unidos</td></tr>
+            <tr><td>Vercel</td><td>Alojamiento y ejecución de NODOS Finanzas y NODOS Empresas</td><td>Estados Unidos</td></tr>
+            <tr><td>GitHub Pages (GitHub)</td><td>Alojamiento del sitio público nodoscompliance.com</td><td>Estados Unidos</td></tr>
+            <tr><td>Google Analytics (Google)</td><td>Estadísticas de uso, solo en nodoscompliance.com</td><td>Estados Unidos</td></tr>
+            <tr><td><span class="ph">[PROCESADOR DE PAGOS]</span></td><td>Cobro de los planes</td><td><span class="ph">[PAÍS]</span></td></tr>
+            <tr><td><span class="ph">[PROVEEDOR DE CORREO]</span></td><td>Envío de los correos del servicio</td><td><span class="ph">[PAÍS]</span></td></tr>
+          </tbody>
+        </table></div>
+        <p>También podemos comunicar datos a autoridades cuando una norma o una orden competente lo exija. No compartimos datos con otros terceros.</p>
+      </section>
+
+      <section id="transferencia">
+        <h2>Transferencia internacional</h2>
+        <p>Los datos de tu cuenta, de NODOS Finanzas y de NODOS Empresas, incluidos los documentos que subís, se almacenan y procesan en servidores ubicados en <b>Estados Unidos</b>, es decir, <b>fuera de Paraguay</b>. Al crear tu cuenta, aceptás esa transferencia. Elegimos proveedores reconocidos que aplican medidas de seguridad y confidencialidad en sus condiciones de servicio, y vamos a revisar esta transferencia a medida que la autoridad de protección de datos dicte criterios al respecto.</p>
+      </section>
+
+      <section id="seguridad">
+        <h2>Seguridad</h2>
+        <ul>
+          <li><b>Cifrado en tránsito:</b> todas las conexiones a NODOS usan HTTPS.</li>
+          <li><b>Reglas de acceso por cuenta:</b> la base de datos aplica reglas que permiten a cada usuario leer y modificar solo sus propios datos, o los que su equipo le comparta.</li>
+          <li><b>Documentos privados:</b> los archivos que subís no son públicos y solo se entregan a tu sesión.</li>
+          <li><b>Contraseñas:</b> nunca se guardan en texto legible.</li>
+          <li><b>Respaldos:</b> la base de datos cuenta con respaldos periódicos.</li>
+          <li><b>Acceso interno mínimo:</b> solo accedemos a tus datos para darte soporte cuando lo pedís, por seguridad o por mandato legal.</li>
+        </ul>
+        <p>Si detectamos un incidente de seguridad que afecte tus datos, te avisamos sin demoras indebidas con lo que sepamos y las medidas tomadas.</p>
+      </section>
+
+      <section id="conservacion">
+        <h2>Cuánto tiempo los guardamos</h2>
+        <ul>
+          <li><b>Cuenta activa:</b> mientras la uses.</li>
+          <li><b>Plan vencido, cancelado o suspendido:</b> durante <span class="ph">[PLAZO]</span>; luego se eliminan (ver <a href="/terminos#impago">Términos</a>).</li>
+          <li><b>Cuenta eliminada:</b> los datos se borran de la base en el momento; las copias de respaldo se renuevan en <span class="ph">[PLAZO DE ROTACIÓN DE RESPALDOS]</span>.</li>
+          <li><b>Pagos y comprobantes:</b> el plazo que exija la normativa tributaria <span class="ph">[CONFIRMAR CON CONTADOR]</span>.</li>
+          <li><b>Consultas del sitio:</b> <span class="ph">[PLAZO]</span> desde la última comunicación.</li>
+        </ul>
+      </section>
+
+      <section id="derechos">
+        <h2>Tus derechos y cómo ejercerlos</h2>
+        <p>Podés ejercer, en forma gratuita, los siguientes derechos sobre tus datos:</p>
+        <ul>
+          <li><b>Acceso:</b> saber qué datos tuyos tenemos.</li>
+          <li><b>Rectificación:</b> corregirlos; la mayoría los podés editar vos mismo en la herramienta o en <b>Mi cuenta</b>.</li>
+          <li><b>Supresión:</b> eliminar tu cuenta y tus datos con <b>Mi cuenta → Eliminar mi cuenta</b>.</li>
+          <li><b>Portabilidad:</b> descargar tus datos en un formato estructurado con <b>Mi cuenta → Descargar mis datos</b>.</li>
+          <li><b>Oposición:</b> oponerte a tratamientos que no sean necesarios para prestarte el servicio.</li>
+        </ul>
+        <p>Para lo que no puedas hacer desde la herramienta, escribinos a <span class="ph">[EMAIL DE SOPORTE]</span> desde el correo de tu cuenta. Respondemos dentro de los <span class="ph">[PLAZO DE RESPUESTA]</span>. Podemos pedirte que confirmes tu identidad antes de entregar o borrar datos.</p>
+      </section>
+
+      <section id="cookies">
+        <h2>Cookies y analítica</h2>
+        <div class="tabla"><table>
+          <thead><tr><th>Cookie</th><th>Para qué</th><th>Dónde</th></tr></thead>
+          <tbody>
+            <tr><td>Sesión (<code>sb-…-auth-token</code>)</td><td>Mantenerte con la sesión iniciada en las tres páginas. Es necesaria: sin ella no podés ingresar.</td><td>.nodoscompliance.com</td></tr>
+            <tr><td>Google Analytics (<code>_ga</code>, <code>_ga_*</code>)</td><td>Contar visitas y medir de forma agregada qué secciones se usan. Los eventos que registramos no incluyen tu nombre, email ni datos que cargues.</td><td>Solo nodoscompliance.com</td></tr>
+          </tbody>
+        </table></div>
+        <p>Las herramientas también pueden guardar en tu navegador preferencias menores (por ejemplo, la última pestaña abierta). Podés borrar o bloquear cookies desde la configuración de tu navegador y desactivar Google Analytics con el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">complemento de inhabilitación de Google</a>. Si bloqueás la cookie de sesión, no vas a poder ingresar.</p>
+      </section>
+
+      <section id="noticias">
+        <h2>Noticias sin exponer tus datos</h2>
+        <p>Para mostrarte noticias relacionadas, NODOS consulta fuentes de terceros enviando solo identificadores de temas de una lista fija. <b>Nunca enviamos nombres de empresas, RUC, nombres de personas ni montos.</b> Al abrir una noticia, el sitio del medio puede aplicar sus propias cookies y políticas.</p>
+      </section>
+
+      <section id="menores">
+        <h2>Menores de edad</h2>
+        <p>NODOS está dirigido a personas mayores de 18 años y no admite cuentas de menores. Si creés que un menor creó una cuenta, escribinos y la eliminamos. Los datos de menores que un usuario adulto cargue en su propia cuenta (por ejemplo, un heredero accionista) quedan bajo la responsabilidad de ese usuario, que debe contar con la autorización de sus representantes legales cuando corresponda.</p>
+      </section>
+
+      <section id="cambios">
+        <h2>Cambios en esta política</h2>
+        <p>Si cambiamos esta política de forma importante, te avisamos por correo o dentro de la herramienta antes de que el cambio rija. La fecha de la versión vigente está arriba.</p>
+      </section>
+
+      <section id="normas">
+        <h2>Marco normativo</h2>
+        <!-- Fuentes verificadas el 19/10/2026:
+             Ley N° 7593/2025 «De Protección de Datos Personales en la República del Paraguay», promulgada el 27/11/2025.
+             Art. 26: derechos de acceso, rectificación, supresión, oposición y portabilidad. Arts. 34-35: Agencia Nacional de
+             Protección de Datos Personales. Art. 57: vigencia a los 24 meses de su publicación. Art. 60: reglamentación en 24 meses.
+               https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-75932025--de-proteccin-de-datos-personales-en-la-repblica-del-paraguay
+               https://ferrere.com/es/novedades/paraguay-adopta-su-ley-de-proteccion-de-datos-personales/
+             Ley N° 1334/1998 «De Defensa del Consumidor y del Usuario»:
+               https://www.bacn.gov.py/leyes-paraguayas/5040/ley-n-2340-amplia-la-ley-n-1334-del-27-de-octubre-de-1998-de-defensa-del-consumidor-y-del-usuario-br -->
+        <ul class="normas">
+          <li><b>Ley N° 7593/2025, De Protección de Datos Personales en la República del Paraguay.</b> Promulgada en noviembre de 2025; entra en vigencia a los 24 meses de su publicación y crea la Agencia Nacional de Protección de Datos Personales. Hasta entonces, NODOS aplica desde ya sus principios y los derechos que reconoce (acceso, rectificación, supresión, oposición y portabilidad), junto con la normativa paraguaya de protección de datos personales vigente. <a href="https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-75932025--de-proteccin-de-datos-personales-en-la-repblica-del-paraguay" target="_blank" rel="noopener">Texto (Biblioteca y Archivo Central del Congreso)</a>.</li>
+          <li><b>Ley N° 1334/98, De Defensa del Consumidor y del Usuario</b>, y sus modificaciones.</li>
+        </ul>
+        <p class="meta">Esta referencia es informativa y no constituye asesoramiento legal para tu caso.</p>
+      </section>
+
+      <section id="contacto">
+        <h2>Contacto y reclamos</h2>
+        <p>Para cualquier consulta o pedido sobre tus datos: <span class="ph">[EMAIL DE SOPORTE]</span>. Si no quedás conforme con nuestra respuesta, podés recurrir a la autoridad de protección de datos personales cuando esté en funcionamiento, o a la autoridad de defensa del consumidor.</p>
+        <p>Ver también los <a href="/terminos">Términos y condiciones</a> y la página de <a href="/ayuda">Ayuda</a>.</p>
+        <a class="volver" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+          Volver arriba
+        </a>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 NODOS · Paraguay</span>
+    <nav aria-label="Legal y ayuda">
+      <a href="/terminos">Términos</a>
+      <a href="/privacidad">Privacidad</a>
+      <a href="/ayuda">Ayuda</a>
+      <a href="/#precios">Precios</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // En celular el índice arranca cerrado; las tablas muestran el nombre de cada columna.
+  if(innerWidth < 960) document.querySelectorAll('.toc').forEach(function(d){ d.removeAttribute('open'); });
+  document.querySelectorAll('.tabla table').forEach(function(t){
+    var h = [].map.call(t.querySelectorAll('thead th'), function(th){ return th.textContent; });
+    t.querySelectorAll('tbody tr').forEach(function(tr){ [].forEach.call(tr.children, function(td, i){ if(h[i]) td.setAttribute('data-label', h[i]); }); });
+  });
+</script>
+</body>
+</html>

@@ -14,6 +14,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google Analytics 4: solo en el dominio real. Los eventos nunca llevan datos personales. -->
+<script>
+  (function(){
+    var h = location.hostname;
+    if(h !== 'nodoscompliance.com' && h !== 'www.nodoscompliance.com') return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-0WSLHTJ44Z');
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0WSLHTJ44Z';
+    document.head.appendChild(s);
+  })();
+</script>
 <style>
   :root{
     --musgo:#1E2F25;--bosque:#34483A;--cobre:#B8734A;--cobre-hover:#8C5934;--marfil:#F2EEE6;--carbon:#242522;
@@ -65,6 +79,9 @@
   .apps small{color:var(--muted);font-size:0.8rem;}
   .foot{margin-top:22px;text-align:center;font-size:0.8rem;color:var(--muted);}
   .foot a{color:var(--cobre-hover);}
+  .acepto{display:flex;gap:10px;align-items:flex-start;margin:18px 0 0;font-weight:400;font-size:0.86rem;line-height:1.45;color:var(--carbon);cursor:pointer;}
+  .acepto input{width:18px;height:18px;flex-shrink:0;margin-top:1px;padding:0;accent-color:var(--musgo);cursor:pointer;}
+  .acepto a{color:var(--cobre-hover);text-underline-offset:2px;}
   @media (min-width:900px){
     body{grid-template-columns:minmax(380px,44%) 1fr;}
     .brand{padding:48px 56px;gap:22px;min-height:100vh;position:sticky;top:0;}
@@ -129,6 +146,7 @@
         <label for="c-pw">Contraseña</label>
         <div class="pw"><input id="c-pw" name="clave" type="password" autocomplete="new-password" minlength="8" required><button type="button" data-ver>Ver</button></div>
         <p class="hint">Al menos 8 caracteres.</p>
+        <label class="acepto" for="c-acepto"><input id="c-acepto" name="acepta_terminos" type="checkbox" required> <span>Acepto los <a href="/terminos" target="_blank" rel="noopener">Términos</a> y la <a href="/privacidad" target="_blank" rel="noopener">Política de privacidad</a>.</span></label>
         <button class="btn" type="submit">Crear cuenta</button>
         <p class="msg" role="alert"></p>
       </form>
@@ -158,7 +176,7 @@
       </div>
     </section>
 
-    <p class="foot">¿Problemas para ingresar? <a href="https://empresas.nodoscompliance.com/soporte">Escribinos</a>.</p>
+    <p class="foot">¿Problemas para ingresar? <a href="https://empresas.nodoscompliance.com/soporte">Escribinos</a>.<br><a href="/terminos">Términos</a> · <a href="/privacidad">Privacidad</a> · <a href="/ayuda">Ayuda</a></p>
   </div>
 </main>
 
@@ -185,7 +203,9 @@
 
   // Pestañas
   var tabs = document.querySelectorAll('[data-tab]');
+  var registroIniciado = false;
   function mostrar(nombre){
+    if(nombre === 'crear' && !registroIniciado){ registroIniciado = true; if(typeof gtag === 'function') gtag('event', 'inicio_registro'); }
     document.querySelectorAll('[data-panel]').forEach(function(p){ p.hidden = p.getAttribute('data-panel') !== nombre; });
     tabs.forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-tab') === nombre ? 'true' : 'false'); });
     document.querySelector('.tabs').style.display = nombre === 'listo' ? 'none' : '';
@@ -198,6 +218,16 @@
   mostrar(h === 'crear' || h === 'recuperar' ? h : 'ingresar');
 
   function aviso(form, tipo, texto){ var m = form.querySelector('.msg'); m.className = 'msg ' + tipo; m.textContent = texto; }
+
+  // Link de confirmación o de recuperar contraseña vencido o ya usado.
+  // Las apps mandan "link_vencido" (y se acepta "link-vencido" por compatibilidad).
+  if(qs.get('aviso') === 'link_vencido' || qs.get('aviso') === 'link-vencido'){
+    var visible = document.querySelector('[data-panel]:not([hidden]) form');
+    if(visible) aviso(visible, 'err', 'El link venció o ya se usó. Pedí uno nuevo.');
+    qs.delete('aviso');
+    var resto = qs.toString();
+    history.replaceState(null, '', location.pathname + (resto ? '?' + resto : '') + location.hash);
+  }
   function ocupado(form, si, texto){ var b = form.querySelector('.btn'); if(!b.dataset.txt) b.dataset.txt = b.textContent; b.disabled = si; b.textContent = si ? texto : b.dataset.txt; }
 
   // ¿Ya hay sesión? Directo a destino.
@@ -240,11 +270,13 @@
     if(!/^[a-z0-9._]{3,20}$/.test(d.usuario)) return aviso(f, 'err', 'Elegí un usuario de 3 a 20 caracteres: minúsculas, números, punto o guion bajo.');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return aviso(f, 'err', 'Ese email no parece válido.');
     if(d.clave.length < 8) return aviso(f, 'err', 'La contraseña necesita al menos 8 caracteres.');
+    if(!f.acepta_terminos.checked) return aviso(f, 'err', 'Para crear la cuenta tenés que aceptar los Términos y la Política de privacidad.');
+    d.acepta_terminos = true;
     ocupado(f, true, 'Creando cuenta…');
     post('/registro', d).then(function(j){
       ocupado(f, false);
       if(!j._ok) return aviso(f, 'err', j.message || 'No pudimos crear la cuenta.');
-      if(typeof gtag === 'function') gtag('event', 'sign_up');
+      if(typeof gtag === 'function'){ gtag('event', 'registro_enviado'); gtag('event', 'sign_up'); }
       if(j.confirmar){ f.reset(); aviso(f, 'ok', 'Te mandamos un email a ' + d.email + ' para confirmar tu cuenta. Abrí el link y quedás adentro.'); }
       else salir();
     });

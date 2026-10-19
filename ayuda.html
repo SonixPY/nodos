@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayuda · NODOS</title>
+<meta name="description" content="Preguntas frecuentes sobre la cuenta NODOS, planes, pagos, seguridad, NODOS Finanzas y NODOS Empresas.">
+<link rel="canonical" href="https://nodoscompliance.com/ayuda">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1E2F25">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --musgo:#1E2F25;--bosque:#34483A;--cobre:#B8734A;--cobre-hover:#8C5934;--marfil:#F2EEE6;--carbon:#242522;
+    --muted:rgba(36,37,34,0.66);--line:#34483a33;--marfil-muted:rgba(242,238,230,0.72);
+    --r-sm:4px;--r-md:8px;--r-lg:16px;
+    --serif:'Space Grotesk',system-ui,sans-serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--marfil);color:var(--carbon);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:var(--cobre-hover);text-underline-offset:3px;}
+  a:hover{color:var(--musgo);}
+  :focus-visible{outline:2px solid var(--cobre);outline-offset:3px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px;}
+  @media (min-width:600px){.wrap{padding:0 24px;}}
+
+  /* Cabecera */
+  .top{background:var(--musgo);}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px;}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--marfil);text-decoration:none;font:700 1.08rem var(--serif);letter-spacing:0.08em;}
+  .logo:hover{color:var(--marfil);}
+  .logo svg{width:32px;height:32px;flex-shrink:0;}
+  .top nav{display:flex;align-items:center;gap:6px;}
+  .top nav a{color:var(--marfil-muted);text-decoration:none;font:500 0.88rem var(--sans);padding:8px 10px;border-radius:var(--r-md);}
+  .top nav a:hover{color:var(--marfil);}
+  .top nav a.cta{background:var(--cobre-hover);color:var(--marfil);padding:8px 14px;}
+  .top nav a.cta:hover{background:#7a4c2c;}
+  @media (max-width:420px){.top nav a.opt{display:none;}}
+
+  /* Título */
+  .hero{padding:40px 0 8px;}
+  .eyebrow{font:600 0.75rem var(--sans);letter-spacing:0.14em;text-transform:uppercase;color:var(--cobre-hover);}
+  h1{font:600 clamp(1.8rem,5vw,2.6rem)/1.15 var(--serif);color:var(--musgo);letter-spacing:-0.01em;margin:8px 0 10px;}
+  .meta{color:var(--muted);font-size:0.9rem;}
+
+  .borrador[hidden]{display:none;}
+  .borrador{display:flex;gap:12px;align-items:flex-start;margin:22px 0 4px;padding:14px 16px;border:1.5px dashed var(--cobre);border-radius:var(--r-md);background:#B8734A1A;color:var(--carbon);font-size:0.93rem;line-height:1.55;}
+  .borrador svg{width:22px;height:22px;flex-shrink:0;color:var(--cobre-hover);margin-top:1px;}
+  .borrador b{font-family:var(--serif);color:var(--cobre-hover);display:block;font-size:1rem;}
+
+  /* Marcadores a completar: imposibles de pasar por alto */
+  .ph{background:#FFE27A;color:#3A2C00;font-weight:600;font-size:0.9em;padding:1px 6px;border-radius:var(--r-sm);outline:1.5px dashed #B08A00;outline-offset:1px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  .ph-bloque{display:block;background:#FFF4C2;border:1.5px dashed #B08A00;border-radius:var(--r-md);padding:12px 14px;margin:10px 0 14px;font-size:0.95rem;}
+  .ph-bloque .ph{margin-right:4px;}
+
+  /* Índice + texto */
+  .doc{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:24px 0 64px;}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:4px 16px;}
+  .toc summary{cursor:pointer;font:600 0.95rem var(--serif);color:var(--musgo);padding:12px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+  .toc summary::-webkit-details-marker{display:none;}
+  .toc summary svg{width:18px;height:18px;transition:transform 0.2s;}
+  .toc[open] summary svg{transform:rotate(180deg);}
+  .toc ol{list-style:none;counter-reset:t;padding:0 0 12px;}
+  .toc li{counter-increment:t;}
+  .toc li a{display:flex;gap:8px;color:var(--carbon);text-decoration:none;font-size:0.9rem;line-height:1.4;padding:6px 0;}
+  .toc li a::before{content:counter(t) ".";color:var(--cobre-hover);font-weight:600;min-width:1.6em;}
+  .toc li a:hover{color:var(--cobre-hover);}
+  @media (min-width:960px){
+    .doc{grid-template-columns:250px minmax(0,1fr);gap:48px;}
+    .toc{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;}
+  }
+
+  article{max-width:70ch;counter-reset:s;}
+  article section{counter-increment:s;scroll-margin-top:16px;padding-top:8px;}
+  article h2{font:600 1.3rem/1.3 var(--serif);color:var(--musgo);margin:28px 0 10px;display:flex;gap:10px;}
+  article h2::before{content:counter(s) ".";color:var(--cobre);}
+  article h3{font:600 1.02rem/1.4 var(--serif);color:var(--bosque);margin:18px 0 6px;}
+  article p,article li{-webkit-hyphens:auto;hyphens:auto;}
+  article p{margin:0 0 12px;}
+  article ul,article ol.lista{margin:0 0 14px 1.2em;}
+  article li{margin:4px 0;}
+  article li::marker{color:var(--cobre);}
+  .nota{border-left:3px solid var(--cobre);background:#fff;padding:12px 16px;border-radius:0 var(--r-md) var(--r-md) 0;margin:14px 0;font-size:0.95rem;}
+  .tabla{overflow-x:auto;margin:10px 0 16px;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;}
+  table{border-collapse:collapse;width:100%;font-size:0.9rem;line-height:1.5;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font:600 0.85rem var(--serif);color:var(--musgo);background:#34483a0d;}
+  tr:last-child td{border-bottom:0;}
+  .normas li{margin:8px 0;}
+  @media (max-width:599px){
+    .tabla{border:0;background:transparent;overflow:visible;}
+    .tabla table,.tabla tbody,.tabla tr,.tabla td{display:block;width:100%;}
+    .tabla thead{display:none;}
+    .tabla tr{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px;padding:6px 0;}
+    .tabla td{border:0;padding:4px 14px;}
+    .tabla td[data-label]::before{content:attr(data-label);display:block;font:600 0.72rem var(--sans);letter-spacing:0.08em;text-transform:uppercase;color:var(--cobre-hover);}
+  }
+  .faq h2::before{content:none;}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);margin:10px 0;}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;font:600 1rem/1.4 var(--serif);color:var(--musgo);}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"";flex-shrink:0;width:9px;height:9px;margin-top:6px;border-right:2px solid var(--cobre);border-bottom:2px solid var(--cobre);transform:rotate(45deg);transition:transform 0.2s;}
+  .faq details[open] summary::after{transform:rotate(-135deg);margin-top:10px;}
+  .faq details p{padding:0 16px;margin-bottom:12px;}
+  .faq details p:last-child{padding-bottom:4px;}
+  .faq details p.aviso{font-size:0.88rem;color:var(--muted);border-left:2px solid var(--cobre);padding:0 0 0 10px;margin:0 16px 14px;}
+  .volver{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;margin-top:28px;}
+
+  footer{background:var(--musgo);color:var(--marfil-muted);font-size:0.85rem;padding:28px 0;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--marfil-muted);text-decoration:none;}
+  footer a:hover{color:var(--cobre);}
+  footer nav{display:flex;gap:16px;flex-wrap:wrap;}
+  @media print{.top nav,.toc,footer{display:none;} .doc{display:block;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="NODOS — inicio">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="220" height="220" rx="32" fill="#34483A"/><g transform="translate(10,10)"><g stroke="#B8734A" fill="none" stroke-linejoin="round"><polyline points="110,118 66,118 54,106 54,64" stroke-width="7"/><polyline points="110,118 64,118 50,132" stroke-width="6"/><polyline points="110,118 110,74 122,62 157,62" stroke-width="8"/></g><circle cx="54" cy="54" r="11" fill="#F2EEE6"/><circle cx="46" cy="140" r="10" fill="#F2EEE6"/><circle cx="168" cy="62" r="12" fill="#F2EEE6"/><circle cx="110" cy="118" r="24" fill="#B8734A"/></g></svg>
+      NODOS
+    </a>
+    <nav aria-label="Principal">
+      <a class="opt" href="/terminos">Términos</a>
+      <a class="opt" href="/privacidad">Privacidad</a>
+      <a class="cta" href="/ingresar">Ingresar</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Ayuda</p>
+    <h1>Preguntas frecuentes</h1>
+    <p class="meta">¿No encontrás tu respuesta? <a href="https://empresas.nodoscompliance.com/soporte">Escribinos</a>.</p>
+    <div class="borrador" id="borrador" role="note" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+      <span><b>Borrador para revisión — no publicado como definitivo</b>Las respuestas siguen los Términos y la Política de privacidad, que todavía están en revisión. Los datos marcados <span class="ph">[ASÍ]</span> están pendientes.</span>
+    </div>
+    <script>
+      // Pasar a false junto con terminos.html y privacidad.html.
+      var BORRADOR = true;
+      if (BORRADOR) document.getElementById('borrador').hidden = false;
+    </script>
+  </div>
+
+  <div class="doc">
+    <details class="toc" open>
+      <summary>Temas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <ol>
+        <li><a href="#cuenta">Cuenta y acceso</a></li>
+        <li><a href="#apps">Qué hace cada app</a></li>
+        <li><a href="#planes">Prueba, planes y pagos</a></li>
+        <li><a href="#datos">Seguridad y tus datos</a></li>
+        <li><a href="#soporte">Soporte</a></li>
+      </ol>
+    </details>
+
+    <article class="faq">
+      <section id="cuenta">
+        <h2>Cuenta y acceso</h2>
+        <details>
+          <summary>¿Necesito una cuenta distinta para Finanzas y para Empresas?</summary>
+          <p>No. Con <b>una sola cuenta NODOS</b> ingresás a nodoscompliance.com, a NODOS Finanzas y a NODOS Empresas. Iniciás sesión una vez en <a href="/ingresar">nodoscompliance.com/ingresar</a> y pasás de una herramienta a otra sin volver a escribir tu contraseña. A qué apps accedés depende de tu plan.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ingresar con mi usuario o tengo que usar el email?</summary>
+          <p>Las dos cosas sirven: en <a href="/ingresar">Ingresar</a> escribí tu nombre de usuario (con o sin @) o tu email, y tu contraseña. El usuario es lo que se ve dentro de las herramientas; tu email queda privado y lo usamos para confirmar la cuenta, recuperar la contraseña y avisarte de tu plan.</p>
+        </details>
+        <details>
+          <summary>Olvidé mi contraseña, ¿qué hago?</summary>
+          <p>En <a href="/ingresar#recuperar">Ingresar</a> tocá «Olvidé mi contraseña», escribí tu usuario o email y te llega un link para elegir una nueva. Si no lo ves en unos minutos, revisá spam. Si el link venció o ya lo usaste, pedí uno nuevo.</p>
+        </details>
+      </section>
+
+      <section id="apps">
+        <h2>Qué hace cada app</h2>
+        <details>
+          <summary>¿Qué hace NODOS Finanzas?</summary>
+          <p>Te muestra todas tus inversiones en un solo lugar: activos digitales, operaciones de trading e inversiones tradicionales, con importación desde exchanges y extractos. También registra ingresos y gastos, y te muestra noticias relacionadas con lo que tenés.</p>
+          <p class="aviso">Es una herramienta de registro e información: no es asesoría de inversión ni recomienda comprar o vender ningún activo.</p>
+        </details>
+        <details>
+          <summary>¿Qué hace NODOS Empresas?</summary>
+          <p>Ordena la vida societaria de empresas familiares y sociedades: ficha de cada empresa con datos, accionistas, poderes, beneficiarios finales y archivo privado de documentos; vencimientos con calendario; un generador de documentos a partir de plantillas, y un módulo de cumplimiento SEPRELAD.</p>
+          <p>NODOS no presenta declaraciones ni reportes ante ningún organismo: te ayuda a tener la información lista. Las plantillas son modelos generales para uso interno de tus empresas.</p>
+          <p class="aviso">No constituye asesoramiento legal para tu caso.</p>
+        </details>
+        <details>
+          <summary>¿Las noticias revelan qué inversiones o empresas tengo?</summary>
+          <p>No. Para buscar noticias solo enviamos a las fuentes temas de una lista fija; nunca tus montos, nombres de empresas, RUC ni datos personales.</p>
+        </details>
+      </section>
+
+      <section id="planes">
+        <h2>Prueba, planes y pagos</h2>
+        <details>
+          <summary>¿Cómo funciona la prueba gratis?</summary>
+          <p>Al <a href="/ingresar#crear">crear tu cuenta</a> tenés <b>14 días gratis</b>. Al terminar no se cobra nada automáticamente: si te sirvió, elegís un plan y seguís con todos tus datos.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto cuesta y qué planes hay?</summary>
+          <p>Hay tres planes: <b>Finanzas</b>, <b>Empresas</b> y <b>Combo</b> (las dos apps), con pago mensual o anual. Los precios actualizados, en guaraníes, están en la <a href="/#precios">sección de precios</a>.</p>
+        </details>
+        <details>
+          <summary>¿Cómo pago?</summary>
+          <p>Desde <b>Mi plan</b>, con los medios que ofrece nuestro procesador de pagos, <span class="ph">[PROCESADOR DE PAGOS]</span>. Los datos de tu tarjeta los ingresás en su plataforma: <b>NODOS nunca los recibe ni los guarda</b>.</p>
+        </details>
+        <details>
+          <summary>¿El plan se renueva solo? ¿Cómo cancelo?</summary>
+          <p>Sí, se renueva automáticamente al final de cada mes o año. Podés <b>cancelar cuando quieras</b> desde <b>Mi plan</b>, sin trámites: no se te cobra más y mantenés el acceso hasta el último día del período que ya pagaste.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si falla un pago?</summary>
+          <p>Tenés <b>5 días</b> con acceso normal para actualizar el medio de pago. Después el acceso se suspende, pero tus datos no se borran enseguida: se conservan durante <span class="ph">[PLAZO]</span> para que puedas volver. El detalle está en los <a href="/terminos#impago">Términos</a>.</p>
+        </details>
+        <details>
+          <summary>¿Hay reembolsos?</summary>
+          <p>Según la <a href="/terminos#reembolsos">política de reembolsos</a> de los Términos: <span class="ph">[RESUMEN DE LA POLÍTICA ELEGIDA]</span>.</p>
+        </details>
+        <details>
+          <summary>¿Recibo factura?</summary>
+          <p>Sí. Por cada cobro emitimos el comprobante que corresponde <span class="ph">[TIPO DE COMPROBANTE]</span> y lo encontrás en <b>Mi plan</b>. Si necesitás que salga a nombre de tu empresa, cargá su razón social y RUC antes de pagar.</p>
+        </details>
+      </section>
+
+      <section id="datos">
+        <h2>Seguridad y tus datos</h2>
+        <details>
+          <summary>¿Quién puede ver mis datos?</summary>
+          <p>Solo vos, y las personas de tu equipo a las que les des acceso cuando la herramienta lo permite. Cada cuenta está aislada con reglas de acceso en la base de datos. El equipo de NODOS solo accede a tu información si nos lo pedís para darte soporte, por seguridad o por una orden legal. No vendemos datos ni mostramos publicidad.</p>
+        </details>
+        <details>
+          <summary>¿Dónde se guardan mis datos y documentos?</summary>
+          <p>En servidores de Supabase y Vercel ubicados en Estados Unidos, con conexiones cifradas, documentos privados y respaldos. El detalle, incluidos los proveedores y tus derechos, está en la <a href="/privacidad">Política de privacidad</a>.</p>
+        </details>
+        <details>
+          <summary>¿Cómo descargo mis datos?</summary>
+          <p>En <b>Mi cuenta</b>, dentro de cualquiera de las apps, tocá <b>Descargar mis datos</b>. Recibís un archivo con la información de tu cuenta en un formato estructurado.</p>
+        </details>
+        <details>
+          <summary>¿Cómo elimino mi cuenta?</summary>
+          <p>En <b>Mi cuenta</b> → <b>Eliminar mi cuenta</b>. Se borran tu cuenta y tus datos de las tres páginas y no se puede deshacer, así que te conviene descargar tus datos antes. Si tenés un plan activo, cancelalo antes en <b>Mi plan</b> para que no se renueve.</p>
+        </details>
+      </section>
+
+      <section id="soporte">
+        <h2>Soporte</h2>
+        <details>
+          <summary>¿Cómo contacto a soporte?</summary>
+          <p>Desde el <a href="https://empresas.nodoscompliance.com/soporte">formulario de soporte</a> o por email a <span class="ph">[EMAIL DE SOPORTE]</span>. Contanos qué estabas haciendo y, si podés, adjuntá una captura. <b>Nunca nos mandes tu contraseña</b>: no la necesitamos.</p>
+        </details>
+        <details>
+          <summary>¿Dónde leo los términos y la política de privacidad?</summary>
+          <p>En <a href="/terminos">Términos y condiciones</a> y <a href="/privacidad">Política de privacidad</a>: renovación, cancelación, reembolsos, qué datos guardamos, dónde y cuáles son tus derechos.</p>
+        </details>
+        <a class="volver" href="#">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+          Volver arriba
+        </a>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 NODOS · Paraguay</span>
+    <nav aria-label="Legal y ayuda">
+      <a href="/terminos">Términos</a>
+      <a href="/privacidad">Privacidad</a>
+      <a href="/ayuda">Ayuda</a>
+      <a href="/#precios">Precios</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // En celular el índice arranca cerrado.
+  if(innerWidth < 960) document.querySelectorAll('.toc').forEach(function(d){ d.removeAttribute('open'); });
+</script>
+</body>
+</html>
