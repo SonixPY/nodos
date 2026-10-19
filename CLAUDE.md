@@ -26,4 +26,4 @@ Si cambiás uno, copialo al otro repo y verificá con `cmp`. Nunca dejar que dif
 - Privacidad de noticias: a terceros solo se envían IDs de temas de una lista fija; nunca nombres de empresas, RUC ni personas.
 
 ## Este repo
-HTML estático en GitHub Pages: `index.html` (hub, formulario de consulta → `empresas…/api/public/consulta`, sesión vía `empresas…/api/cuenta/sesion`), `ingresar.html` (login/registro/recuperar contra `empresas…/api/cuenta/*`), favicons, manifest, JSON-LD, robots y sitemap. Sin build: probar con `python3 -m http.server` + Playwright a 360/1280 px y publicar con push a `main`. Google Analytics G-0WSLHTJ44Z.
+HTML estático en GitHub Pages: `index.html` (hub con Finanzas, Empresas y NODOS Práctica (`finanzas…/practica`), formulario de consulta → `empresas…/api/public/consulta`, sesión vía `empresas…/api/cuenta/sesion`), `ingresar.html` (login/registro/recuperar contra `empresas…/api/cuenta/*`), favicons, manifest, JSON-LD, robots y sitemap. Sin build: probar con `python3 -m http.server` + Playwright a 360/1280 px y publicar con push a `main`. Google Analytics G-0WSLHTJ44Z.
