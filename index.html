@@ -339,36 +339,7 @@
   .nav-links a:hover{color:var(--marfil);background:rgba(242,238,230,0.1);}
   @media (min-width:900px){ .nav-links{display:flex;} .menu{display:none;} }
   .splash-hint{text-decoration:none;}
-  .hub{padding:56px 0 24px;scroll-margin-top:72px;}
-  .hub-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;}
-  .hub-kicker{font:600 0.8rem var(--sans);letter-spacing:0.08em;text-transform:uppercase;color:var(--cobre-hover);margin-bottom:4px;text-align:left;}
-  .hub-head h2{font:600 1.9rem/1.15 var(--serif);color:var(--musgo);letter-spacing:-0.01em;}
-  .hub-acciones{display:flex;gap:8px;flex-wrap:wrap;}
-  .hub-acciones[hidden]{display:none;}
-  .hub-grid{display:grid;grid-template-columns:1fr;gap:12px;}
-  /* 3 apps + 4 accesos: en tablet Práctica ocupa la fila entera; en escritorio las apps van de a 3 y los accesos de a 4. */
-  @media (min-width:620px){ .hub-grid{grid-template-columns:repeat(2,1fr);} .hub-grid > [data-practica]{grid-column:span 2;} }
-  @media (min-width:960px){ .hub-grid{grid-template-columns:repeat(12,1fr);} .hub-grid > .hub-tile{grid-column:span 3;} .hub-grid > .hub-app{grid-column:span 4;} }
-  .hub-tile{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:10px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;text-decoration:none;color:var(--carbon);transition:border-color 0.15s, transform 0.15s, box-shadow 0.15s;}
-  .hub-tile:hover{border-color:var(--cobre);transform:translateY(-2px);box-shadow:0 10px 24px rgba(30,47,37,0.08);}
-  .hub-app{background:var(--musgo);color:var(--marfil);border-color:var(--musgo);}
-  .hub-app small{color:rgba(242,238,230,0.72)!important;}
-  .hub-app strong{color:var(--marfil)!important;}
-  .hub-ico{grid-row:span 2;width:44px;height:44px;border-radius:12px;background:var(--marfil);color:var(--cobre-hover);display:flex;align-items:center;justify-content:center;}
-  .hub-app .hub-ico{background:rgba(242,238,230,0.1);color:var(--cobre);}
-  .hub-ico svg{width:22px;height:22px;}
-  .hub-txt strong{display:block;font:600 1.05rem var(--serif);color:var(--musgo);}
-  .hub-txt small{display:block;font-size:0.86rem;color:var(--carbon-muted);line-height:1.4;margin-top:2px;}
-  .hub-cta{display:inline-flex;align-items:center;gap:4px;font:600 0.85rem var(--sans);color:var(--cobre-hover);}
-  .hub-cta svg{width:14px;height:14px;flex-shrink:0;}
-  .hub-app .hub-cta{color:var(--cobre);}
-  .hub-tile.bloqueada{opacity:0.55;}
-  .hub-extra{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-  .hub-extra[hidden]{display:none;}
-  .hub-extra a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:500 0.88rem var(--sans);text-decoration:none;color:var(--musgo);}
-  .hub-extra a:hover{border-color:var(--cobre);}
-  .hub-nota{margin-top:14px;font-size:0.8rem;color:var(--carbon-muted);text-align:left;}
-  @media (max-width:480px){ .hub{padding-top:40px;} .hub-head h2{font-size:1.5rem;} }
+  .hero-text{scroll-margin-top:90px;}
   .apps-panel .head{text-align:left;font:600 0.95rem var(--serif);color:var(--musgo);padding:8px 12px 6px;}
   /* Selector de páginas NODOS (logo) y menú de cuenta */
   .apps-panel{visibility:hidden;transition:opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;}
@@ -409,7 +380,8 @@
   @media (max-width:480px){ .apps-toggle span.lbl{display:none;} .apps-toggle{padding:9px;} .apps{position:static;} .apps-panel{right:16px;top:calc(100% - 4px);width:min(300px, calc(100vw - 32px));} }
   @media (max-width:480px){ .sitios-panel{left:0;right:auto;top:calc(100% + 10px);} .apps-toggle .chev{display:none;} }
 
-  .tools{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:1020px){ .tools{grid-template-columns:1fr 1fr;} .tool-practica{grid-column:span 2;} }
   .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;transition:transform 0.15s ease, box-shadow 0.15s ease;}
   .tool:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,47,37,0.1);}
   .tool .tag{font:500 0.78rem var(--sans);letter-spacing:0.12em;text-transform:uppercase;color:var(--cobre-hover);}
@@ -421,9 +393,14 @@
   .tool li::before{content:"";flex-shrink:0;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--cobre);}
   .tool .btn{margin-top:auto;align-self:flex-start;}
   .tools-note{margin-top:18px;color:var(--carbon-muted);font-size:0.88rem;text-align:center;}
-  @media (max-width:820px){ .tools{grid-template-columns:1fr;} }
+  @media (max-width:820px){ .tools{grid-template-columns:1fr;} .tool-practica{grid-column:auto;} }
 
   /* Formulario de consulta */
+  .contacto-general{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:10px;scroll-margin-top:90px;}
+  .contacto-general p{margin-top:0 !important;font-size:0.94rem;}
+  .contacto-general .btn svg{width:18px;height:18px;}
+  .contacto-general .mail{font-size:0.88rem;color:var(--cobre-hover);}
+  .disclaimer-final{margin-top:36px;color:var(--carbon-muted) !important;text-align:left;}
   .consulta{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:start;}
   .consulta-intro h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.125rem);line-height:1.15;font-weight:700;letter-spacing:-0.01em;color:var(--musgo);}
   .consulta-intro p{color:var(--carbon-muted);margin-top:12px;text-align:left;}
@@ -446,14 +423,12 @@
   @media (max-width:820px){ .consulta{grid-template-columns:1fr;} .form-grid{grid-template-columns:1fr;} }
 
   /* Precios */
-  .ph{background:#FFE27A;color:#3A2C00;font-weight:600;font-size:0.85em;padding:1px 6px;border-radius:var(--r-sm);outline:1.5px dashed #B08A00;outline-offset:1px;}
   .precios-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:28px;}
   .precios-top .section-head{margin-bottom:0;}
   .precios-top .section-head p{text-align:left;}
   .periodo{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px;}
   .periodo button{border:0;background:transparent;border-radius:999px;padding:8px 16px;font:500 0.9rem var(--sans);color:var(--carbon-muted);cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
   .periodo button[aria-pressed="true"]{background:var(--musgo);color:var(--marfil);}
-  .periodo .ph{font-size:0.72rem;}
   .planes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
   .plan{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 24px 24px;display:flex;flex-direction:column;}
   .plan .tag{font:500 0.75rem var(--sans);letter-spacing:0.12em;text-transform:uppercase;color:var(--cobre-hover);}
@@ -461,7 +436,25 @@
   .plan h3 span{font-weight:500;}
   .plan .desc{color:var(--carbon-muted);font-size:0.93rem;text-align:left;}
   .precio{margin:18px 0 2px;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;font:700 1.55rem/1.2 var(--serif);color:var(--musgo);}
-  .precio .ph{font-size:1.1rem;}
+  .precio .monto{display:inline-block;font-variant-numeric:tabular-nums;}
+  .precio .monto.chico{font-size:1.05rem;color:var(--carbon-muted);font-weight:600;}
+  .plan.destacado .precio .monto.chico{color:var(--marfil-muted);}
+  .ahorro{background:var(--cobre);color:#fff;border-radius:999px;padding:2px 8px;font:600 0.72rem var(--sans);}
+  .periodo button[aria-pressed="true"] .ahorro{background:var(--cobre);}
+  .ahorro[hidden]{display:none;}
+  @media (prefers-reduced-motion: no-preference){
+    .plan{transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.5s ease;}
+    .plan:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(30,47,37,0.14);border-color:var(--cobre);}
+    .plan.destacado:hover{box-shadow:0 20px 44px rgba(30,47,37,0.3);}
+    .planes.animar .plan{opacity:0;transform:translateY(18px);}
+    .planes.animar.visible .plan{opacity:1;transform:none;}
+    .planes.animar.visible .plan:nth-child(2){transition-delay:0.08s;}
+    .planes.animar.visible .plan:nth-child(3){transition-delay:0.16s;}
+    .precio .monto.cambia{animation:montoIn 0.45s ease;}
+    @keyframes montoIn{0%{opacity:0;transform:translateY(8px);}100%{opacity:1;transform:none;}}
+    .plan li{transition:transform 0.2s ease;}
+    .plan:hover li svg{transform:scale(1.08);}
+  }
   .precio small{font:500 0.85rem var(--sans);color:var(--carbon-muted);}
   .precio[hidden]{display:none;}
   .plan .sub{font-size:0.8rem;color:var(--carbon-muted);text-align:left;min-height:1.3em;}
@@ -564,9 +557,9 @@
       </div>
     </div>
     <nav class="nav-links" aria-label="Secciones">
-      <a href="#hub">Inicio</a>
-      <a href="#herramientas">Apps</a>
-      <a href="#precios">Precios</a>
+      <a href="#inicio">Inicio</a>
+      <a href="#herramientas">Servicios</a>
+      <a href="#precios">Planes</a>
       <a href="#pilares">Contenido</a>
       <a href="#consulta">Consultas</a>
       <a href="#contacto">Contacto</a>
@@ -586,9 +579,9 @@
         </svg>
       </button>
       <nav class="menu-panel" id="menu-panel" aria-label="Secciones">
-        <a href="#hub">Inicio</a>
-        <a href="#herramientas">Apps NODOS</a>
-        <a href="#precios">Precios</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#herramientas">Servicios</a>
+        <a href="#precios">Planes</a>
         <a href="#pilares">Contenido</a>
         <a href="#consulta">Consultas</a>
         <a href="#equipo">Equipo</a>
@@ -647,7 +640,7 @@
         <span class="node-tip">Bloqueado, próximamente</span>
       </a>
     </div>
-    <a class="splash-hint" href="#hub">
+    <a class="splash-hint" href="#inicio">
       <span>Explorá NODOS</span>
       <svg class="hint-arrow" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
         <path d="M12 20V6m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -656,60 +649,7 @@
   </div>
 
   <div id="rest">
-    <section id="hub" class="hub">
-      <div class="wrap">
-        <div class="hub-head">
-          <div>
-            <p class="hub-kicker" data-hub-saludo>Todo NODOS en un solo lugar</p>
-            <h2 data-hub-titulo>¿Qué querés hacer hoy?</h2>
-          </div>
-          <div class="hub-acciones" data-hub-anonimo>
-            <a class="btn btn-primary" href="/ingresar">Ingresar</a>
-            <a class="btn btn-ghost hub-ghost" href="/ingresar#crear">Crear cuenta</a>
-          </div>
-        </div>
-        <div class="hub-grid">
-          <a class="hub-tile hub-app" href="https://finanzas.nodoscompliance.com" data-app="finanzas">
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-            <span class="hub-txt"><strong>NODOS Finanzas</strong><small>Tu plata y la de tu negocio, inversiones y vencimientos.</small></span>
-            <span class="hub-cta" data-hub-cta>Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="hub-tile hub-app" href="https://empresas.nodoscompliance.com" data-app="empresas">
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
-            <span class="hub-txt"><strong>NODOS Empresas</strong><small>Actas, poderes, vencimientos, SIARA y SEPRELAD.</small></span>
-            <span class="hub-cta" data-hub-cta>Abrir app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="hub-tile hub-app" href="https://finanzas.nodoscompliance.com/practica" data-practica>
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
-            <span class="hub-txt"><strong>NODOS Práctica</strong><small>Simulador para practicar finanzas y ser empresario. Gratis.</small></span>
-            <span class="hub-cta">Practicar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="hub-tile" href="#pilares">
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span>
-            <span class="hub-txt"><strong>Contenido</strong><small>Zona Gris, Decodificado y Bajo Lupa.</small></span>
-            <span class="hub-cta">Ver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="hub-tile" href="#consulta">
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.6 7.1L4 21l1.9-5.4A8 8 0 1121 12z"/></svg></span>
-            <span class="hub-txt"><strong>Hacé una consulta</strong><small>Cripto-compliance, empresas familiares o las apps.</small></span>
-            <span class="hub-cta">Escribir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="hub-tile" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20h5v-2a4 4 0 00-3-3.9M9 20H2v-2a4 4 0 014-4h3a4 4 0 014 4v2M12 7a3 3 0 11-6 0 3 3 0 016 0zM20 8a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>
-            <span class="hub-txt"><strong>Comunidad</strong><small>Canal de WhatsApp con episodios y análisis.</small></span>
-            <span class="hub-cta">Sumarme <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="hub-tile" href="https://empresas.nodoscompliance.com/soporte">
-            <span class="hub-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></span>
-            <span class="hub-txt"><strong>Soporte</strong><small>Problemas con tu cuenta o las apps.</small></span>
-            <span class="hub-cta">Contactar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-        </div>
-        <div class="hub-extra" data-hub-extra hidden></div>
-        <p class="hub-nota">Una sola cuenta para Finanzas, Empresas y Práctica. Herramientas de organización: no son asesoría de inversión ni asesoramiento legal personalizado.</p>
-      </div>
-    </section>
-    <div class="wrap hero-text">
+    <div class="wrap hero-text" id="inicio">
       <h1>El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto</h1>
       <p>Contenido real, sin promesas de rendimiento ni señales de inversión. Un episodio al mes, sin relleno — y si alguien te escribe pidiendo dinero en nuestro nombre, es un fraude.</p>
       <div class="actions">
@@ -784,22 +724,22 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Herramientas NODOS</h2>
-          <p>Lo que explicamos en el contenido, llevado a la práctica. Dos apps que se complementan, con una sola cuenta, y un simulador gratis para practicar.</p>
+          <p>Lo que explicamos en el contenido, llevado a la práctica: tu asistente contable, tu asistente legal y un simulador gratis para practicar. Una sola cuenta para los tres.</p>
         </div>
         <div class="tools">
           <article class="tool">
-            <span class="tag">Personas</span>
+            <span class="tag">Tu asistente contable</span>
             <h3>NODOS <span>Finanzas</span></h3>
             <p>Tu plata personal y la de tu negocio, por separado, sin planillas sueltas.</p>
             <ul>
               <li>Movimientos por espacio: personal y uno por cada empresa, unipersonal o RUC personal.</li>
               <li>Inversiones digitales y tradicionales, y tu parte en las empresas que te conectan.</li>
-              <li>Un solo calendario de vencimientos, más calculadoras de IVA, intereses y préstamos.</li>
+              <li>Vencimientos impositivos (DNIT), más calculadoras de IVA, intereses y préstamos.</li>
             </ul>
             <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com">Entrar a Finanzas</a>
           </article>
           <article class="tool">
-            <span class="tag">Empresas familiares</span>
+            <span class="tag">Tu asistente legal</span>
             <h3>NODOS <span>Empresas</span></h3>
             <p>El orden legal de tu empresa familiar: qué vence, qué firmar y quién es dueño de qué.</p>
             <ul>
@@ -810,6 +750,17 @@
             </ul>
             <a class="btn btn-primary" href="https://empresas.nodoscompliance.com">Entrar a Empresas</a>
           </article>
+          <article class="tool tool-practica">
+            <span class="tag">Gratis con tu cuenta</span>
+            <h3>NODOS <span>Práctica</span></h3>
+            <p>Practicá antes de hacerlo de verdad: un simulador de finanzas personales y de ser empresario, con casos ficticios.</p>
+            <ul>
+              <li>Un año simulado mes a mes: asamblea, impuestos, socios y SEPRELAD.</li>
+              <li>Misiones cortas: presupuesto, deudas, primera inversión y más.</li>
+              <li>Lecciones para aprender lo básico a tu ritmo.</li>
+            </ul>
+            <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com/practica">Practicar gratis</a>
+          </article>
         </div>
         <p class="tools-note">Herramientas de organización e información: no constituyen asesoría de inversión ni asesoramiento legal personalizado.</p>
       </div>
@@ -819,26 +770,26 @@
       <div class="wrap">
         <div class="precios-top">
           <div class="section-head">
-            <h2>Precios</h2>
+            <h2>Planes</h2>
             <p>Empezá con 14 días gratis y después elegí el plan que te sirva. Una sola cuenta NODOS para todo.</p>
           </div>
           <div class="periodo" role="group" aria-label="Período de pago">
             <button type="button" data-periodo-btn="mensual" aria-pressed="true">Mensual</button>
-            <button type="button" data-periodo-btn="anual" aria-pressed="false">Anual <span class="ph">[AHORRO]</span></button>
+            <button type="button" data-periodo-btn="anual" aria-pressed="false">Anual <span class="ahorro" data-ahorro hidden></span></button>
           </div>
         </div>
         <div class="planes">
           <article class="plan" data-plan="finanzas">
             <span class="tag">Personas</span>
             <h3>NODOS <span>Finanzas</span></h3>
-            <p class="desc">Tu plata y la de tu negocio, tus inversiones y lo que vence.</p>
-            <p class="precio" data-periodo="mensual"><span class="ph">[PRECIO]</span><small>Gs. / mes</small></p>
-            <p class="precio" data-periodo="anual" hidden><span class="ph">[PRECIO]</span><small>Gs. / año</small></p>
+            <p class="desc" data-desc>Tu plata y la de tu negocio, tus inversiones y lo que vence.</p>
+            <p class="precio" data-periodo="mensual"><span class="monto" data-monto>Próximamente</span><small data-unidad hidden>Gs. / mes</small></p>
+            <p class="precio" data-periodo="anual" hidden><span class="monto" data-monto>Próximamente</span><small data-unidad hidden>Gs. / año</small></p>
             <p class="sub" data-sub></p>
-            <ul>
+            <ul data-beneficios>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Inversiones digitales y tradicionales</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Ingresos y gastos, personales y de un negocio</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Calendario de vencimientos y trading opcional</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Vencimientos impositivos y trading opcional</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Importación desde exchanges y extractos</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Noticias según lo que tenés</span></li>
             </ul>
@@ -848,15 +799,15 @@
             <span class="badge">Las dos apps</span>
             <span class="tag">Combo</span>
             <h3>NODOS <span>Finanzas + Empresas</span></h3>
-            <p class="desc">Las dos apps conectadas: lo que decidís en la empresa llega a tus finanzas.</p>
-            <p class="precio" data-periodo="mensual"><span class="ph">[PRECIO]</span><small>Gs. / mes</small></p>
-            <p class="precio" data-periodo="anual" hidden><span class="ph">[PRECIO]</span><small>Gs. / año</small></p>
+            <p class="desc" data-desc>Las dos apps conectadas: lo que decidís en la empresa llega a tus finanzas.</p>
+            <p class="precio" data-periodo="mensual"><span class="monto" data-monto>Próximamente</span><small data-unidad hidden>Gs. / mes</small></p>
+            <p class="precio" data-periodo="anual" hidden><span class="monto" data-monto>Próximamente</span><small data-unidad hidden>Gs. / año</small></p>
             <p class="sub" data-sub></p>
-            <ul>
+            <ul data-beneficios>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Todo lo de NODOS Finanzas</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Todo lo de NODOS Empresas</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Dividendos, aportes y vencimientos conectados</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>NODOS Práctica completo: todas las misiones y años</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Socios conectados: ven su parte y sus dividendos, en solo lectura</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Soporte por formulario y email</span></li>
             </ul>
             <a class="btn btn-primary" href="/ingresar#crear" data-cta-prueba="combo">Probar 14 días gratis</a>
@@ -864,20 +815,20 @@
           <article class="plan" data-plan="empresas">
             <span class="tag">Empresas familiares</span>
             <h3>NODOS <span>Empresas</span></h3>
-            <p class="desc">El orden legal de tus empresas: qué vence, qué firmar y quién es dueño de qué.</p>
-            <p class="precio" data-periodo="mensual"><span class="ph">[PRECIO]</span><small>Gs. / mes</small></p>
-            <p class="precio" data-periodo="anual" hidden><span class="ph">[PRECIO]</span><small>Gs. / año</small></p>
+            <p class="desc" data-desc>El orden legal de tus empresas: qué vence, qué firmar y quién es dueño de qué.</p>
+            <p class="precio" data-periodo="mensual"><span class="monto" data-monto>Próximamente</span><small data-unidad hidden>Gs. / mes</small></p>
+            <p class="precio" data-periodo="anual" hidden><span class="monto" data-monto>Próximamente</span><small data-unidad hidden>Gs. / año</small></p>
             <p class="sub" data-sub></p>
-            <ul>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Ficha por empresa: datos, accionistas, poderes y archivo</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Vencimientos con calendario</span></li>
+            <ul data-beneficios>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Ficha por empresa: datos, accionistas, poderes y documentos</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Vencimientos legales con calendario</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Generador de documentos con plantillas</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>SEPRELAD con el generador del Reporte de Operaciones</span></li>
             </ul>
             <a class="btn btn-primary" href="/ingresar#crear" data-cta-prueba="empresas">Probar 14 días gratis</a>
           </article>
         </div>
-        <p class="precios-nota">NODOS Práctica es gratis con cualquier cuenta (misiones básicas y un año simulado). Precios finales en guaraníes. Podés cancelar cuando quieras. Al terminar la prueba no se cobra nada automáticamente. <a href="/terminos">Términos</a> · <a href="/ayuda#planes">Preguntas frecuentes</a></p>
+        <p class="precios-nota">NODOS Práctica es gratis y completo con cualquier cuenta. Precios finales en guaraníes. Podés cancelar cuando quieras. Al terminar la prueba no se cobra nada automáticamente. <a href="/terminos">Términos</a> · <a href="/ayuda#planes">Preguntas frecuentes</a></p>
         <p class="precios-legal">NODOS Finanzas no es asesoría de inversión. NODOS Empresas no constituye asesoramiento legal para tu caso.</p>
       </div>
     </section>
@@ -941,9 +892,17 @@
             <ul>
               <li>Cripto-activos y compliance (PLA/FT, SEPRELAD, GAFI).</li>
               <li>Empresas familiares: actas, accionistas, vencimientos.</li>
-              <li>Dudas sobre NODOS Finanzas o NODOS Empresas.</li>
+              <li>Dudas sobre NODOS Finanzas, Empresas o Práctica.</li>
             </ul>
             <p style="font-size:0.85rem">No damos recomendaciones de inversión ni señales. Nunca te vamos a pedir dinero ni claves por mensaje.</p>
+            <div class="contacto-general" id="contacto">
+              <p>¿Preferís seguirnos? En el Canal de WhatsApp publicamos episodios, análisis y novedades de NODOS.</p>
+              <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.1 2.9 5.5L4 21l4.4-1.6c1.1.4 2.3.6 3.6.6 5.5 0 10-3.6 10-8s-4.5-9-10-9z"/></svg>
+                Canal de WhatsApp
+              </a>
+              <a class="mail" href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a>
+            </div>
           </div>
           <form class="form-card" id="form-consulta" novalidate>
             <div class="form-grid">
@@ -968,28 +927,7 @@
             <p class="form-msg" role="status" aria-live="polite"></p>
           </form>
         </div>
-      </div>
-    </section>
-
-    <section id="contacto" class="cta-section">
-      <div class="wrap">
-        <div class="cta">
-          <div>
-            <h2>¿Cómo seguimos en contacto?</h2>
-            <p>Sumate al Canal de WhatsApp para no perderte los próximos episodios y análisis, o escribinos directo si tenés algo puntual para comentar.</p>
-          </div>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.1 2.9 5.5L4 21l4.4-1.6c1.1.4 2.3.6 3.6.6 5.5 0 10-3.6 10-8s-4.5-9-10-9z"/></svg>
-              Sumate al Canal
-            </a>
-            <a class="btn btn-ghost" href="mailto:contacto@nodoscompliance.com">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16v12H4z" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Escribir por correo
-            </a>
-          </div>
-        </div>
-        <p class="disclaimer">
+        <p class="disclaimer disclaimer-final">
           El contenido de este sitio tiene fines educativos e informativos y no constituye asesoría de inversión ni la creación de una relación abogado-cliente. Se enmarca en la normativa de prevención de lavado de activos y financiamiento del terrorismo vigente en Paraguay (SEPRELAD) y en los estándares internacionales del GAFI.
         </p>
       </div>
@@ -1192,35 +1130,12 @@
     fetch(API + '/sesion', {credentials:'include'}).then(function(r){ return r.json(); }).then(function(s){
       if(!s || !s.logueado) return;
       marcarAccesos(s);
-      var salir = menuCuenta(s);
-      hubConSesion(s, salir);
+      menuCuenta(s);
     }).catch(function(){});
-  }
-  // Hub personalizado cuando hay sesión.
-  function hubConSesion(s, salirLink){
-    var hub = document.getElementById('hub'); if(!hub) return;
-    var primer = s.nombre ? s.nombre.split(' ')[0] : '';
-    hub.querySelector('[data-hub-saludo]').textContent = 'Hola' + (primer ? ', ' + primer : '') + (s.usuario ? ' · @' + s.usuario : '');
-    hub.querySelector('[data-hub-titulo]').textContent = 'Tus apps y accesos NODOS';
-    var anon = hub.querySelector('[data-hub-anonimo]'); if(anon) anon.hidden = true;
-    ['finanzas','empresas'].forEach(function(app){
-      var tile = hub.querySelector('.hub-tile[data-app=' + app + ']');
-      if(tile && s['acceso_' + app] === false){ tile.classList.add('bloqueada'); tile.querySelector('[data-hub-cta]').textContent = 'Sin acceso · pedilo a soporte'; tile.href = 'https://empresas.nodoscompliance.com/soporte'; }
-    });
-    var extra = hub.querySelector('[data-hub-extra]'); extra.hidden = false;
-    function chip(href, txt){ var a = document.createElement('a'); a.href = href; a.textContent = txt; extra.appendChild(a); return a; }
-    var base = 'https://' + (s.acceso_empresas === false ? 'finanzas' : 'empresas') + '.nodoscompliance.com';
-    chip(base + '/cuenta', s.usuario ? 'Mi cuenta' : 'Elegí tu nombre de usuario');
-    if(s.is_admin){
-      chip(EMP + '/panel', 'NODOS Panel');
-      chip(EMP + '/panel/leads', 'Leads');
-      chip(EMP + '/admin', 'Administración de cuentas');
-    }
-    var x = chip('#', 'Salir'); x.addEventListener('click', function(e){ e.preventDefault(); salirLink.click(); });
   }
   if(/[?&]bienvenida=1/.test(location.search)){
     var b = document.createElement('div'); b.className = 'bienvenida'; b.setAttribute('role','status');
-    b.textContent = '¡Tu cuenta NODOS quedó confirmada! Elegí una app acá abajo.';
+    b.textContent = '¡Tu cuenta NODOS quedó confirmada! Elegí un servicio en el menú NODOS de arriba.';
     document.body.appendChild(b); setTimeout(function(){ b.remove(); }, 7000);
     history.replaceState(null, '', location.pathname + location.hash);
   }
@@ -1358,24 +1273,90 @@
 </script>
 <script>
 (function(){
-  // Precios: mensual o anual, y evento "ver_precios" una sola vez por visita.
+  // Planes: precios, descripción y beneficios salen de NODOS Panel →
+  // Suscripciones (API pública de Empresas). Si la API no responde, quedan los
+  // textos de esta página y el precio dice "Próximamente".
   var sec = document.getElementById('precios'); if(!sec) return;
+  var grid = sec.querySelector('.planes');
   var btns = sec.querySelectorAll('[data-periodo-btn]');
+  var reducido = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var datos = {};
+  var actual = 'mensual';
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  var fmt = function(n){ return 'Gs. ' + Math.round(n).toLocaleString('es-PY'); };
+
+  function contar(el, hasta){
+    if(reducido){ el.textContent = fmt(hasta); return; }
+    var desde = Number(el.getAttribute('data-valor')) || 0, t0 = null, dur = 650;
+    el.setAttribute('data-valor', String(hasta));
+    el.classList.remove('cambia'); void el.offsetWidth; el.classList.add('cambia');
+    function paso(t){
+      if(t0 === null) t0 = t;
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmt(desde + (hasta - desde) * e);
+      if(k < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+
+  function pintar(){
+    sec.querySelectorAll('.plan[data-plan]').forEach(function(card){
+      var d = datos[card.getAttribute('data-plan')];
+      card.querySelectorAll('.precio').forEach(function(pr){
+        var per = pr.getAttribute('data-periodo');
+        var monto = pr.querySelector('[data-monto]'), unidad = pr.querySelector('[data-unidad]');
+        var v = d ? (per === 'anual' ? d.precio_anual_gs : d.precio_mensual_gs) : 0;
+        if(v > 0){
+          monto.classList.remove('chico'); unidad.hidden = false;
+          if(per === actual) contar(monto, v); else { monto.textContent = fmt(v); monto.setAttribute('data-valor', String(v)); }
+        } else { monto.textContent = 'Próximamente'; monto.classList.add('chico'); unidad.hidden = true; }
+      });
+      var sub = card.querySelector('[data-sub]');
+      if(sub){
+        var m = d ? d.precio_mensual_gs : 0, a = d ? d.precio_anual_gs : 0;
+        if(actual === 'anual' && m > 0 && a > 0 && a < m * 12) sub.textContent = 'Un solo pago por año: equivale a ' + fmt(a / 12) + ' por mes.';
+        else sub.textContent = actual === 'anual' ? 'Un solo pago por año.' : 'Se renueva cada mes.';
+      }
+    });
+  }
+
   function periodo(p){
+    actual = p;
     btns.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-periodo-btn') === p ? 'true' : 'false'); });
     sec.querySelectorAll('.precio').forEach(function(el){ el.hidden = el.getAttribute('data-periodo') !== p; });
-    sec.querySelectorAll('[data-sub]').forEach(function(el){ el.textContent = p === 'anual' ? 'Un solo pago por año.' : 'Se renueva cada mes.'; });
+    pintar();
   }
   btns.forEach(function(b){ b.addEventListener('click', function(){ periodo(b.getAttribute('data-periodo-btn')); }); });
   periodo('mensual');
+
+  fetch('https://empresas.nodoscompliance.com/api/public/planes').then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+    if(!j || !Array.isArray(j.planes)) return;
+    var mejor = 0;
+    j.planes.forEach(function(pl){
+      datos[pl.id] = pl;
+      if(pl.precio_mensual_gs > 0 && pl.precio_anual_gs > 0){ mejor = Math.max(mejor, 1 - pl.precio_anual_gs / (pl.precio_mensual_gs * 12)); }
+      var card = sec.querySelector('.plan[data-plan="' + pl.id + '"]'); if(!card) return;
+      var desc = card.querySelector('[data-desc]'); if(desc && pl.descripcion) desc.textContent = pl.descripcion;
+      var ul = card.querySelector('[data-beneficios]');
+      if(ul && pl.beneficios && pl.beneficios.length){
+        ul.innerHTML = '';
+        pl.beneficios.forEach(function(t){ var li = document.createElement('li'); li.innerHTML = CHECK; var sp = document.createElement('span'); sp.textContent = t; li.appendChild(sp); ul.appendChild(li); });
+      }
+    });
+    var ah = sec.querySelector('[data-ahorro]');
+    if(ah && mejor >= 0.01){ ah.textContent = 'ahorrá hasta ' + Math.round(mejor * 100) + ' %'; ah.hidden = false; }
+    pintar();
+  }).catch(function(){});
+
   if('IntersectionObserver' in window){
+    if(!reducido) grid.classList.add('animar');
     var visto = false;
     var io = new IntersectionObserver(function(es){
       es.forEach(function(e){
-        if(e.isIntersecting && !visto){ visto = true; io.disconnect(); if(typeof gtag === 'function') gtag('event', 'ver_precios'); }
+        if(e.isIntersecting && !visto){ visto = true; io.disconnect(); grid.classList.add('visible'); pintar(); if(typeof gtag === 'function') gtag('event', 'ver_precios'); }
       });
-    }, {threshold:0.35});
-    io.observe(sec.querySelector('.planes'));
+    }, {threshold:0.2});
+    io.observe(grid);
   }
 })();
 </script>
