@@ -401,6 +401,8 @@
   .contacto-general{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:10px;scroll-margin-top:90px;}
   .contacto-general p{margin-top:0 !important;font-size:0.94rem;}
   .contacto-general .btn svg{width:18px;height:18px;}
+  .contacto-botones{display:flex;flex-wrap:wrap;gap:10px;}
+  .contacto-general .btn-ghost{font-size:0.95rem;padding:10px 22px;}
   .contacto-general .mail{font-size:0.88rem;color:var(--enlace);}
   .disclaimer-final{margin-top:36px;color:var(--carbon-muted) !important;text-align:left;}
   .consulta{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:start;}
@@ -904,11 +906,17 @@
             </ul>
             <p style="font-size:0.85rem">No damos recomendaciones de inversión ni señales. Nunca te vamos a pedir dinero ni claves por mensaje.</p>
             <div class="contacto-general" id="contacto">
-              <p>¿Preferís seguirnos? En el Canal de WhatsApp publicamos episodios, análisis y novedades de NODOS.</p>
-              <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.1 2.9 5.5L4 21l4.4-1.6c1.1.4 2.3.6 3.6.6 5.5 0 10-3.6 10-8s-4.5-9-10-9z"/></svg>
-                Canal de WhatsApp
-              </a>
+              <p>¿Preferís seguirnos? En el Canal de WhatsApp publicamos episodios, análisis y novedades de NODOS. Y en la Comunidad podés sumarte a la conversación.</p>
+              <div class="contacto-botones">
+                <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VbESNO2F1YlJx6nKWy20" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.1 2.9 5.5L4 21l4.4-1.6c1.1.4 2.3.6 3.6.6 5.5 0 10-3.6 10-8s-4.5-9-10-9z"/></svg>
+                  Canal de WhatsApp
+                </a>
+                <a class="btn btn-ghost" href="https://chat.whatsapp.com/D9ksuggyozm6td2xHY5UNO" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Comunidad de WhatsApp
+                </a>
+              </div>
               <a class="mail" href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a>
             </div>
           </div>
@@ -1261,7 +1269,7 @@
     dot.addEventListener('click', function(){ goToSlide(dot.getAttribute('data-slide')); });
   });
 
-  document.querySelectorAll('a[href^="https://wa.me/"], a[href^="https://whatsapp.com/channel/"]').forEach(function(link){
+  document.querySelectorAll('a[href^="https://wa.me/"], a[href^="https://whatsapp.com/channel/"], a[href^="https://chat.whatsapp.com/"]').forEach(function(link){
     link.addEventListener('click', function(){
       var location = 'otro';
       if(link.closest('header')) location = 'header';
