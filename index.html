@@ -356,7 +356,8 @@
   .apps-panel .cap{text-align:left;font:600 0.7rem var(--sans);letter-spacing:0.12em;text-transform:uppercase;color:var(--carbon-muted);padding:6px 12px 4px;}
   .apps-panel a.actual{background:var(--sutil);}
   .apps-panel strong em{font:500 0.72rem var(--sans);font-style:normal;color:var(--carbon-muted);margin-left:8px;}
-  .apps-panel a.bloqueada{opacity:0.55;}
+  .apps-panel a.bloqueada,.apps-panel span.bloqueada{opacity:0.55;}
+  .apps-panel span.bloqueada{display:flex;gap:12px;padding:10px 12px;cursor:default;}
   a.apps-toggle{text-decoration:none;}
   .apps-toggle .chev{width:14px;height:14px;opacity:0.6;transition:transform 0.15s ease;}
   .apps.open .apps-toggle .chev{transform:rotate(180deg);}
@@ -383,6 +384,8 @@
   @media (max-width:480px){ .sitios-panel{left:0;right:auto;top:calc(100% + 10px);} .apps-toggle .chev{display:none;} }
 
   .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .tool-cerrada{opacity:.6;}
+  section[hidden]{display:none !important;}
   @media (max-width:1020px){ .tools{grid-template-columns:1fr 1fr;} .tool-practica{grid-column:span 2;} }
   .tool{background:var(--superficie);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;transition:transform 0.15s ease, box-shadow 0.15s ease;}
   .tool:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,47,37,0.1);}
@@ -549,25 +552,25 @@
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 014 9 14 14 0 01-4 9 14 14 0 01-4-9 14 14 0 014-9z"/></svg></span>
           <span><strong>NODOS<em>estás acá</em></strong><small>Sitio principal: contenido, consultas y accesos.</small></span>
         </a>
-        <a href="https://finanzas.nodoscompliance.com" role="menuitem" data-app="finanzas">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-          <span><strong>NODOS Finanzas</strong><small data-app-detalle>Tu plata y la de tu negocio, inversiones y vencimientos.</small></span>
-        </a>
-        <a href="https://empresas.nodoscompliance.com" role="menuitem" data-app="empresas">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h8a2 2 0 012 2v16"/><path d="M16 9h2a2 2 0 012 2v10M9 7h2M9 11h2M9 15h2M3 21h18"/></svg></span>
-          <span><strong>NODOS Empresas</strong><small data-app-detalle>Actas, vencimientos, accionistas y SEPRELAD.</small></span>
-        </a>
         <a href="https://finanzas.nodoscompliance.com/practica" role="menuitem">
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#B8734A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
-          <span><strong>NODOS Práctica</strong><small>Practicá finanzas y ser empresario. Gratis.</small></span>
+          <span><strong>NODOS Aprender</strong><small>Aprendé a manejar tu plata jugando. Gratis.</small></span>
         </a>
-        <p class="foot">Una sola cuenta para Finanzas, Empresas y Práctica.</p>
+        <span role="menuitem" aria-disabled="true" class="bloqueada">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EEE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+          <span><strong>NODOS Finanzas<em>próximamente</em></strong><small>Tu plata y la de tu negocio, inversiones y vencimientos.</small></span>
+        </span>
+        <span role="menuitem" aria-disabled="true" class="bloqueada">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EEE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+          <span><strong>NODOS Empresas<em>próximamente</em></strong><small>Actas, vencimientos, accionistas y SEPRELAD.</small></span>
+        </span>
+        <p class="foot">Creá tu cuenta gratis y empezá a aprender.</p>
       </div>
     </div>
     <nav class="nav-links" aria-label="Secciones">
       <a href="#inicio">Inicio</a>
       <a href="#herramientas">Servicios</a>
-      <a href="#precios">Planes</a>
+      <a href="#herramientas">Aprender</a>
       <a href="#pilares">Contenido</a>
       <a href="#consulta">Consultas</a>
       <a href="#contacto">Contacto</a>
@@ -589,7 +592,7 @@
       <nav class="menu-panel" id="menu-panel" aria-label="Secciones">
         <a href="#inicio">Inicio</a>
         <a href="#herramientas">Servicios</a>
-        <a href="#precios">Planes</a>
+        <a href="#herramientas">Aprender</a>
         <a href="#pilares">Contenido</a>
         <a href="#consulta">Consultas</a>
         <a href="#equipo">Equipo</a>
@@ -731,50 +734,38 @@
     <section id="herramientas">
       <div class="wrap">
         <div class="section-head">
-          <h2>Herramientas NODOS</h2>
-          <p>Lo que explicamos en el contenido, llevado a la práctica: tu asistente contable, tu asistente legal y un simulador gratis para practicar. Una sola cuenta para los tres.</p>
+          <h2>NODOS Aprender</h2>
+          <p>Lo que explicamos en el contenido, para practicarlo sin arriesgar tu plata. Gratis: solo necesitás crear tu cuenta.</p>
         </div>
         <div class="tools">
-          <article class="tool">
-            <span class="tag">Tu asistente contable</span>
-            <h3>NODOS <span>Finanzas</span></h3>
-            <p>Tu plata personal y la de tu negocio, por separado, sin planillas sueltas.</p>
-            <ul>
-              <li>Movimientos por espacio: personal y uno por cada empresa, unipersonal o RUC personal.</li>
-              <li>Inversiones digitales y tradicionales, y tu parte en las empresas que te conectan.</li>
-              <li>Vencimientos impositivos (DNIT), más calculadoras de IVA, intereses y préstamos.</li>
-            </ul>
-            <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com">Entrar a Finanzas</a>
-          </article>
-          <article class="tool">
-            <span class="tag">Tu asistente legal</span>
-            <h3>NODOS <span>Empresas</span></h3>
-            <p>El orden legal de tu empresa familiar: qué vence, qué firmar y quién es dueño de qué.</p>
-            <ul>
-              <li>Calendario de asambleas, edictos y registros (Código Civil, Ley 6446/2019).</li>
-              <li>Libro de accionistas con alerta de beneficiarios finales.</li>
-              <li>Actas y documentos listos, más SEPRELAD con el generador del Reporte de Operaciones.</li>
-              <li>Socios conectados: los dividendos les llegan solos a NODOS Finanzas.</li>
-            </ul>
-            <a class="btn btn-primary" href="https://empresas.nodoscompliance.com">Entrar a Empresas</a>
-          </article>
           <article class="tool tool-practica">
             <span class="tag">Gratis con tu cuenta</span>
-            <h3>NODOS <span>Práctica</span></h3>
-            <p>Practicá antes de hacerlo de verdad: un simulador de finanzas personales y de ser empresario, con casos ficticios.</p>
+            <h3>NODOS <span>Aprender</span></h3>
+            <p>Un simulador de carrera: empezás como empleado, ahorrás y decidís si invertir o emprender. Cada decisión tiene consecuencias, y NODO te explica después qué pasó y por qué.</p>
             <ul>
-              <li>Un año simulado mes a mes: asamblea, impuestos, socios y SEPRELAD.</li>
-              <li>Misiones cortas: presupuesto, deudas, primera inversión y más.</li>
-              <li>Lecciones para aprender lo básico a tu ritmo.</li>
+              <li>Un mes por turno: sueldo, gastos, imprevistos y oportunidades.</li>
+              <li>Situaciones basadas en casos reales, contadas al final por NODO.</li>
+              <li>Si quebrás, empezás de nuevo con lo que aprendiste.</li>
             </ul>
-            <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com/practica">Practicar gratis</a>
+            <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com/practica">Empezar gratis</a>
+          </article>
+          <article class="tool tool-cerrada">
+            <span class="tag">Próximamente</span>
+            <h3>NODOS <span>Finanzas</span></h3>
+            <p>Tu asistente contable: tu plata personal y la de tu negocio, inversiones y vencimientos.</p>
+          </article>
+          <article class="tool tool-cerrada">
+            <span class="tag">Próximamente</span>
+            <h3>NODOS <span>Empresas</span></h3>
+            <p>Tu asistente legal: qué vence, qué firmar y quién es dueño de qué en tu empresa familiar.</p>
           </article>
         </div>
-        <p class="tools-note">Herramientas de organización e información: no constituyen asesoría de inversión ni asesoramiento legal personalizado.</p>
+        <p class="tools-note">Contenido educativo con datos ficticios: no constituye asesoría de inversión ni asesoramiento legal personalizado.</p>
       </div>
     </section>
 
-    <section id="precios">
+    <!-- Etapa gratuita: los planes quedan ocultos hasta que vuelva el cobro. -->
+    <section id="precios" hidden>
       <div class="wrap">
         <div class="precios-top">
           <div class="section-head">
@@ -900,7 +891,7 @@
             <ul>
               <li>Cripto-activos y compliance (PLA/FT, SEPRELAD, GAFI).</li>
               <li>Empresas familiares: actas, accionistas, vencimientos.</li>
-              <li>Dudas sobre NODOS Finanzas, Empresas o Práctica.</li>
+              <li>Dudas sobre NODOS Aprender o tu cuenta.</li>
             </ul>
             <p style="font-size:0.85rem">No damos recomendaciones de inversión ni señales. Nunca te vamos a pedir dinero ni claves por mensaje.</p>
             <div class="contacto-general" id="contacto">
