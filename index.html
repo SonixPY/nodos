@@ -384,6 +384,67 @@
   @media (max-width:480px){ .apps-toggle span.lbl{display:none;} .apps-toggle{padding:9px;} .apps{position:static;} .apps-panel{right:16px;top:calc(100% - 4px);width:min(300px, calc(100vw - 32px));} }
   @media (max-width:480px){ .sitios-panel{left:0;right:auto;top:calc(100% + 10px);} .apps-toggle .chev{display:none;} }
 
+  /* Cuatro nodos */
+  .nodos-grid{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:repeat(3,auto);gap:16px;}
+  .nodo-card{border-radius:var(--r-lg);border:1px solid var(--line);background:var(--superficie);}
+  .nodo-activo{grid-row:1 / span 3;padding:32px;display:flex;flex-direction:column;background:var(--musgo);border-color:var(--musgo);color:var(--marfil);position:relative;overflow:hidden;}
+  .nodo-activo::after{content:"";position:absolute;right:-80px;top:-80px;width:180px;height:180px;border-radius:50%;border:2px solid rgba(184,115,74,.3);pointer-events:none;}
+  .nodo-activo .tag{font:600 0.78rem var(--sans);letter-spacing:0.12em;text-transform:uppercase;color:var(--marfil);background:var(--cobre-hover);align-self:flex-start;padding:5px 10px;border-radius:var(--r-sm);}
+  .nodo-activo h3{font-family:var(--serif);font-size:2rem;font-weight:700;margin:16px 0 10px;}
+  .nodo-activo h3 span{font-weight:500;}
+  .nodo-activo p{color:var(--marfil-muted);text-align:left;}
+  .nodo-activo ul{list-style:none;margin:18px 0 26px;display:grid;gap:10px;}
+  .nodo-activo li{display:flex;gap:10px;align-items:flex-start;font-size:0.95rem;}
+  .nodo-activo li::before{content:"";flex-shrink:0;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--cobre);}
+  .nodo-activo .btn{margin-top:auto;align-self:flex-start;}
+  .nodo-cerrado{display:flex;align-items:center;gap:16px;padding:20px 22px;opacity:.62;}
+  .nodo-cerrado h3{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--titulo);}
+  .nodo-cerrado h3 span{font-weight:500;}
+  .nodo-cerrado p{color:var(--carbon-muted);font-size:0.92rem;margin-top:2px;text-align:left;hyphens:none;}
+  .nodo-cerrado div{flex:1;}
+  .nodo-ico{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);color:var(--musgo);}
+  .nodo-ico svg{width:19px;height:19px;}
+  .nodo-estado{font:500 0.72rem var(--sans);letter-spacing:0.1em;text-transform:uppercase;color:var(--carbon-muted);white-space:nowrap;}
+  /* Series */
+  .series-lista{display:grid;gap:20px;}
+  .serie{display:grid;grid-template-columns:minmax(220px,0.8fr) 1.2fr;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--superficie);}
+  .serie-portada{background:var(--musgo);color:var(--marfil);padding:28px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;min-height:220px;position:relative;overflow:hidden;}
+  .serie-portada::before{content:"";position:absolute;left:28px;top:28px;width:46px;height:46px;border-radius:50%;border:3px solid var(--cobre);}
+  .serie-portada::after{content:"";position:absolute;left:44px;top:44px;width:14px;height:14px;border-radius:50%;background:var(--cobre);}
+  .serie-num{font:600 0.78rem var(--sans);letter-spacing:0.14em;text-transform:uppercase;color:var(--marfil-muted);}
+  .serie-portada strong{font-family:var(--serif);font-size:1.6rem;line-height:1.15;}
+  .serie-cuerpo{padding:28px;display:flex;flex-direction:column;gap:12px;}
+  .serie-cuerpo h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--titulo);}
+  .serie-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:0.86rem;color:var(--carbon-muted);}
+  .serie-meta span{display:inline-flex;align-items:center;gap:6px;}
+  .serie-meta svg{width:15px;height:15px;color:var(--cobre-hover);}
+  .serie-cuerpo > p{color:var(--carbon-muted);text-align:left;}
+  .serie-avance{display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--carbon-muted);}
+  .serie-avance .barra{flex:1;height:6px;border-radius:3px;background:rgba(52,72,58,.15);overflow:hidden;}
+  .serie-avance .barra i{display:block;height:100%;background:var(--cobre);}
+  .episodios{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .episodios li a,.episodios li span{display:flex;flex-direction:column;gap:2px;padding:9px 10px;border-radius:var(--r-md);border:1px solid var(--line);font-size:0.8rem;text-decoration:none;color:var(--carbon);min-height:52px;}
+  .episodios li b{font:600 0.72rem var(--sans);letter-spacing:0.06em;text-transform:uppercase;color:var(--cobre-hover);}
+  .episodios li a:hover{border-color:var(--cobre);}
+  .episodios li span{opacity:.55;}
+  .serie-cuerpo .btn{align-self:flex-start;margin-top:4px;}
+  .serie-proxima{margin-top:16px;display:flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px dashed var(--line);border-radius:var(--r-lg);}
+  .serie-proxima p{flex:1;color:var(--carbon-muted);text-align:left;hyphens:none;}
+  .serie-proxima strong{color:var(--titulo);}
+  #series{scroll-margin-top:88px;}
+  @media (max-width:860px){
+    .nodos-grid{grid-template-columns:1fr;}
+    .nodo-activo{grid-row:auto;padding:26px;}
+    .serie{grid-template-columns:1fr;}
+    .serie-portada{min-height:210px;}
+    .episodios{grid-template-columns:repeat(2,1fr);}
+    .serie-proxima{flex-wrap:wrap;}
+    .serie-proxima p{flex:1 1 calc(100% - 60px);}
+    .serie-proxima .btn{margin-left:58px;}
+    .nodo-cerrado{flex-wrap:wrap;align-items:flex-start;}
+    .nodo-cerrado div{flex:1 1 calc(100% - 60px);}
+    .nodo-estado{margin-left:58px;}
+  }
   .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .tool-cerrada{opacity:.6;}
   section[hidden]{display:none !important;}
@@ -576,7 +637,7 @@
       <a href="#inicio">Inicio</a>
       <a href="#herramientas">Servicios</a>
       <a href="#herramientas">Aprender</a>
-      <a href="#pilares">Contenido</a>
+      <a href="#series">Series</a>
       <a href="#consulta">Consultas</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -598,7 +659,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#herramientas">Servicios</a>
         <a href="#herramientas">Aprender</a>
-        <a href="#pilares">Contenido</a>
+        <a href="#series">Series</a>
         <a href="#consulta">Consultas</a>
         <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
@@ -667,87 +728,25 @@
 
   <div id="rest">
     <div class="wrap hero-text" id="inicio">
-      <h1>El punto de encuentro entre finanzas, proyectos y ley — con foco en cripto</h1>
-      <p>Contenido real, sin promesas de rendimiento ni señales de inversión. Un episodio al mes, sin relleno — y si alguien te escribe pidiendo dinero en nuestro nombre, es un fraude.</p>
+      <h1>Entendé el dinero, la ley y tus proyectos antes de decidir</h1>
+      <p>NODOS es un espacio educativo: series, un simulador gratuito y una comunidad para que llegues con conocimiento a las decisiones económicas, legales y de tus proyectos. Sin promesas de rendimiento ni señales de inversión — y si alguien te escribe pidiendo dinero en nuestro nombre, es un fraude.</p>
       <div class="actions">
-        <a class="btn btn-ghost" href="#pilares">Ver los pilares</a>
+        <a class="btn btn-ghost" href="#series">Ver las series</a>
         <a class="btn btn-primary" href="https://chat.whatsapp.com/D9ksuggyozm6td2xHY5UNO" target="_blank" rel="noopener">Sumate a la Comunidad de WhatsApp</a>
       </div>
     </div>
 
-    <section id="pilares">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Tres pilares, una sola validación</h2>
-          <p>Cada formato aborda el mismo compromiso desde un ángulo distinto. Todo nace de la misma grabación mensual y confluye en el mismo criterio.</p>
-        </div>
-        <div class="pillars">
-          <div class="pillar" id="pilar-zona-gris">
-            <div class="pillar-content">
-              <div class="pillar-head">
-                <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0014 0M12 18v3" stroke-linecap="round"></path></svg></div>
-                <span class="num">01</span>
-              </div>
-              <h3>Zona Gris</h3>
-              <p>Conversación amplia, un episodio al mes: dinero, proyectos y ley — casos donde el límite entre lo legal y lo ilegal no siempre es obvio. Cripto es el tema más recurrente, no el único.</p>
-              <a class="pillar-link" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">
-                Ver en YouTube
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
-              </a>
-            </div>
-            <a class="pillar-thumb" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener" aria-label="Ver Zona Gris en YouTube">
-              <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-            </a>
-          </div>
-          <div class="pillar" id="pilar-decodificado">
-            <div class="pillar-content">
-              <div class="pillar-head">
-                <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4L3 12l5 8M16 4l5 8-5 8"></path></svg></div>
-                <span class="num">02</span>
-              </div>
-              <h3>Decodificado</h3>
-              <p>Shorts educativos que traducen a lenguaje simple la jerga técnica de finanzas, legal y cripto: AML, KYC, GAFI, SEPRELAD y demás.</p>
-              <a class="pillar-link" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">
-                Ver en YouTube
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
-              </a>
-            </div>
-            <a class="pillar-thumb" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener" aria-label="Ver Decodificado en YouTube">
-              <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-            </a>
-          </div>
-          <div class="pillar" id="pilar-bajo-lupa">
-            <div class="pillar-content">
-              <div class="pillar-head">
-                <div class="pillar-badge"><svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><path d="M20 20l-5.5-5.5"></path></svg></div>
-                <span class="num">03</span>
-              </div>
-              <h3>Bajo Lupa</h3>
-              <p>Shorts de análisis: casos reales, proyectos y noticias puntuales del mundo financiero, legal y cripto, explicados a fondo.</p>
-              <a class="pillar-link" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">
-                Ver en YouTube
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
-              </a>
-            </div>
-            <a class="pillar-thumb" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener" aria-label="Ver Bajo Lupa en YouTube">
-              <span class="pillar-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="herramientas">
       <div class="wrap">
         <div class="section-head">
-          <h2>NODOS Aprender</h2>
-          <p>Lo que explicamos en el contenido, para practicarlo sin arriesgar tu plata. Gratis: solo necesitás crear tu cuenta.</p>
+          <h2>Cuatro nodos, uno encendido</h2>
+          <p>Aprender está abierto y es gratis con tu cuenta. Finanzas, Empresas y Proyectos se van a ir encendiendo de a uno.</p>
         </div>
-        <div class="tools">
-          <article class="tool tool-practica">
-            <span class="tag">Gratis con tu cuenta</span>
+        <div class="nodos-grid">
+          <article class="nodo-card nodo-activo">
+            <span class="tag">Activo · gratis</span>
             <h3>NODOS <span>Aprender</span></h3>
-            <p>Un simulador de carrera: empezás como empleado, ahorrás y decidís si invertir o emprender. Cada decisión tiene consecuencias, y NODO te explica después qué pasó y por qué.</p>
+            <p>Un simulador de carrera: armás tu personaje, empezás como empleado, ahorrás y decidís si invertir o emprender. Cada decisión tiene consecuencias, y NODO te explica después qué pasó y por qué.</p>
             <ul>
               <li>Un mes por turno: sueldo, gastos, imprevistos y oportunidades.</li>
               <li>Situaciones basadas en casos reales, contadas al final por NODO.</li>
@@ -755,21 +754,61 @@
             </ul>
             <a class="btn btn-primary" href="https://finanzas.nodoscompliance.com/aprender">Empezar gratis</a>
           </article>
-          <article class="tool tool-cerrada">
-            <span class="tag">Próximamente</span>
-            <h3>NODOS <span>Finanzas</span></h3>
-            <p>Tu asistente contable: tu plata personal y la de tu negocio, inversiones y vencimientos.</p>
+          <article class="nodo-card nodo-cerrado" aria-disabled="true">
+            <span class="nodo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+            <div><h3>NODOS <span>Finanzas</span></h3><p>Tu plata personal y la de tu negocio, en orden.</p></div>
+            <span class="nodo-estado">Próximamente</span>
           </article>
-          <article class="tool tool-cerrada">
-            <span class="tag">Próximamente</span>
-            <h3>NODOS <span>Empresas</span></h3>
-            <p>Tu asistente legal: qué vence, qué firmar y quién es dueño de qué en tu empresa familiar.</p>
+          <article class="nodo-card nodo-cerrado" aria-disabled="true">
+            <span class="nodo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+            <div><h3>NODOS <span>Empresas</span></h3><p>El orden legal de tu empresa familiar.</p></div>
+            <span class="nodo-estado">Próximamente</span>
+          </article>
+          <article class="nodo-card nodo-cerrado" aria-disabled="true">
+            <span class="nodo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+            <div><h3>NODOS <span>Proyectos</span></h3><p>De la idea a los números.</p></div>
+            <span class="nodo-estado">Próximamente</span>
           </article>
         </div>
         <p class="tools-note">Contenido educativo con datos ficticios: no constituye asesoría de inversión ni asesoramiento legal personalizado.</p>
       </div>
     </section>
-
+    <section id="series">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Series</h2>
+          <p>Un tema por serie, de principio a fin, en episodios de unos 10 minutos. Para entender antes de decidir, a tu ritmo.</p>
+        </div>
+        <!-- Para sumar o actualizar series: editar solo este JSON. Episodio publicado = con "url". -->
+        <script type="application/json" id="series-datos">
+[
+  {
+    "numero": "01",
+    "titulo": "Opciones de ahorro en Paraguay",
+    "descripcion": "Qué opciones de ahorro existen en Paraguay, cómo funciona cada una y qué conviene preguntar antes de elegir.",
+    "duracion": "10 min aprox.",
+    "url": "https://www.youtube.com/@NodosCompliance",
+    "episodios": [
+      {"titulo": ""}, {"titulo": ""}, {"titulo": ""}, {"titulo": ""}, {"titulo": ""},
+      {"titulo": ""}, {"titulo": ""}, {"titulo": ""}, {"titulo": ""}, {"titulo": ""}
+    ]
+  }
+]
+        </script>
+        <div class="series-lista" id="series-lista">
+          <article class="serie">
+            <div class="serie-portada"><span class="serie-num">Serie 01</span><strong>Opciones de ahorro en Paraguay</strong></div>
+            <div class="serie-cuerpo"><h3>Opciones de ahorro en Paraguay</h3><p>10 episodios · 10 min aprox.</p><a class="btn btn-primary" href="https://www.youtube.com/@NodosCompliance" target="_blank" rel="noopener">Ver en YouTube</a></div>
+          </article>
+        </div>
+        <div class="serie-proxima">
+          <span class="nodo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+          <p><strong>Próxima serie.</strong> La anunciamos primero en la Comunidad de WhatsApp.</p>
+          <a class="btn btn-ghost" href="https://chat.whatsapp.com/D9ksuggyozm6td2xHY5UNO" target="_blank" rel="noopener">Sumarme</a>
+        </div>
+        <p class="tools-note">Contenido educativo: no es asesoría de inversión ni asesoramiento legal para tu caso.</p>
+      </div>
+    </section>
     <!-- Etapa gratuita: los planes quedan ocultos hasta que vuelva el cobro. -->
     <section id="precios" hidden>
       <div class="wrap">
@@ -1387,6 +1426,35 @@
     marcar();
   }); });
   marcar();
+})();
+</script>
+<script>
+/* Series: se arman desde el JSON #series-datos */
+(function(){
+  var d=document.getElementById('series-datos'), cont=document.getElementById('series-lista');
+  if(!d||!cont) return;
+  var series; try{ series=JSON.parse(d.textContent); }catch(e){ return; }
+  function esc(t){ var x=document.createElement('span'); x.textContent=t==null?'':String(t); return x.innerHTML; }
+  var reloj='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  var lista='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>';
+  cont.innerHTML=series.map(function(s){
+    var eps=s.episodios||[], pub=eps.filter(function(e){return e.url;}).length;
+    var items=eps.map(function(e,i){
+      var t=e.titulo?esc(e.titulo):(e.url?'Ver episodio':'Próximamente');
+      return e.url
+        ? '<li><a href="'+esc(e.url)+'" target="_blank" rel="noopener"><b>Ep. '+(i+1)+'</b>'+t+'</a></li>'
+        : '<li><span aria-disabled="true"><b>Ep. '+(i+1)+'</b>'+t+'</span></li>';
+    }).join('');
+    return '<article class="serie">'
+      +'<div class="serie-portada"><span class="serie-num">Serie '+esc(s.numero)+'</span><strong>'+esc(s.titulo)+'</strong></div>'
+      +'<div class="serie-cuerpo"><h3>'+esc(s.titulo)+'</h3>'
+      +'<div class="serie-meta"><span>'+lista+eps.length+' episodios</span><span>'+reloj+esc(s.duracion)+' cada uno</span></div>'
+      +'<p>'+esc(s.descripcion)+'</p>'
+      +'<div class="serie-avance"><span>'+(pub?pub+' de '+eps.length+' publicados':'Primer episodio, muy pronto')+'</span><span class="barra"><i style="width:'+(eps.length?Math.round(pub/eps.length*100):0)+'%"></i></span></div>'
+      +'<ol class="episodios">'+items+'</ol>'
+      +'<a class="btn btn-primary" href="'+esc(s.url)+'" target="_blank" rel="noopener">Ver la serie en YouTube</a>'
+      +'</div></article>';
+  }).join('');
 })();
 </script>
 </body>
