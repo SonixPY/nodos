@@ -779,7 +779,7 @@
           <h2>Series</h2>
           <p>Un tema por serie, de principio a fin, en episodios de unos 10 minutos. Para entender antes de decidir, a tu ritmo.</p>
         </div>
-        <!-- Para sumar o actualizar series: editar solo este JSON. Episodio publicado = con "url". -->
+        <!-- Las series se editan en NODOS Panel → Series. Este JSON es solo el respaldo si la API no responde. -->
         <script type="application/json" id="series-datos">
 [
   {
@@ -1429,20 +1429,23 @@
 })();
 </script>
 <script>
-/* Series: se arman desde el JSON #series-datos */
+/* Series: se editan en NODOS Panel → Series y llegan por la API pública.
+   El JSON #series-datos es solo la copia de respaldo si la API no responde. */
 (function(){
   var d=document.getElementById('series-datos'), cont=document.getElementById('series-lista');
   if(!d||!cont) return;
-  var series; try{ series=JSON.parse(d.textContent); }catch(e){ return; }
+  var API='https://empresas.nodoscompliance.com/api/public/series';
   function esc(t){ var x=document.createElement('span'); x.textContent=t==null?'':String(t); return x.innerHTML; }
   var reloj='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   var lista='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>';
+  function pintar(series){
+  if(!series.length){ cont.innerHTML='<p class="tools-note">La primera serie se publica muy pronto.</p>'; return; }
   cont.innerHTML=series.map(function(s){
     var eps=s.episodios||[], pub=eps.filter(function(e){return e.url;}).length;
     var items=eps.map(function(e,i){
       var t=e.titulo?esc(e.titulo):(e.url?'Ver episodio':'Próximamente');
       return e.url
-        ? '<li><a href="'+esc(e.url)+'" target="_blank" rel="noopener"><b>Ep. '+(i+1)+'</b>'+t+'</a></li>'
+        ? (/^https:\/\//.test(e.url)?'<li><a href="'+esc(e.url)+'" target="_blank" rel="noopener"><b>Ep. '+(i+1)+'</b>'+t+'</a></li>':'')
         : '<li><span aria-disabled="true"><b>Ep. '+(i+1)+'</b>'+t+'</span></li>';
     }).join('');
     return '<article class="serie">'
@@ -1452,9 +1455,18 @@
       +'<p>'+esc(s.descripcion)+'</p>'
       +'<div class="serie-avance"><span>'+(pub?pub+' de '+eps.length+' publicados':'Primer episodio, muy pronto')+'</span><span class="barra"><i style="width:'+(eps.length?Math.round(pub/eps.length*100):0)+'%"></i></span></div>'
       +'<ol class="episodios">'+items+'</ol>'
-      +'<a class="btn btn-primary" href="'+esc(s.url)+'" target="_blank" rel="noopener">Ver la serie en YouTube</a>'
+      +(/^https:\/\//.test(s.url||'')?'<a class="btn btn-primary" href="'+esc(s.url)+'" target="_blank" rel="noopener">Ver la serie en YouTube</a>':'')
       +'</div></article>';
   }).join('');
+  }
+  /* Primero la copia que trae la página; después lo publicado en el Panel. */
+  try{ pintar(JSON.parse(d.textContent)); }catch(e){}
+  var ctrl=window.AbortController?new AbortController():null;
+  var corte=setTimeout(function(){ if(ctrl) ctrl.abort(); },6000);
+  fetch(API,{signal:ctrl?ctrl.signal:undefined,credentials:'omit'})
+    .then(function(r){ return r.ok?r.json():null; })
+    .then(function(j){ clearTimeout(corte); if(j&&Array.isArray(j.series)) pintar(j.series); })
+    .catch(function(){ clearTimeout(corte); });
 })();
 </script>
 </body>
