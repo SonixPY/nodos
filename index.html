@@ -180,6 +180,7 @@
     max-width:min(200px,80vw);white-space:nowrap;padding:7px 14px;border-radius:2px;border-bottom:2px solid var(--cobre);
     opacity:0;pointer-events:none;transition:opacity 0.18s ease, transform 0.18s ease;
   }
+  .node-tip small{font-size:0.78em;font-weight:400;opacity:0.75;}
   .node:focus-visible .node-tip{opacity:1;transform:translate(-50%,0);}
   @media (hover:hover) and (pointer:fine){
     .node:hover .node-tip{opacity:1;transform:translate(-50%,0);}
@@ -638,17 +639,17 @@
           </g>
         </g>
       </svg>
-      <a href="#pilar-zona-gris" class="node node-1" style="--x:29.09%;--y:29.09%;--d:9.09%;">
-        <span class="node-tip">Zona Gris</span>
+      <a href="#herramientas" class="node node-1" style="--x:29.09%;--y:29.09%;--d:9.09%;" aria-label="NODOS Finanzas, próximamente">
+        <span class="node-tip">Finanzas <small>· próximamente</small></span>
       </a>
-      <a href="#pilar-decodificado" class="node node-2" style="--x:25.45%;--y:68.18%;--d:8.18%;">
-        <span class="node-tip">Decodificado</span>
+      <a href="#herramientas" class="node node-2" style="--x:25.45%;--y:68.18%;--d:8.18%;" aria-label="NODOS Empresas, próximamente">
+        <span class="node-tip">Empresas <small>· próximamente</small></span>
       </a>
-      <a href="#pilar-bajo-lupa" class="node node-3" style="--x:80.91%;--y:32.73%;--d:10%;">
-        <span class="node-tip">Bajo Lupa</span>
+      <a href="#herramientas" class="node node-3" style="--x:80.91%;--y:32.73%;--d:10%;" aria-label="NODOS Proyectos, próximamente">
+        <span class="node-tip">Proyectos <small>· próximamente</small></span>
       </a>
-      <a href="#crecimiento" class="node node-central" style="--x:54.55%;--y:58.18%;--d:21.82%;">
-        <span class="node-tip">Bloqueado, próximamente</span>
+      <a href="https://finanzas.nodoscompliance.com/aprender" class="node node-central" style="--x:54.55%;--y:58.18%;--d:21.82%;" aria-label="NODOS Aprender: empezar gratis">
+        <span class="node-tip">Aprender <small>· gratis</small></span>
       </a>
     </div>
     <a class="splash-hint" href="#inicio">
@@ -1220,7 +1221,7 @@
     });
   }
 
-  var nodeLabels = {'node-1':'zona_gris','node-2':'decodificado','node-3':'bajo_lupa','node-central':'equipo_crecimiento'};
+  var nodeLabels = {'node-1':'finanzas','node-2':'empresas','node-3':'proyectos','node-central':'aprender'};
   document.querySelectorAll('.node').forEach(function(node){
     node.addEventListener('click', function(){
       reveal();
