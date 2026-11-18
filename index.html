@@ -166,13 +166,15 @@
   /* Interactive node diagram — real vector shapes, no CSS approximations */
   .node-diagram{position:relative;width:min(560px,86vw);aspect-ratio:1/1;overflow:visible;}
   .node-diagram-bg{position:absolute;inset:0;width:100%;height:100%;}
-  .shape-1,.shape-2,.shape-3{transform-box:fill-box;transform-origin:center;transition:transform 0.2s ease;}
+  /* Etapa actual: solo Aprender (nodo central) está activo. Los satélites
+     (Finanzas, Empresas, Proyectos) quedan apagados y sin zoom. */
+  .shape-1,.shape-2,.shape-3{opacity:0.35;}
+  .central-hover{transform-box:fill-box;transform-origin:center;transition:transform 0.2s ease;}
+  .node-diagram:has(.node-central:hover) .central-hover,.node-diagram:has(.node-central:focus-visible) .central-hover{transform:scale(1.15);}
+  .node-1,.node-2,.node-3{cursor:default;}
 
   /* invisible hit-boxes: handle click, tooltip, and (via :has) trigger the real shape's hover scale */
   .node{position:absolute;left:var(--x);top:var(--y);width:var(--d);aspect-ratio:1/1;transform:translate(-50%,-50%);display:block;text-decoration:none;cursor:pointer;}
-  .node-diagram:has(.node-1:hover) .shape-1,.node-diagram:has(.node-1:focus-visible) .shape-1{transform:scale(1.28);}
-  .node-diagram:has(.node-2:hover) .shape-2,.node-diagram:has(.node-2:focus-visible) .shape-2{transform:scale(1.28);}
-  .node-diagram:has(.node-3:hover) .shape-3,.node-diagram:has(.node-3:focus-visible) .shape-3{transform:scale(1.28);}
 
   .node-tip{
     position:absolute;top:100%;left:50%;margin-top:14px;transform:translate(-50%,4px);
@@ -191,7 +193,7 @@
 
   /* Performance: pause the infinite loops entirely when off-screen or the tab is backgrounded */
   #mainDiagram.paused .line-1,#mainDiagram.paused .line-2,#mainDiagram.paused .line-3,
-  #mainDiagram.paused .ping-1,#mainDiagram.paused .ping-2,#mainDiagram.paused .ping-3{
+  #mainDiagram.paused .ping-c{
     animation-play-state:paused;
   }
 
@@ -207,9 +209,7 @@
       opacity:0;transform:scale(0);
       animation:centralAppear 0.4s ease-out 0.85s forwards;
     }
-    .ping-1{animation:pingPulse 2.6s ease-out 2.3s infinite;}
-    .ping-2{animation:pingPulse 2.6s ease-out 2.6s infinite;}
-    .ping-3{animation:pingPulse 2.6s ease-out 2.9s infinite;}
+    .ping-c{animation:pingPulse 2.6s ease-out 1.6s infinite;}
     @keyframes lineFlow{
       0%{stroke-dashoffset:100;}
       25%{stroke-dashoffset:0;}
@@ -506,7 +506,7 @@
   }
 
   @media (max-width:480px){
-    .ping-1,.ping-2,.ping-3{animation:none;opacity:0;}
+    .ping-c{animation:none;opacity:0;}
   }
 
   @media (max-height:500px){
@@ -564,6 +564,10 @@
         <span role="menuitem" aria-disabled="true" class="bloqueada">
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EEE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
           <span><strong>NODOS Empresas<em>próximamente</em></strong><small>Actas, vencimientos, accionistas y SEPRELAD.</small></span>
+        </span>
+        <span role="menuitem" aria-disabled="true" class="bloqueada">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EEE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span>
+          <span><strong>NODOS Proyectos<em>próximamente</em></strong><small>Planificá y seguí tus proyectos, de la idea a los números.</small></span>
         </span>
         <p class="foot">Creá tu cuenta gratis y empezá a aprender.</p>
       </div>
@@ -633,10 +637,11 @@
           <g class="entrance-3"><circle class="shape-3" cx="0" cy="0" r="11" fill="none" stroke="#F2EEE6" stroke-width="4"></circle></g>
         </g>
         <g transform="translate(120,128)">
-          <g class="entrance-central">
-            <circle class="shape-outer" cx="0" cy="0" r="24" fill="#93755D"></circle>
+          <circle class="ping ping-c" cx="0" cy="0" r="24" fill="none" stroke="#B8734A" stroke-width="2"></circle>
+          <g class="entrance-central"><g class="central-hover">
+            <circle class="shape-outer" cx="0" cy="0" r="24" fill="#B8734A"></circle>
             <circle class="shape-core" cx="0" cy="0" r="14" fill="none" stroke="#1E2F25" stroke-width="2"></circle>
-          </g>
+          </g></g>
         </g>
       </svg>
       <a href="#herramientas" class="node node-1" style="--x:29.09%;--y:29.09%;--d:9.09%;" aria-label="NODOS Finanzas, próximamente">
