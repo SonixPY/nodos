@@ -428,6 +428,16 @@
   .episodios li a:hover{border-color:var(--cobre);}
   .episodios li span{opacity:.55;}
   .serie-cuerpo .btn{align-self:flex-start;margin-top:4px;}
+  .serie-estreno{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:var(--r-md);background:rgba(184,115,74,.1);color:var(--titulo);font-size:0.92rem;text-align:left;}
+  .serie-estreno svg{flex-shrink:0;width:18px;height:18px;color:var(--cobre-hover);}
+  .episodios li span.es-proximo{opacity:1;border-color:var(--cobre);}
+  .serie-fuentes{font-size:0.88rem;color:var(--carbon-muted);}
+  .serie-fuentes summary{cursor:pointer;font-weight:500;color:var(--titulo);}
+  .serie-fuentes > ul{list-style:none;margin-top:10px;display:grid;gap:10px;}
+  .serie-fuentes ul ul{margin:4px 0 0 18px;list-style:disc;}
+  .serie-fuentes a{color:var(--cobre-hover);}
+  .series-pie{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;}
+  .series-pie a{color:var(--cobre-hover);font-size:0.85rem;}
   .serie-proxima{margin-top:16px;display:flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px dashed var(--line);border-radius:var(--r-lg);}
   .serie-proxima p{flex:1;color:var(--carbon-muted);text-align:left;hyphens:none;}
   .serie-proxima strong{color:var(--titulo);}
@@ -806,7 +816,10 @@
           <p><strong>Próxima serie.</strong> La anunciamos primero en la Comunidad de WhatsApp.</p>
           <a class="btn btn-ghost" href="https://chat.whatsapp.com/D9ksuggyozm6td2xHY5UNO" target="_blank" rel="noopener">Sumarme</a>
         </div>
-        <p class="tools-note">Contenido educativo: no es asesoría de inversión ni asesoramiento legal para tu caso.</p>
+        <div class="series-pie">
+          <p class="tools-note">Contenido educativo: no es asesoría de inversión ni asesoramiento legal para tu caso.</p>
+          <a href="/como-verificamos">Cómo verificamos lo que publicamos</a>
+        </div>
       </div>
     </section>
     <!-- Etapa gratuita: los planes quedan ocultos hasta que vuelva el cobro. -->
@@ -990,7 +1003,7 @@
         </nav>
         <div class="footer-meta">
           <span>© 2026 NODOS, Asunción, Paraguay</span>
-          <span><a href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a> · <a href="https://empresas.nodoscompliance.com/soporte">Soporte técnico</a> · <a href="/ayuda">Ayuda</a> · <a href="/terminos">Términos</a> · <a href="/privacidad">Privacidad</a></span>
+          <span><a href="mailto:contacto@nodoscompliance.com">contacto@nodoscompliance.com</a> · <a href="https://empresas.nodoscompliance.com/soporte">Soporte técnico</a> · <a href="/ayuda">Ayuda</a> · <a href="/como-verificamos">Cómo verificamos</a> · <a href="/terminos">Términos</a> · <a href="/privacidad">Privacidad</a></span>
           <span class="tema-sitio" role="group" aria-label="Tema">Tema:
             <button type="button" data-tema="claro">Claro</button> ·
             <button type="button" data-tema="oscuro">Oscuro</button> ·
@@ -1438,24 +1451,43 @@
   function esc(t){ var x=document.createElement('span'); x.textContent=t==null?'':String(t); return x.innerHTML; }
   var reloj='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   var lista='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>';
+  var TZ='America/Asuncion';
+  function fmt(iso,opc){ try{ return new Intl.DateTimeFormat('es-PY',Object.assign({timeZone:TZ},opc)).format(new Date(iso)); }catch(e){ return ''; } }
+  function https(u){ return /^https:\/\//.test(u||''); }
+  function proximo(eps){
+    var mejor=-1, ahora=Date.now()-6*3600000;
+    eps.forEach(function(e,i){ if(e.url||!e.fecha) return; var t=Date.parse(e.fecha); if(isNaN(t)||t<ahora) return; if(mejor<0||t<Date.parse(eps[mejor].fecha)) mejor=i; });
+    return mejor;
+  }
+  var cal='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>';
   function pintar(series){
   if(!series.length){ cont.innerHTML='<p class="tools-note">La primera serie se publica muy pronto.</p>'; return; }
   cont.innerHTML=series.map(function(s){
-    var eps=s.episodios||[], pub=eps.filter(function(e){return e.url;}).length;
+    var eps=s.episodios||[], pub=eps.filter(function(e){return https(e.url);}).length, px=proximo(eps);
     var items=eps.map(function(e,i){
-      var t=e.titulo?esc(e.titulo):(e.url?'Ver episodio':'Próximamente');
-      return e.url
-        ? (/^https:\/\//.test(e.url)?'<li><a href="'+esc(e.url)+'" target="_blank" rel="noopener"><b>Ep. '+(i+1)+'</b>'+t+'</a></li>':'')
-        : '<li><span aria-disabled="true"><b>Ep. '+(i+1)+'</b>'+t+'</span></li>';
+      var min=e.minutos?' · '+e.minutos+' min':'';
+      if(https(e.url)) return '<li><a href="'+esc(e.url)+'" target="_blank" rel="noopener"><b>Ep. '+(i+1)+min+'</b>'+(e.titulo?esc(e.titulo):'Ver episodio')+'</a></li>';
+      var cuando=e.fecha?fmt(e.fecha,{weekday:'short',day:'2-digit',month:'2-digit'}):'';
+      return '<li><span aria-disabled="true"'+(i===px?' class="es-proximo"':'')+'><b>Ep. '+(i+1)+min+'</b>'+(e.titulo?esc(e.titulo):(cuando?'Estreno '+esc(cuando):'Próximamente'))+'</span></li>';
+    }).join('');
+    var aviso=px>=0
+      ? '<p class="serie-estreno">'+cal+'<span>Próximo episodio: <strong>'+esc(fmt(eps[px].fecha,{weekday:'long',day:'numeric',month:'long'}))+', '+esc(fmt(eps[px].fecha,{hour:'2-digit',minute:'2-digit',hour12:false}))+' h</strong> (hora de Paraguay)</span></p>'
+      : '';
+    var fuentes=eps.map(function(e,i){
+      var fs=(e.fuentes||[]).filter(function(f){return https(f.url);});
+      if(!https(e.url)||!fs.length) return '';
+      return '<li><b>Ep. '+(i+1)+(e.titulo?' · '+esc(e.titulo):'')+'</b><ul>'+fs.map(function(f){ return '<li><a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.titulo||f.url)+'</a></li>'; }).join('')+'</ul></li>';
     }).join('');
     return '<article class="serie">'
       +'<div class="serie-portada"><span class="serie-num">Serie '+esc(s.numero)+'</span><strong>'+esc(s.titulo)+'</strong></div>'
       +'<div class="serie-cuerpo"><h3>'+esc(s.titulo)+'</h3>'
       +'<div class="serie-meta"><span>'+lista+eps.length+' episodios</span><span>'+reloj+esc(s.duracion)+' cada uno</span></div>'
       +'<p>'+esc(s.descripcion)+'</p>'
-      +'<div class="serie-avance"><span>'+(pub?pub+' de '+eps.length+' publicados':'Primer episodio, muy pronto')+'</span><span class="barra"><i style="width:'+(eps.length?Math.round(pub/eps.length*100):0)+'%"></i></span></div>'
+      +aviso
+      +'<div class="serie-avance"><span>'+(pub?pub+' de '+eps.length+' publicados':(px>=0?'Todavía sin episodios publicados':'Primer episodio, muy pronto'))+'</span><span class="barra"><i style="width:'+(eps.length?Math.round(pub/eps.length*100):0)+'%"></i></span></div>'
       +'<ol class="episodios">'+items+'</ol>'
-      +(/^https:\/\//.test(s.url||'')?'<a class="btn btn-primary" href="'+esc(s.url)+'" target="_blank" rel="noopener">Ver la serie en YouTube</a>':'')
+      +(fuentes?'<details class="serie-fuentes"><summary>Fuentes de cada episodio</summary><ul>'+fuentes+'</ul></details>':'')
+      +(https(s.url)?'<a class="btn btn-primary" href="'+esc(s.url)+'" target="_blank" rel="noopener">Ver la serie en YouTube</a>':'')
       +'</div></article>';
   }).join('');
   }
